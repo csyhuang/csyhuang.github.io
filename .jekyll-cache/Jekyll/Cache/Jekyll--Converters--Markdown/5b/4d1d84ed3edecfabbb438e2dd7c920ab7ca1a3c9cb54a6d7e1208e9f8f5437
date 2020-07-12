@@ -1,0 +1,40 @@
+I"�<p>I build machine learning models to handle huge amount of data on hadoop cluster with pyspark daily. Here are some solutions to problems with pyspark I solved:</p>
+
+<h2 id="pyspark-related-blog-posts">Pyspark-related blog posts</h2>
+
+<ul>
+  <li>
+    <p><a href="/2020/04/16/faster-outer-join-by-two-left-joins/">More efficient way to do outer join with large dataframes</a></p>
+  </li>
+  <li>
+    <p><a href="/2019/10/30/pandas_to_pyspark_before_0.19.2/">Conversion of pandas dataframe to pyspark dataframe with an older version of pandas</a></p>
+  </li>
+  <li>
+    <p><a href="/2019/09/25/pyspark-generate-sequences/">Generate sequence from an array column of pyspark dataframe</a></p>
+  </li>
+  <li>
+    <p><a href="/2019/09/24/pyspark-could-not-serialize-object/">Pyspark error “Could not serialize object”</a></p>
+  </li>
+  <li>
+    <p><a href="/2018/12/14/read-libsvm-to-pyspark-df/">Read libsvm files into PySpark dataframe</a></p>
+  </li>
+  <li>
+    <p><a href="/2018/11/28/pyspark-solution-1/">Simple pyspark solutions</a></p>
+  </li>
+</ul>
+
+<h2 id="sql-related-blog-posts">SQL related blog posts</h2>
+
+<ul>
+  <li>
+    <p><a href="/2020/04/16/faster-outer-join-by-two-left-joins/">More efficient way to do outer join with large dataframes</a></p>
+  </li>
+  <li>
+    <p><a href="/2020/02/07/tips-for-writing-more-efficient-sql/">Tips for writing more efficient SQL</a></p>
+  </li>
+  <li>
+    <p><a href="/2019/09/16/json-in-postgresql/">Handling JSON in PostgreSQL</a></p>
+  </li>
+</ul>
+
+:ET

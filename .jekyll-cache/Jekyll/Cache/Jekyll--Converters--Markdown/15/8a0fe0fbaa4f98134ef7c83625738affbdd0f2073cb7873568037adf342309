@@ -1,0 +1,19 @@
+I"õ<p>Exploding gradients and vanishing gradients are two common issues with the training of RNN.</p>
+
+<p>To avoid exploding gradients, one may use:</p>
+
+<ul>
+  <li>Truncated Back-propagation through time (BPTT)</li>
+  <li>Clip gradients at threshold</li>
+  <li>RMSprop to adjust learning rate</li>
+</ul>
+
+<p>Vanishing gradients are harder to detect. To avoid it, one may use:</p>
+
+<ul>
+  <li>Weight initialization</li>
+  <li>ReLu activation functions</li>
+  <li>RMSprop</li>
+  <li>LSTM, GRUs</li>
+</ul>
+:ET

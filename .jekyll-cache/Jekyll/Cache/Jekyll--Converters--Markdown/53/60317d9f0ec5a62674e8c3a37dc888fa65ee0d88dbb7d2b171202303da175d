@@ -1,0 +1,23 @@
+I"d<p>The <a href="https://github.com/csyhuang/hn2016_falwa">python package</a> <code class="highlighter-rouge">hn2016_falwa</code> has just been updated with the following changes:</p>
+<ul>
+  <li>Switched the unittest framework from <code class="highlighter-rouge">unittest</code> to <code class="highlighter-rouge">pytest</code></li>
+  <li>Improved interface of the QGField object</li>
+  <li>Added a new function <code class="highlighter-rouge">hn2016_falwa.download_data.retrieve_erai</code> to download ERA-Interim data (but not connected to the main program yet)</li>
+</ul>
+
+<p>My package uses <code class="highlighter-rouge">f2py</code>. When switching from <code class="highlighter-rouge">unittest</code> to <code class="highlighter-rouge">pytest</code>, there are several changes to make in <code class="highlighter-rouge">setup.py</code> and <code class="highlighter-rouge">.travis</code> to accommodate such usage:</p>
+
+<p>In <code class="highlighter-rouge">setup</code> (<code class="highlighter-rouge">numpy.distutils.core.setup</code>), remove the argument</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">test_suite</span><span class="o">=</span><span class="s">'tests.my_module_suite'</span>
+</code></pre></div></div>
+<p>and add:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">packages</span><span class="o">=</span><span class="n">find_packages</span><span class="p">(),</span>
+    <span class="n">setup_requires</span><span class="o">=</span><span class="p">[</span><span class="s">'pytest-runner'</span><span class="p">],</span>
+    <span class="n">tests_require</span><span class="o">=</span><span class="p">[</span><span class="s">'pytest'</span><span class="p">],</span>
+</code></pre></div></div>
+
+<p>In <code class="highlighter-rouge">.travis</code>, the <code class="highlighter-rouge">script</code> section looks like:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>script:
+  - python setup.py pytest
+</code></pre></div></div>
+:ET

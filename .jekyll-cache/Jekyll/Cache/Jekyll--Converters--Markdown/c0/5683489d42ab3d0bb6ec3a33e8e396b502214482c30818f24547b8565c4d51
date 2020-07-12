@@ -1,0 +1,102 @@
+I"�$<p>I wanted to load the libsvm files provided in <a href="https://github.com/tensorflow/ranking">tensorflow/ranking</a> into PySpark dataframe, but couldn’t find existing modules for that. Here is a version I wrote to do the job. (Disclaimer: not the most elegant solution, but it works.)
+<!--more-->
+First of all, load the pyspark utilities required.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark</span> <span class="kn">import</span> <span class="n">SparkContext</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span><span class="p">,</span> <span class="n">Row</span>
+<span class="kn">from</span> <span class="nn">pyspark.ml.linalg</span> <span class="kn">import</span> <span class="n">SparseVector</span>
+</code></pre></div></div>
+
+<p>Initiate a spark session for creation of dataframe.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="p">(</span><span class="s">"local"</span><span class="p">,</span> <span class="s">"read_libsvm"</span><span class="p">)</span>
+<span class="n">spark_session</span> <span class="o">=</span> <span class="n">SparkSession</span> \
+    <span class="p">.</span><span class="n">builder</span> \
+    <span class="p">.</span><span class="n">appName</span><span class="p">(</span><span class="s">"read_libsvm"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Get the path to the data files.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">_TRAIN_DATA_PATH</span><span class="o">=</span><span class="s">"data/train.txt"</span>
+<span class="n">_TEST_DATA_PATH</span><span class="o">=</span><span class="s">"data/test.txt"</span>
+</code></pre></div></div>
+
+<p>Here is the module I wrote for the purpose:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">read_libsvm</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">query_id</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+    <span class="s">'''
+    A utility function that takes in a libsvm file and turn it to a pyspark dataframe.
+
+    Args:
+        filepath (str): The file path to the data file.
+        query_id (bool): whether 'qid' is present in the file.
+
+    Returns:
+        A pyspark dataframe that contains the data loaded.
+    '''</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">raw_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">.</span><span class="n">split</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">f</span><span class="p">.</span><span class="n">readlines</span><span class="p">()]</span>
+
+    <span class="n">train_outcome</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">raw_data</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">query_id</span><span class="p">:</span>
+        <span class="n">train_qid</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">lstrip</span><span class="p">(</span><span class="s">'qid:'</span><span class="p">))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">raw_data</span><span class="p">]</span>
+
+    <span class="n">index_value_dict</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">raw_data</span><span class="p">:</span>
+        <span class="n">index_value_dict</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="nb">dict</span><span class="p">([(</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">':'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">':'</span><span class="p">)[</span><span class="mi">1</span><span class="p">]))</span>
+                                       <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[(</span><span class="mi">1</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">query_id</span><span class="p">)):]]))</span>
+
+    <span class="n">max_idx</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="nb">max</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">keys</span><span class="p">())</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">index_value_dict</span><span class="p">])</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">Row</span><span class="p">(</span>
+            <span class="n">qid</span><span class="o">=</span><span class="n">train_qid</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+            <span class="n">label</span><span class="o">=</span><span class="n">train_outcome</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+            <span class="n">feat_vector</span><span class="o">=</span><span class="n">SparseVector</span><span class="p">(</span><span class="n">max_idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">index_value_dict</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">index_value_dict</span><span class="p">))</span>
+    <span class="p">]</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">spark_session</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">df</span>
+
+</code></pre></div></div>
+
+<p>Let’s see how the train and test sets look like in the tf-ranking package:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">train_df</span> <span class="o">=</span> <span class="n">read_libsvm</span><span class="p">(</span><span class="n">_TRAIN_DATA_PATH</span><span class="p">)</span>
+<span class="n">test_df</span> <span class="o">=</span> <span class="n">read_libsvm</span><span class="p">(</span><span class="n">_TEST_DATA_PATH</span><span class="p">)</span>
+
+<span class="n">train_df</span><span class="p">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+--------------------+-----+---+
+|         feat_vector|label|qid|
++--------------------+-----+---+
+|(137,[5,13,17,42,...|    0|  1|
+|(137,[11,13,18,30...|    2|  1|
+|(137,[11,27,29,39...|    2|  1|
+|(137,[5,10,26,31,...|    1|  1|
+|(137,[13,17,22,24...|    2|  2|
++--------------------+-----+---+
+only showing top 5 rows
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">test_df</span><span class="p">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+--------------------+-----+---+
+|         feat_vector|label|qid|
++--------------------+-----+---+
+|(137,[2,7,37,40,4...|    1|  1|
+|(137,[1,8,12,15,2...|    2|  1|
+|(137,[4,11,15,16,...|    0|  1|
+|(137,[14,19,20,33...|    0|  1|
+|(137,[9,12,19,26,...|    1|  2|
++--------------------+-----+---+
+only showing top 5 rows
+</code></pre></div></div>
+
+:ET

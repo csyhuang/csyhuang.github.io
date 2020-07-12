@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Conversion of pandas dataframe to pyspark dataframe with an older version of pandas &middot; Clare S. Y. Huang
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>PhD in Geophysical Sciences (UChicago). Love coding, music and writing.</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+    <a class="sidebar-nav-item" href="/about_me.html" >About me</a>    
+
+    
+
+    
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/bookshelf/">Bookshelf</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/climate_tools/">Climate Tools</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/ds_notes/">Data Science Notes</a>
+        
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/publications/">Publications</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/pyspark_solutions/">PySpark/SQL Solutions</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/research/">Academic Research</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/tools/">Handy Tools</a>
+        
+      
+    
+
+<!--    <a class="sidebar-nav-item" href="/archive/v1.0.0.zip">Download</a> -->
+
+    <a class="sidebar-nav-item" href="http://github.com/csyhuang/"  target="_blank">Github</a>
+<!--    <span class="sidebar-nav-item">Currently v1.0.0</span> --->
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2020 Shao Ying (Clare) Huang. All rights reserved.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/" title="Home">Clare S. Y. Huang</a>
+            <small>Data Scientist | Atmospheric Dynamicist</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+  <h1 class="post-title">Conversion of pandas dataframe to pyspark dataframe with an older version of pandas</h1>
+  <span class="post-date">30 Oct 2019</span>
+  <p>Pandas dataframe can be converted to pyspark dataframe easily in the newest version of <code class="highlighter-rouge">pandas</code> after <code class="highlighter-rouge">v0.19.2</code>. If you are using an older version of pandas, you have to do a bit more work for such conversion as follows.</p>
+
+<p>First, load the packages and initiate a spark session.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span><span class="p">,</span> <span class="n">DataFrame</span><span class="p">,</span> <span class="n">Row</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+
+<span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="p">.</span><span class="n">builder</span> \
+        <span class="p">.</span><span class="n">master</span><span class="p">(</span><span class="s">"local"</span><span class="p">)</span> \
+        <span class="p">.</span><span class="n">appName</span><span class="p">(</span><span class="s">"Pandas to pyspark DF"</span><span class="p">)</span> \
+        <span class="p">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+</code></pre></div></div>
+<!--more-->
+<p>Here is an example of pandas dataframe to be converted.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s">'index'</span><span class="p">:[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)],</span>
+                   <span class="s">'alphabet'</span><span class="p">:[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="s">'pyspark'</span><span class="p">]})</span>
+<span class="n">df</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>index</th>
+      <th>alphabet</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>p</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>y</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>s</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>p</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>a</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5</td>
+      <td>r</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>6</td>
+      <td>k</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>To convert it to a <code class="highlighter-rouge">pyspark</code> dataframe, one has to create a list of <code class="highlighter-rouge">Row</code> objects and pass it into <code class="highlighter-rouge">createDataFrame</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df_pyspark</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span>
+    <span class="n">Row</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s">'index'</span><span class="p">],</span> <span class="n">alphabet</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s">'alphabet'</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="p">.</span><span class="n">iterrows</span><span class="p">()</span>
+<span class="p">])</span>
+<span class="n">df_pyspark</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+--------+-----+
+|alphabet|index|
++--------+-----+
+|       p|    0|
+|       y|    1|
+|       s|    2|
+|       p|    3|
+|       a|    4|
+|       r|    5|
+|       k|    6|
++--------+-----+
+</code></pre></div></div>
+
+
+</div>
+
+<div>
+<a href="javascript:history.back()"> << Previous Page</a>
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2020/04/18/spark-definitive-guide-reading-note/">
+            Reading Notes on Spark - The Definitive Guide
+            <small>18 Apr 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2020/04/17/add-read-more-on-front-page/">
+            READ MORE button via jekyll
+            <small>17 Apr 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2020/04/16/faster-outer-join-by-two-left-joins/">
+            More efficient way to do outer join with large dataframes
+            <small>16 Apr 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+
+<div id="disqus_thread"></div>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://csyhuang.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  </body>
+</html>

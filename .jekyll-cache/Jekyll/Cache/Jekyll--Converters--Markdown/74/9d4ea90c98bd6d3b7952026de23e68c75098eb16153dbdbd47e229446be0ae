@@ -1,0 +1,39 @@
+I"ý<p>Today I learned from a colleague the way of doing <code class="highlighter-rouge">outer join</code> of large dataframes more efficiently: instead of doing the <code class="highlighter-rouge">outer join</code>, you can first <code class="highlighter-rouge">union</code> the key column, and then implement <code class="highlighter-rouge">left join</code> twice. I have done an experiment myself on the cluster with two dataframes (<code class="highlighter-rouge">df1</code> and <code class="highlighter-rouge">df2</code>) - each dataframe has ~10k rows, and there is only ~10% of overlap(i.e. an inner-join would result in ~1k rows).</p>
+
+<p>The usual way of doing outer join would be like:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df3</span> <span class="o">=</span> <span class="n">df1</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s">'outer'</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s">'id'</span><span class="p">).</span><span class="n">drop_duplicates</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Here is an equivalent way(I call it <em>union-left</em> here) that takes less time to compute:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df3</span> <span class="o">=</span> <span class="n">df1</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">'id'</span><span class="p">).</span><span class="n">union</span><span class="p">(</span><span class="n">df2</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">'id'</span><span class="p">))</span>
+<span class="n">df3</span> <span class="o">=</span> <span class="n">df3</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">x1_df</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s">'left'</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s">'id'</span><span class="p">)</span>
+<span class="n">df3</span> <span class="o">=</span> <span class="n">df3</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">x2_df</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s">'left'</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s">'id'</span><span class="p">).</span><span class="n">drop_duplicates</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>The distribution of IDs in the two dataframes:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Â </th>
+      <th>df1 only</th>
+      <th>overlap</th>
+      <th>df2 only</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td># of ids</td>
+      <td>8625</td>
+      <td>914</td>
+      <td>8623</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Here is the distribution of computing times for <code class="highlighter-rouge">inner</code>, <code class="highlighter-rouge">left</code>, <code class="highlighter-rouge">outer</code>, <code class="highlighter-rouge">right</code> and <code class="highlighter-rouge">union-left</code>(that gives same results as <code class="highlighter-rouge">outer</code>) joins(I repeated each join 20 times):</p>
+
+<p><img style="float: center;" src="/assets/img/types_of_join_computing_time.png" /></p>
+
+<p>For these sizes of dataframes, the <code class="highlighter-rouge">union-left</code> join is on average ~20% faster than the equivalent <code class="highlighter-rouge">outer</code> join.</p>
+:ET

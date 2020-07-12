@@ -1,0 +1,13 @@
+I"Ð<p>I have been searching for solutions how to use Recurrent Neural Networks for text classifications. Here are some useful resources Iâ€™ve found:</p>
+<ul>
+  <li><a href="https://www.deepdetect.com/">Open Source Deep Learning Server</a> has a library of <a href="https://www.deepdetect.com/applications/text_model/">pre-trained neural nets</a>.</li>
+  <li>An <a href="https://www.analyticsvidhya.com/blog/2017/06/transfer-learning-the-art-of-fine-tuning-a-pre-trained-model/">article on Analytics Vidhya</a> 
+discuss about transfer learning &amp; The art of using pre-trained models in deep learning. They also have <a href="https://www.analyticsvidhya.com/blog/2017/06/word-embeddings-count-word2veec/">an article about word embeddings</a>.</li>
+  <li>Keras has a list of <a href="https://keras.io/applications/#usage-examples-for-image-classification-models">deep learning models with pre-trained weights</a>.</li>
+  <li><a href="http://hyperopt.github.io/hyperopt/">Hyperopt</a> is a python library for Distributed Asynchronous Hyperparameter Optimization.</li>
+  <li><a href="http://shop.oreilly.com/product/0636920052289.do">Hands-On Machine Learning with Scikit-Learn and TensorFlow</a> has discussion on deep learning from Ch.10 onward.</li>
+  <li>Kaggle forum has a beginner tutorial of <a href="https://www.kaggle.com/sbongo/for-beginners-tackling-toxic-using-keras/notebook">using RNN to classify toxic comments</a> on wikipedia editing page.<br />
+(To be updated.)</li>
+</ul>
+
+:ET

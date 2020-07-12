@@ -1,0 +1,8 @@
+I"$<p>Found a useful <a href="https://devhints.io/postgresql-json">cheatsheet</a> that listed out operations on JSON in PostgreSQL.</p>
+
+<p>If I want to list the rows where column <code class="highlighter-rouge">col1</code> in table <code class="highlighter-rouge">table1</code> contains a JSON object with the key <code class="highlighter-rouge">key1</code>, I can use:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">table1</span>
+<span class="k">where</span> <span class="n">col1</span><span class="o">-&gt;</span><span class="s1">'key1'</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span>
+</code></pre></div></div>
+:ET

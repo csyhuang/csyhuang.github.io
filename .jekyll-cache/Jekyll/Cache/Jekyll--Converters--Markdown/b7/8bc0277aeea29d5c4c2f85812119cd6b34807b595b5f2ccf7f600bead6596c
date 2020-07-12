@@ -1,0 +1,13 @@
+I"�<p>[hn2016_falwa Release 0.4.0] 😄I am happy to announce that the climate data analysis in Nakamura and Huang(2018, Science) for the southern hemisphere is also available <a href="https://github.com/csyhuang/hn2016_falwa">on GitHub</a> now! (Finally, I have time to do a thorough check of the code and make the release…)</p>
+
+<p>Check out the release note for enhanced functionality:<br />
+<a href="https://github.com/csyhuang/hn2016_falwa/releases/tag/0.4.0">https://github.com/csyhuang/hn2016_falwa/releases/tag/0.4.0</a></p>
+
+<p>The documentation page has been fixed too:<br />
+<a href="https://csyhuang.github.io/hn2016_falwa">https://csyhuang.github.io/hn2016_falwa</a></p>
+
+<p>Jupyter notebook demonstrating the usage of the functions:<br />
+<a href="https://github.com/csyhuang/hn2016_falwa/blob/master/examples/nh2018_science/demo_script_for_nh2018.ipynb">https://github.com/csyhuang/hn2016_falwa/blob/master/examples/nh2018_science/demo_script_for_nh2018.ipynb</a></p>
+
+<p>If you have any questions/issues regarding the usage of the package, feel free to post on the <a href="https://github.com/csyhuang/hn2016_falwa/issues">Issue page</a> of the repo! I will help you fix them soon as I can!</p>
+:ET

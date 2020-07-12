@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Ch.2 - A Gentle Introduction to Spark &middot; Clare S. Y. Huang
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>PhD in Geophysical Sciences (UChicago). Love coding, music and writing.</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+    <a class="sidebar-nav-item" href="/about_me.html" >About me</a>    
+
+    
+
+    
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/bookshelf/">Bookshelf</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/climate_tools/">Climate Tools</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/ds_notes/">Data Science Notes</a>
+        
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/publications/">Publications</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/pyspark_solutions/">PySpark/SQL Solutions</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/research/">Academic Research</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/tools/">Handy Tools</a>
+        
+      
+    
+
+<!--    <a class="sidebar-nav-item" href="/archive/v1.0.0.zip">Download</a> -->
+
+    <a class="sidebar-nav-item" href="http://github.com/csyhuang/"  target="_blank">Github</a>
+<!--    <span class="sidebar-nav-item">Currently v1.0.0</span> --->
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2020 Shao Ying (Clare) Huang. All rights reserved.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/" title="Home">Clare S. Y. Huang</a>
+            <small>Data Scientist | Atmospheric Dynamicist</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+  <h1 class="post-title">Ch.2 - A Gentle Introduction to Spark</h1>
+  <span class="post-date">12 Jul 2020</span>
+  <h2 id="spark">Spark:</h2>
+<ul>
+  <li>Manages and coordinates the execution of tasks on data across a cluster of computers</li>
+  <li>Manager can be Spark’s standalone cluster manager, YARN, or Mesos</li>
+  <li>Driver:
+    <ul>
+      <li>process runs your main() functions</li>
+      <li>sits on a <strong>node</strong> in the cluster</li>
+      <li>responsible for:
+        <ul>
+          <li>Maintaining information about Spark Application</li>
+          <li>Responding to a user’s program or input</li>
+          <li>Analyzing, distributing and scheduling work across the executors</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Executors:
+    <ul>
+      <li>Carry out the work that the driver assigns to them</li>
+      <li>Each executor is responsible for:
+        <ul>
+          <li>Executing code assigned to it by the driver</li>
+          <li>Reporting the state of computation that executor back to the driver node
+<!--more--></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="spark-session">Spark Session:</h2>
+<ul>
+  <li>Entry point of any spark program</li>
+  <li>Translates python/R code into code that it then can run on the executor JVMs</li>
+  <li>A driver process via which you control your Spark Application</li>
+  <li>Has one-to-one correspondence to a Spark Application</li>
+  <li><code class="highlighter-rouge">spark-submit</code>: submit a precompiled application to Spark</li>
+</ul>
+
+<h2 id="spark-dataframe">Spark Dataframe:</h2>
+<ul>
+  <li>A distributed collection - each part (set of rows) exists on a different executor</li>
+  <li>A table of data with <strong>rows</strong> and <strong>columns</strong></li>
+  <li>Schema: the list that defines the <strong>columns</strong> and the <strong>types</strong></li>
+</ul>
+
+<h2 id="partitions">Partitions:</h2>
+<ul>
+  <li>Spark breaks up data into chunks called partitions</li>
+  <li>A partition is a collection of rows</li>
+  <li>The efficiency of parallelism is determined by <strong>the number of partitions</strong> and <strong>the number of executors</strong></li>
+</ul>
+
+<h2 id="transformations">Transformations:</h2>
+<ul>
+  <li>The core data structure are <strong>immutable</strong> (i.e. cannot be changed after they’re created)</li>
+  <li>Transformation is a way to “change” a DataFrame</li>
+  <li><strong>Abstract transformation</strong>: spark will not act on transformations until we call an <strong>action</strong></li>
+  <li>Two types of transformation:
+    <ul>
+      <li>Narrow transformation:
+        <ul>
+          <li>each input partition will contribute to only <em>one output partition</em></li>
+          <li>pipelining: performed in-memory</li>
+          <li>e.g. read</li>
+        </ul>
+      </li>
+      <li>Wide transformation:
+        <ul>
+          <li>Input partitions contributing to <em>many output partitions</em></li>
+          <li>shuffle: writes the results to disk</li>
+          <li>e.g. sort</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Transformation are simply ways of specifying <em>different series of data manipulation</em></li>
+  <li>Reading data is a <em>lazy operation</em> (narrow transformation): <code class="highlighter-rouge">spark.read.option("inferSchema", "true").option("header", "true").csv("...")</code></li>
+</ul>
+
+<h2 id="lazy-evaluation">Lazy evaluation:</h2>
+<ul>
+  <li>Spark waits until the <em>very last moment</em> to execute the graph of computation instructions</li>
+  <li>Spark compiles a plan from your raw DataFrame transformations to a streamlined physical plan that will run as efficiently as possible across the cluster</li>
+  <li>E.g., a predicate pushdown on DataFrames filters the data in the database query, reducing the number of entries retrieved from the database and improving query performance</li>
+</ul>
+
+<h2 id="actions">Actions:</h2>
+<ul>
+  <li>An action instructs Spark to compute a result from a series of transformation</li>
+  <li>Three kinds of actions:
+    <ul>
+      <li>View data in the console (e.g. <code class="highlighter-rouge">df.show()</code>)</li>
+      <li>Collect data to native objects in the respective language (e.g. <code class="highlighter-rouge">df.collect()</code>)</li>
+      <li>Write to output data source (e.g. <code class="highlighter-rouge">df.write...</code>)</li>
+    </ul>
+  </li>
+  <li>Example of action:  <code class="highlighter-rouge">df.take(5)</code></li>
+</ul>
+
+<h2 id="spark-ui">Spark UI:</h2>
+<ul>
+  <li>Spark UI in local mode: <code class="highlighter-rouge">http://localhost:4040</code></li>
+</ul>
+
+<h2 id="concepts-from-an-end-to-end-example">Concepts from an end-to-end example</h2>
+<ul>
+  <li><strong>schema inference</strong>: let Spark guess what the schema of the DataFrame should be</li>
+  <li>Physical plan called via <code class="highlighter-rouge">df.explain()</code>: the plan is read from top (end results) to bottom (source(s) of data)</li>
+  <li>Set the number of output partitions from the shuffle: <code class="highlighter-rouge">spark.conf.set("spark.sql.shuffle.partitions", "5")</code></li>
+  <li>A <strong>lineage</strong>: Spark knows how to recompute any partition by performing all the operations it had before on the same input data (the <em>heart</em> of Spark’s programming model - <em>functional programming</em>)</li>
+  <li>To monitor the job progress, nevigate to the Spark UI on port <code class="highlighter-rouge">4040</code> to see:
+    <ul>
+      <li>the physical plan, and</li>
+      <li>local execution characteristics of your job</li>
+    </ul>
+  </li>
+  <li>A <strong>direct acyclic graph</strong> (DAG) of transformations shows the execution plan</li>
+</ul>
+
+</div>
+
+<div>
+<a href="javascript:history.back()"> << Previous Page</a>
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2020/04/18/spark-definitive-guide-reading-note/">
+            Reading Notes on Spark - The Definitive Guide
+            <small>18 Apr 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2020/04/17/add-read-more-on-front-page/">
+            READ MORE button via jekyll
+            <small>17 Apr 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2020/04/16/faster-outer-join-by-two-left-joins/">
+            More efficient way to do outer join with large dataframes
+            <small>16 Apr 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+
+<div id="disqus_thread"></div>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://csyhuang.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  </body>
+</html>

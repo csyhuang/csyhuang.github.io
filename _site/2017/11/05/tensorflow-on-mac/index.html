@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Compiling tensorflow on Mac with SSE, AVX, FMA etc. &middot; Clare S. Y. Huang
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>PhD in Geophysical Sciences (UChicago). Love coding, music and writing.</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+    <a class="sidebar-nav-item" href="/about_me.html" >About me</a>    
+
+    
+
+    
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/bookshelf/">Bookshelf</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/climate_tools/">Climate Tools</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/ds_notes/">Data Science Notes</a>
+        
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/publications/">Publications</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/pyspark_solutions/">PySpark/SQL Solutions</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/research/">Academic Research</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/tools/">Handy Tools</a>
+        
+      
+    
+
+<!--    <a class="sidebar-nav-item" href="/archive/v1.0.0.zip">Download</a> -->
+
+    <a class="sidebar-nav-item" href="http://github.com/csyhuang/"  target="_blank">Github</a>
+<!--    <span class="sidebar-nav-item">Currently v1.0.0</span> --->
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2020 Shao Ying (Clare) Huang. All rights reserved.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/" title="Home">Clare S. Y. Huang</a>
+            <small>Data Scientist | Atmospheric Dynamicist</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+  <h1 class="post-title">Compiling tensorflow on Mac with SSE, AVX, FMA etc.</h1>
+  <span class="post-date">05 Nov 2017</span>
+  <p>(Ideally, I shall run tensorflow somewhere else rather than on my MacBook.)</p>
+
+<p>When I install keras with Anaconda on my Mac OS X, with tensorflow as the backend, the following warning comes up when
+ running the sample script:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+</code></pre></div></div>
+
+<p>To use those instructions (<em>SSE4.1 SSE4.2 AVX AVX2 FMA</em>), tensorflow has to be compiled from source. The instructions are available <a href="https://www.tensorflow.org/install/install_sources">here</a>. 
+Using the following command to build the source:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bazel build <span class="nt">-c</span> opt <span class="nt">--copt</span><span class="o">=</span><span class="nt">-march</span><span class="o">=</span>native <span class="nt">--copt</span><span class="o">=</span><span class="nt">-mfpmath</span><span class="o">=</span>both <span class="nt">--config</span><span class="o">=</span>cuda <span class="nt">-k</span> //tensorflow/tools/pip_package:build_pip_package
+</code></pre></div></div>
+<p>I got the following error:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Problem with java installation: couldn't find/access rt.jar in /Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home
+</code></pre></div></div>
+<p>It happens that <em>rt.jar</em> is not present in Java 9. To solve it, install a version of Java 8:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew cask <span class="nb">install </span>caskroom/versions/java8
+</code></pre></div></div>
+<p>and then specify the path of Java 8 (Change the version number ‘1.8.0_162’ to that of the version you installed):</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">JAVA_HOME</span><span class="o">=</span><span class="si">$(</span>/usr/libexec/java_home <span class="nt">-v</span> 1.8.0_162<span class="si">)</span>
+</code></pre></div></div>
+<p>Afterwards, I try to build tensorflow from source again, and it successfully includes the instructions above.</p>
+
+</div>
+
+<div>
+<a href="javascript:history.back()"> << Previous Page</a>
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2020/04/18/spark-definitive-guide-reading-note/">
+            Reading Notes on Spark - The Definitive Guide
+            <small>18 Apr 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2020/04/17/add-read-more-on-front-page/">
+            READ MORE button via jekyll
+            <small>17 Apr 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2020/04/16/faster-outer-join-by-two-left-joins/">
+            More efficient way to do outer join with large dataframes
+            <small>16 Apr 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+
+<div id="disqus_thread"></div>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://csyhuang.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  </body>
+</html>

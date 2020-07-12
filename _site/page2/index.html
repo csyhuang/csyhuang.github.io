@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Blog &middot; Clare S. Y. Huang
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>PhD in Geophysical Sciences (UChicago). Love coding, music and writing.</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+    <a class="sidebar-nav-item" href="/about_me.html" >About me</a>    
+
+    
+
+    
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/bookshelf/">Bookshelf</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/climate_tools/">Climate Tools</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/ds_notes/">Data Science Notes</a>
+        
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/publications/">Publications</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/pyspark_solutions/">PySpark/SQL Solutions</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/research/">Academic Research</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/tools/">Handy Tools</a>
+        
+      
+    
+
+<!--    <a class="sidebar-nav-item" href="/archive/v1.0.0.zip">Download</a> -->
+
+    <a class="sidebar-nav-item" href="http://github.com/csyhuang/"  target="_blank">Github</a>
+<!--    <span class="sidebar-nav-item">Currently v1.0.0</span> --->
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2020 Shao Ying (Clare) Huang. All rights reserved.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/" title="Home">Clare S. Y. Huang</a>
+            <small>Data Scientist | Atmospheric Dynamicist</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="row">
+  <div class="col-sm-8">
+<!-- 
+  <p class="influidcontainer">I have just completed my Ph.D degree in Geophysical Sciences in the University of Chicago and currently work as a postdoctoral research assistant in Professor Noboru Nakamura's group.
+  My <a href="/research">dissertation</a> focuses on developing an atmospheric Rossby wave diagnostic theory that quantifies the severity of extreme weather events. I am now working on the search of predictive features of atmospheric blocking using the local wave activity theory I developed and some machine learning techniques.
+  Check out my <a href="https://github.com/csyhuang/hn2016_falwa" target="blank">python library</a> to implement this diagnosis on climate data!
+  </p>
+  <p class="influidcontainer">
+  I also participated in the <a href="http://insightdatascience.com">Insight Data Science Fellowship Program</a> in 2017 summer as a Health Data Fellow to learn about data science and health industry.
+  Currently, I work in the Research Analytics team at <a href="http://tempus.com/">Tempus</a>.
+  </p>
+ -->
+  <p class="influidcontainer">
+  I love to share what I've learnt with others. Check out my blog posts and notes about my 
+  academic research, as well as technical solutions on software engineering and data 
+  science challenges.
+  </p>  
+  </div>
+  
+
+  <div class="col-sm-4">
+<!-- 
+
+    <img src="/assets/img/profile_pic_square.jpg">
+    
+ -->
+    <div align="right">
+      <p><a href="http://csyhuang.github.io/feed.xml"  target="_blank"><i class="fa fa-rss" aria-hidden="true"></i> RSS Feed </a></p>
+      <p><a href="mailto:csyhuang@uchicago.edu"><i class="fa fa-envelope" aria-hidden="true"></i> Email </a></p>
+    </div>
+    
+    
+  </div>
+</div>
+
+
+<!-- 
+Welcome to my personal homepage! Please use the <b>left-side menu</b> to navigate to pages related to my academic work. This index page is maintained in a blog-like manner that I'll constantly put in things I've learnt, and updated content of this website.
+  </div>
+</div>
+ -->
+<div class="clear"></div>
+<hr>
+
+<div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/06/24/set-up-dash-app-on-pythonanywhere/">
+        Setting up a Dash App on PythonAnywhere
+      </a>
+    </h1>
+
+    <span class="post-date">24 Jun 2018</span>
+
+    
+        <p>After opening an account on <a href="http://pythonanywhere.com">pythonanywhere</a>, 
+go to the <strong>Web</strong> tab and select <strong>Add a new web app</strong>.</p>
+
+<p>When prompted to select a Python Web framework, choose <strong>Flask</strong>.</p>
+
+<p>Choose your python version. Here, I am choosing <strong>Python 3.6 (Flask 0.12)</strong>.</p>
+
+<p>Enter a path for a Python file I wish to hold my Dash app. I entered:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/home/username/mysite/dashing_demo_app.py
+</code></pre></div></div>
+
+<p>Put the script of your Dash app in <code class="highlighter-rouge">dashing_demo_app.py</code>. You can use the script in the sample file 
+<a href="https://github.com/conradho/dashingdemo/blob/master/dashing_demo_app.py">dashing_demo_app.py</a> 
+provided on the GitHub repo of pythonanywhere’s staff.</p>
+
+<p>Next I have to set up a virtual environment that the app is running in. I am using the 
+<a href="https://github.com/conradho/dashingdemo/blob/master/requirements3.6.txt">requirements3.6.txt</a> 
+provided in the above GitHub repo.</p>
+
+<p>Go to the <strong>Files</strong> tab to create <code class="highlighter-rouge">requirements3.6.txt</code> in your home directory. Then, 
+go to the <strong>Consoles</strong> tab to start a new <em>bash</em> session. 
+Create a virtual environment <em>dashappenv</em> with the following command in the home directory:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkvirtualenv dashappenv --python=/usr/bin/python3.6
+pip install -r requirements3.6.txt
+</code></pre></div></div>
+
+<p>Then, go to the <strong>Web</strong> tab and enter under <strong>Virtualenv</strong> the path of your virtual environment:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/home/username/.virtualenvs/dashappenv
+</code></pre></div></div>
+
+<p>Lastly, modify your WSGI file. Instead of</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from dashing_demo_app import app as application
+</code></pre></div></div>
+<p>provided, enter</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from dashing_demo_app import app
+application = app.server
+</code></pre></div></div>
+<p>to import your app.</p>
+
+<p>It’s all done. Go to <strong>Web</strong> to reload your app. You can then click the URL of your webapp and see it running. :) 
+Here is the <a href="http://csyhuang.pythonanywhere.com">sample webapp</a> I built based on the example in 
+<a href="https://dash.plot.ly/getting-started">Dash tutorial</a>.</p>
+
+
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/05/24/our-paper-on-science/">
+        Published on Science!
+      </a>
+    </h1>
+
+    <span class="post-date">24 May 2018</span>
+
+    
+        <p>Our paper, <a href="https://doi.org/10.1126/science.aat0721">Nakmaura and Huang (2018), Atmospheric blocking as a traffic jam in the jet stream</a> 
+is now available on Science!</p>
+
+<p><a href="https://doi.org/10.1126/science.aat0721" target="_blank"><img src="/assets/img/NH18-Screenshot.png" alt="NH18 Science Paper Preview" style="width: 100%;" /></a></p>
+
+<p>Here is the 
+<a href="https://news.uchicago.edu/story/new-theory-finds-traffic-jams-jet-stream-cause-abnormal-weather-patterns">press release</a> 
+from UChicago about the publication.</p>
+
+<p>For interested researchers, the sample script to reproduce the results can be found in the directory 
+<a href="https://github.com/csyhuang/hn2016_falwa/tree/master/examples/nh2018_science">nh2018_science</a> 
+of the my python package’s GitHub repo <a href="https://github.com/csyhuang/hn2016_falwa">hn2016_falwa</a>. 
+You can download ERA-Interim reanalysis data with <code class="highlighter-rouge">download_example.py</code> to run the local wave 
+activity and flux analysis in the jupyter notebook demo <a href="https://github.com/csyhuang/hn2016_falwa/blob/master/examples/nh2018_science/demo_script_for_nh2018.ipynb">demo_script_for_nh2018.ipynb</a>.</p>
+
+<p>Have fun and feel free to email me (csyhuang at uchicago.edu) if you are interested 
+in using the code and/or have questions about it.</p>
+
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/04/12/installing-stanfordCoreNLP/">
+        Installing Stanford Core NLP package on Mac OS X
+      </a>
+    </h1>
+
+    <span class="post-date">12 Apr 2018</span>
+
+    
+        <div>
+            <p>I am following instructions on the <a href="https://github.com/stanfordnlp/CoreNLP">GitHub page of Stanford Core NLP</a> 
+under <strong>Build with Ant</strong>. To install <code class="highlighter-rouge">ant</code>, you can use homebrew:
+
+        </div>
+        <input type="checkbox" class="read-more-state" id="/2018/04/12/installing-stanfordCoreNLP/"/>
+        <div class="read-more">
+            </p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ brew install ant
+</code></pre></div></div>
+
+<p>In Step 5, you have to include the .jar files in the directory <code class="highlighter-rouge">CoreNLP/lib</code> and 
+<code class="highlighter-rouge">CoreNLP/liblocal</code> in your <code class="highlighter-rouge">CLASSPATH</code>. To do this, first, I install <em>coreutils</em>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew install coreutils
+</code></pre></div></div>
+
+<p>such that I can use the utility <code class="highlighter-rouge">realpath</code> there. Then, I include the following in my <code class="highlighter-rouge">~/.bashrc</code>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for file in `find /Users/clare.huang/CoreNLP/lib/ -name "*.jar"`;
+  do export CLASSPATH="$CLASSPATH:`realpath $file`";
+done
+
+for file in `find /Users/clare.huang/CoreNLP/liblocal/ -name "*.jar"`;
+  do export CLASSPATH="$CLASSPATH:`realpath $file`";
+done
+</code></pre></div></div>
+
+<p>(I guess there are better ways to combine the commands above. Let me know if there are.)</p>
+
+<p>To run CoreNLP, I have to download the latest version of it, and place it in the directory 
+<code class="highlighter-rouge">CoreNLP/</code>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget http://nlp.stanford.edu/software/stanford-corenlp-full-2018-01-31.zip
+</code></pre></div></div>
+
+<p>The latest version is available on 
+their <a href="https://stanfordnlp.github.io/CoreNLP/download.html#steps">official website</a>. Unzip 
+it, and add all the .jar there to the $CLASSPATH.</p>
+
+<p>Afterwards, you shall be able to run CoreNLP with the commands provided 
+in <a href="https://www.khalidalnajjar.com/setup-use-stanford-corenlp-server-python/">the blogpost of Khalid Alnajjar</a> 
+(under <strong>Running Stanford CoreNLP Server</strong>). If you have no problem starting the server, 
+you shall be able to see the interface on your browser at http://localhost:9000/:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java -mx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -annotators "tokenize,ssplit,pos,lemma,parse,sentiment" -port 9000 -timeout 30000
+</code></pre></div></div>
+
+<p>Yay. Next, I will try setting up the python interface.</p>
+
+        </div>
+        <label for="/2018/04/12/installing-stanfordCoreNLP/" class="read-more-trigger"></label>
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/04/11/installing-java-on-mac/">
+        Installing java on Mac
+      </a>
+    </h1>
+
+    <span class="post-date">11 Apr 2018</span>
+
+    
+        <div>
+            <p>The information of this post was learnt from <a href="https://stackoverflow.com/questions/38921362/javas-path-still-usr-bin-java-after-brew-cask-install-java">this StackOverflow post</a> and 
+also <a href="http://davidcai.github.io/blog/posts/install-multiple-jdk-on-mac/">David Cai’s blog post</a> on 
+how to install multiple Java version on Mac OS High Sierra.
+
+        </div>
+        <input type="checkbox" class="read-more-state" id="/2018/04/11/installing-java-on-mac/"/>
+        <div class="read-more">
+            </p>
+
+<p>With <code class="highlighter-rouge">brew cask</code> installed on Mac (see <a href="https://github.com/caskroom/homebrew-cask/blob/master/USAGE.md">homebrew-cask instructions</a>), 
+different versions of java can be installed via the command (I want to install java9 here, for example):</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew tap caskroom/versions
+brew cask install java9
+</code></pre></div></div>
+
+<p>After installing, the symlink <code class="highlighter-rouge">/usr/bin/java</code> is still pointing to the old native Java. You can check 
+where it points to with the command <code class="highlighter-rouge">ls -la /usr/bin/java</code>. It is probably pointing to the old native 
+java path:
+<code class="highlighter-rouge">
+/System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/java
+</code>.</p>
+
+<p>However, homebrew installed java into the directory
+<code class="highlighter-rouge">/Library/Java/JavaVirtualMachines/jdkx.x.x_xxx.jdk/Contents/Home</code>.</p>
+
+<p>To easily switch between different java environments, you can use <code class="highlighter-rouge">jEnv</code>. The installing 
+instructions can be found on <a href="http://www.jenv.be/">jEnv’s official page</a>.</p>
+
+        </div>
+        <label for="/2018/04/11/installing-java-on-mac/" class="read-more-trigger"></label>
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/03/30/adding-rss-feed/">
+        Adding an RSS feed to this site
+      </a>
+    </h1>
+
+    <span class="post-date">30 Mar 2018</span>
+
+    
+        <p><a href="http://csyhuang.github.io/feed.xml">Here is the link</a> 
+to the RSS feed of this blog.</p>
+
+<p>Thanks to the instructions on 
+<a href="http://joelglovier.com/writing/rss-for-jekyll" target="_blank">Joel Glovier’s blog post</a>.</p>
+
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/02/23/ECMWF-download/">
+        Python Library and scripts for downloading ERA-Interim Data
+      </a>
+    </h1>
+
+    <span class="post-date">23 Feb 2018</span>
+
+    
+        <div>
+            <h3 id="update-ecmwf-api-clients-on-pip-and-conda">Update: ECMWF API Clients on pip and conda</h3>
+
+<p>The ECMWF API Python Client is now available on pypi and anaconda.<br />
+The Climate Corporation has distributed the ECMWF API Python Client on 
+pypi. Now it can be installed via:</p>
+
+<blockquote>
+  <p>pip install ecmwf-api-client</p>
+</blockquote>
+
+<p>Anaconda users on OS X/linux system can install the package via:</p>
+
+<blockquote>
+  <p>conda install -c bioconda ecmwfapi</p>
+</blockquote>
+
+<!-- 
+### Old steps (1-3)
+
+```
+(1) Installing the package requires the python Setuptools. You can set it up locally with the command:
+
+> wget https://bootstrap.pypa.io/ez_setup.py -O - | python - --user
+
+(2) Download the Python library package and unzip it (You can do it in any directory)
+> wget https://software.ecmwf.int/wiki/download/attachments/56664858/ecmwf-api-client-python.tgz
+> tar zxf ecmwf-api-client-python.tgz
+
+You shall see four items extracted:
+- example.py
+- ecmwfapi/__init__.py
+- ecmwfapi/api.py
+- setup.py
+
+(3) In the directory with these four items, install the package with:
+> python setup.py install --user
+```
+ -->
+
+        </div>
+        <input type="checkbox" class="read-more-state" id="/2018/02/23/ECMWF-download/"/>
+        <div class="read-more">
+            
+<p>To use the sample script, you need an API key ( .ecmwfapirc ) placed in your home directory. You can retrieve that by logging in: https://api.ecmwf.int/v1/key/
+Create a file named “.ecmwfapirc” in your home directory and put in the content shown on the page:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+    "url"   : "https://api.ecmwf.int/v1",
+    "key"   : "(...)",
+    "email" : "(...)"
+}
+</code></pre></div></div>
+
+<p>After doing that, in the directory with the sample script example.py, you can test the package by running it:</p>
+<blockquote>
+  <p>python example.py</p>
+</blockquote>
+
+<p>You should see it successfully retrieves a .grib file if the package has been set up properly.</p>
+
+<p>There are <a href="https://software.ecmwf.int/wiki/display/WEBAPI/Python+ERA-interim+examples">sample scripts</a> 
+available on the ECMWF website (look under “Same request NetCDF format”). Below is a example of python 
+script I wrote to retrieves zonal wind, meridional wind and temperature data at all pressure levels 
+during the time period 2017-07-01 to 2017-07-31 in 6-hour intervals:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#!/usr/bin/env python
+</span><span class="kn">from</span> <span class="nn">ecmwfapi</span> <span class="kn">import</span> <span class="n">ECMWFDataServer</span>
+<span class="n">server</span> <span class="o">=</span> <span class="n">ECMWFDataServer</span><span class="p">()</span>
+
+<span class="n">param_u</span><span class="p">,</span> <span class="n">param_v</span><span class="p">,</span> <span class="n">param_t</span> <span class="o">=</span> <span class="s">"131.128"</span><span class="p">,</span> <span class="s">"132.128"</span><span class="p">,</span> <span class="s">"130.128"</span>
+
+<span class="k">for</span> <span class="n">param_string</span><span class="p">,</span> <span class="n">param</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="s">"_u"</span><span class="p">,</span> <span class="s">"_v"</span><span class="p">,</span> <span class="s">"_t"</span><span class="p">],</span>
+                               <span class="p">[</span><span class="n">param_u</span><span class="p">,</span> <span class="n">param_v</span><span class="p">,</span> <span class="n">param_t</span><span class="p">]):</span>
+
+    <span class="n">server</span><span class="p">.</span><span class="n">retrieve</span><span class="p">({</span>
+        <span class="s">"class"</span><span class="p">:</span> <span class="s">"ei"</span><span class="p">,</span>
+        <span class="s">"dataset"</span><span class="p">:</span> <span class="s">"interim"</span><span class="p">,</span>
+        <span class="s">"date"</span><span class="p">:</span> <span class="s">"2017-07-01/to/2017-07-31"</span><span class="p">,</span>
+        <span class="s">"expver"</span><span class="p">:</span> <span class="s">"1"</span><span class="p">,</span>
+        <span class="s">"grid"</span><span class="p">:</span> <span class="s">"1.5/1.5"</span><span class="p">,</span>
+        <span class="s">"levelist"</span><span class="p">:</span> <span class="s">"1/2/3/5/7/10/20/30/50/70/100/125/150/175/200/225/250/300/350/400/450/500/550/600/650/700/750/775/800/825/850/875/900/925/950/975/1000"</span><span class="p">,</span>
+        <span class="s">"levtype"</span><span class="p">:</span> <span class="s">"pl"</span><span class="p">,</span>
+        <span class="s">"param"</span><span class="p">:</span> <span class="n">param</span><span class="p">,</span>
+        <span class="s">"step"</span><span class="p">:</span> <span class="s">"0"</span><span class="p">,</span>
+        <span class="s">"stream"</span><span class="p">:</span> <span class="s">"oper"</span><span class="p">,</span>
+        <span class="s">"format"</span><span class="p">:</span> <span class="s">"netcdf"</span><span class="p">,</span>
+        <span class="s">"time"</span><span class="p">:</span> <span class="s">"00:00:00/06:00:00/12:00:00/18:00:00"</span><span class="p">,</span>
+        <span class="s">"type"</span><span class="p">:</span> <span class="s">"an"</span><span class="p">,</span>
+        <span class="s">"target"</span><span class="p">:</span> <span class="s">"2017-07-01/to/2017-07-31"</span> <span class="o">+</span> <span class="n">param_string</span> <span class="o">+</span> <span class="s">".nc"</span><span class="p">,</span>
+    <span class="p">})</span>
+</code></pre></div></div>
+
+<p>I learnt the above steps on these pages:</p>
+<ul>
+  <li><a href="https://software.ecmwf.int/wiki/display/WEBAPI/Access+ECMWF+Public+Datasets#AccessECMWFPublicDatasets-python">ECMWF python library</a></li>
+  <li><a href="https://pypi.python.org/pypi/setuptools">Python setuptool</a></li>
+</ul>
+
+        </div>
+        <label for="/2018/02/23/ECMWF-download/" class="read-more-trigger"></label>
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/01/27/resources-for-deeplearning/">
+        Resources on deep learning
+      </a>
+    </h1>
+
+    <span class="post-date">27 Jan 2018</span>
+
+    
+        <p>I have been searching for solutions how to use Recurrent Neural Networks for text classifications. Here are some useful resources I’ve found:</p>
+<ul>
+  <li><a href="https://www.deepdetect.com/">Open Source Deep Learning Server</a> has a library of <a href="https://www.deepdetect.com/applications/text_model/">pre-trained neural nets</a>.</li>
+  <li>An <a href="https://www.analyticsvidhya.com/blog/2017/06/transfer-learning-the-art-of-fine-tuning-a-pre-trained-model/">article on Analytics Vidhya</a> 
+discuss about transfer learning &amp; The art of using pre-trained models in deep learning. They also have <a href="https://www.analyticsvidhya.com/blog/2017/06/word-embeddings-count-word2veec/">an article about word embeddings</a>.</li>
+  <li>Keras has a list of <a href="https://keras.io/applications/#usage-examples-for-image-classification-models">deep learning models with pre-trained weights</a>.</li>
+  <li><a href="http://hyperopt.github.io/hyperopt/">Hyperopt</a> is a python library for Distributed Asynchronous Hyperparameter Optimization.</li>
+  <li><a href="http://shop.oreilly.com/product/0636920052289.do">Hands-On Machine Learning with Scikit-Learn and TensorFlow</a> has discussion on deep learning from Ch.10 onward.</li>
+  <li>Kaggle forum has a beginner tutorial of <a href="https://www.kaggle.com/sbongo/for-beginners-tackling-toxic-using-keras/notebook">using RNN to classify toxic comments</a> on wikipedia editing page.<br />
+(To be updated.)</li>
+</ul>
+
+
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/01/23/Publications-updated/">
+        Three co-authored papers submitted
+      </a>
+    </h1>
+
+    <span class="post-date">23 Jan 2018</span>
+
+    
+        <p>The <a href="/publications/">publication page</a> 
+has been updated with 3 submitted manuscripts.</p>
+
+<p>Updates on Feb 9, 2018: The manuscript “Role of Finite-Amplitude Rossby Waves and Nonconservative 
+Processes in Downward Migration of Extratropical Flow Anomalies” has been accepted by <em>Journal of Atmospheric Sciences</em>.</p>
+
+<p>The subroutine 
+<code class="highlighter-rouge">wrapper.qgpv_eqlat_lwa_ncforce</code> for computing effective diffusivity, which quantifies the 
+damping on wave transiences by irreversible mixing in the stratosphere during a 
+stratospheric sudden warming event, can be found in <a href="http://hn2016-falwa.readthedocs.io/en/latest/Wrapper%20Functions.html">my python package</a>.</p>
+
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/01/02/setting-up-algs4/">
+        Setting up algs4 on Linux
+      </a>
+    </h1>
+
+    <span class="post-date">02 Jan 2018</span>
+
+    
+        <p>I am interested in going through the exercise from Princeton University’s 
+<a href="https://algs4.cs.princeton.edu/code/">Algorithm</a> course. I found someone 
+wrote a handy bash script to set up the environment on Mac OS/Linux:</p>
+
+<p><a href="https://gist.github.com/JIghtuse/021604bee56bddab6173c919da7dd2ad">https://gist.github.com/JIghtuse/021604bee56bddab6173c919da7dd2ad</a></p>
+
+
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2017/11/20/significant-update-to-v0-2-0/">
+        My python library updated to v0.2.0!
+      </a>
+    </h1>
+
+    <span class="post-date">20 Nov 2017</span>
+
+    
+        <p>I have updated my python library <a href="http://github.com/csyhuang/hn2016_falwa">hn2016_falwa</a> to 
+v0.2.0 (see <a href="https://github.com/csyhuang/hn2016_falwa/releases/tag/v0.2.0">release note</a>! Now 
+it includes functions to compute the contribution of non-conservative forces to wave activity.</p>
+
+<p>Moreover, the <a href="http://hn2016-falwa.readthedocs.io/en/latest/">documentation page</a> generated 
+with Sphinx is now hosted on readthedocs.org! Check it out!</p>
+
+<p>A side note: somehow I made multiple commits to remedy mistake. The git commands to squash 
+the (3, for example) commits are:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git rebase -i origin/master~3 master
+git push origin +master
+</code></pre></div></div>
+
+
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2017/11/07/f2py-on-mac/">
+        Wrapping Fortrain Codes in Python
+      </a>
+    </h1>
+
+    <span class="post-date">07 Nov 2017</span>
+
+    
+        <p>To start with, the <a href="https://docs.scipy.org/doc/numpy-dev/f2py/getting-started.html">documentation in Numpy</a> explains how we can wrap fortran code in python using f2py.</p>
+
+<p>You need a fortran compiler to run f2py. I’ve found a <a href="http://hpc.sourceforge.net/">pre-compiled version of GCC</a> readily installed on Mac OS X.</p>
+
+<p>(To be continued)</p>
+
+
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2017/11/05/tensorflow-on-mac/">
+        Compiling tensorflow on Mac with SSE, AVX, FMA etc.
+      </a>
+    </h1>
+
+    <span class="post-date">05 Nov 2017</span>
+
+    
+        <p>(Ideally, I shall run tensorflow somewhere else rather than on my MacBook.)</p>
+
+<p>When I install keras with Anaconda on my Mac OS X, with tensorflow as the backend, the following warning comes up when
+ running the sample script:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+</code></pre></div></div>
+
+<p>To use those instructions (<em>SSE4.1 SSE4.2 AVX AVX2 FMA</em>), tensorflow has to be compiled from source. The instructions are available <a href="https://www.tensorflow.org/install/install_sources">here</a>. 
+Using the following command to build the source:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bazel build <span class="nt">-c</span> opt <span class="nt">--copt</span><span class="o">=</span><span class="nt">-march</span><span class="o">=</span>native <span class="nt">--copt</span><span class="o">=</span><span class="nt">-mfpmath</span><span class="o">=</span>both <span class="nt">--config</span><span class="o">=</span>cuda <span class="nt">-k</span> //tensorflow/tools/pip_package:build_pip_package
+</code></pre></div></div>
+<p>I got the following error:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Problem with java installation: couldn't find/access rt.jar in /Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home
+</code></pre></div></div>
+<p>It happens that <em>rt.jar</em> is not present in Java 9. To solve it, install a version of Java 8:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew cask <span class="nb">install </span>caskroom/versions/java8
+</code></pre></div></div>
+<p>and then specify the path of Java 8 (Change the version number ‘1.8.0_162’ to that of the version you installed):</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">JAVA_HOME</span><span class="o">=</span><span class="si">$(</span>/usr/libexec/java_home <span class="nt">-v</span> 1.8.0_162<span class="si">)</span>
+</code></pre></div></div>
+<p>Afterwards, I try to build tensorflow from source again, and it successfully includes the instructions above.</p>
+
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2017/09/09/install-mysql/">
+        Setting up MySQL / access with python on Mac OS
+      </a>
+    </h1>
+
+    <span class="post-date">09 Sep 2017</span>
+
+    
+        <p>Today I wanted to setup an automated kickstarter scraper on <a href="http://pythonanywhere.com">Python Anywhere</a> but realized that 
+only MySQL is freely supported there (while I’ve been using PostgreSQL). So, a time to switch?</p>
+
+<p>Here is how I install MySQL on my Mac and have it accessed with <em>SQLAlchemy</em>:</p>
+
+<ol>
+  <li>Download and install <a href="https://dev.mysql.com/doc/refman/5.6/en/osx-installation-pkg.html">MySQL from Oracle</a>.</li>
+  <li>Go to <em>System Preferences</em> to start the MySQL server.</li>
+  <li>Navigate to the bin directory and login with the temporary password shown at the end of the installation:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /usr/local/mysql/bin
+./mysql <span class="nt">-u</span> root <span class="nt">-p</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Create another set of <em>username</em> and <em>password</em> that you use instead of <em>root</em>.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE USER username@localhost IDENTIFIED BY <span class="s1">'password'</span>
+</code></pre></div>    </div>
+  </li>
+  <li>I have installed <em>pymysql</em> and <em>sqlalchemy</em> in Python to access the MySQL database. To access the database:</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy_utils</span> <span class="kn">import</span> <span class="n">database_exists</span><span class="p">,</span> <span class="n">create_database</span>
+
+<span class="c1"># dbname is the database name
+# user_id and user_password are what you put in above
+</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s">"mysql+pymysql://%s:%s@localhost:3306/%s"</span>
+                       <span class="o">%</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span><span class="n">user_password</span><span class="p">,</span><span class="n">dbname</span><span class="p">),</span><span class="n">echo</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">database_exists</span><span class="p">(</span><span class="n">engine</span><span class="p">.</span><span class="n">url</span><span class="p">):</span> 
+    <span class="n">create_database</span><span class="p">(</span><span class="n">engine</span><span class="p">.</span><span class="n">url</span><span class="p">)</span>			<span class="c1"># Create database if it doesn't exist.
+</span>    
+<span class="n">con</span> <span class="o">=</span> <span class="n">engine</span><span class="p">.</span><span class="n">connect</span><span class="p">()</span> <span class="c1"># Connect to the MySQL engine
+</span><span class="n">table_name</span> <span class="o">=</span> <span class="s">'new_table'</span>
+<span class="n">command</span> <span class="o">=</span> <span class="s">"DROP TABLE IF EXISTS new_table;"</span> <span class="c1"># Drop if such table exist
+</span><span class="n">con</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Executing SQL commands is rather easy by using:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">con</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Enjoy! :)</p>
+
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2017/08/18/software-engineering-project-note-taking/">
+        Software Engineering Project Note-taking
+      </a>
+    </h1>
+
+    <span class="post-date">18 Aug 2017</span>
+
+    
+        <p>Learnt a lot from peers today! :D Here are quick notes on packages they have used for their software engineering project:</p>
+
+<p><a href="https://hub.docker.com/">Docker Hub</a>: You store your docker images there.</p>
+
+<p><a href="https://www.digitalocean.com/">DigitalOcean</a>: The docker images are pulled there, together with the images.</p>
+
+<p><a href="https://www.youtube.com/watch?v=LQ6pFgQXQ0Q">Sphinx tutorial</a>: Useful instructions how to set Python documentation up</p>
+
+<p><a href="https://github.com/erocarrera/pydot">pydot</a> and <a href="http://www.graphviz.org/">graphviz</a>: Draw graphs of objects and arrows</p>
+
+
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2017/08/10/deep-learning-resources/">
+        Free Online Deep Learning Resources
+      </a>
+    </h1>
+
+    <span class="post-date">10 Aug 2017</span>
+
+    
+        <p>These are resources related to deep learning from conversation with friends:</p>
+
+<p><a href="https://github.com/songrotek/Deep-Learning-Papers-Reading-Roadmap">Deep Learning Paper Reading Roadmap</a></p>
+
+<p><a href="http://neuralnetworksanddeeplearning.com/">Neural Networks and Deep Learning</a></p>
+
+<p>Books introduced in newsletter of Data Science Central:</p>
+
+<p><a href="http://www.deeplearningbook.org/">Deep Learning Book</a></p>
+
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2017/06/24/learning-html-css-js-jinja2/">
+        Learning html, CSS, javascripts and jinja2
+      </a>
+    </h1>
+
+    <span class="post-date">24 Jun 2017</span>
+
+    
+        <p>On my way building a webapp with python and Flask, I need to include input options to make the app interactive. Here are some great sites I’ve learnt things from:</p>
+
+<ul>
+  <li><a href="http://w3schools.com">w3schools.com</a></li>
+  <li><a href="https://jqueryui.com/datepicker/">jQuery user interface</a></li>
+  <li><a href="http://jinja.pocoo.org/docs/2.9/">Jinja2</a></li>
+  <li><a href="https://css-tricks.com/gallery/">CSS-Tricks</a></li>
+  <li><a href="https://shapebootstrap.net/free-templates">ShapeBootstrap</a></li>
+</ul>
+
+<p>More updates later.</p>
+
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2017/06/11/setup-ubuntu-aws/">
+        Setting up ubuntu on AWS
+      </a>
+    </h1>
+
+    <span class="post-date">11 Jun 2017</span>
+
+    
+        <p><a href="(https://stackoverflow.com/questions/32389599/anaconda-importerror-libsm-so-6-cannot-open-shared-object-file-no-such-file-o)">Solution</a> for the error <em>libSM.so.6: cannot open shared object file</em>.</p>
+
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2017/06/10/Python-packages-for-Sentiment-Analysis/">
+        Python packages for Sentiment Analysis
+      </a>
+    </h1>
+
+    <span class="post-date">10 Jun 2017</span>
+
+    
+        <p>On top of utilities in <em>nltk.sentiment</em>, there are also some packages for training and combining classifiers:</p>
+
+<ul>
+  <li><a href="https://github.com/japerk/nltk-trainer">NLTK-trainer</a> by <a href="https://www.linkedin.com/in/jacobperkins">Jacob Perkins</a>, accompanied by the <a href="https://github.com/japerk/nltk3-cookbook">NLTK-cookbook</a> he wrote.</li>
+  <li><a href="https://github.com/clips/pattern">Pattern.en</a> developed by the <a href="http://www.clips.ua.ac.be/">Computational Linguistics Research Group</a></li>
+  <li>Data sets for training a sentiment classifier: <a href="https://www.cs.cornell.edu/people/pabo/movie-review-data/">Movie Review Data</a></li>
+</ul>
+
+<p>(More to be updated)</p>
+
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2017/05/15/LWA-budget-paper-published/">
+        Published a paper on Local Wave Activity Budget!
+      </a>
+    </h1>
+
+    <span class="post-date">15 May 2017</span>
+
+    
+        <p>I’ve published a <a href="http://onlinelibrary.wiley.com/doi/10.1002/2017GL073760/abstract;jsessionid=2EEA61FFE129914E672C6F10497975B2.f02t02">new paper</a> on Geophysical Research Letters!</p>
+
+<p>Climate dynamicists have derived a conservation relation based on <em>small-amplitude wave assumption</em> for wave activity (<em>A</em>) that describes evolution of Rossby wave packets:<br />
+<img src="/assets/img/simple-wave-activity-equation.png" alt="Wave activity flux equation" style="width: 250px;" /><br />
+However, only the wave activity flux vector on the RHS has been used to diagnose realistic climate data. <em>A</em> is ill-defined when wave amplitude is large (i.e. ‘of finite-amplitude’).  In <a href="http://journals.ametsoc.org/doi/abs/10.1175/JAS-D-15-0194.1">Huang &amp; Nakamura (2016)</a>, we introduced a new theory of wave activity applicable to large waves. We thus can obtain a well-defined <em>A</em> even from real data. This is the <strong>first piece of work that compare LHS and RHS of the conservative part of equation above for reanalysis data</strong>. This advance allows us to estimate the overall non-conservative contribution (natural/human-induced forcings) to the observed flow.</p>
+
+<p>Major results include:</p>
+
+<p>(1) Our estimation of transient wave activity (top panel) is consistent with <a href="http://journals.ametsoc.org/doi/abs/10.1175/1520-0469%281986%29043%3C1657%3ATDPOTQ%3E2.0.CO%3B2">previous work</a> (bottom panel, assuming small-amplitude waves) and is better behaving.</p>
+
+<p><img src="/assets/img/Revise_fig2.png" alt="Comparison with previous work" style="width: \textwidth;" /></p>
+
+<p>(2) We can break down the local wave activity budget at seasonal time-scale.</p>
+<p align="center">
+<img src="/assets/img/Revise_fig3.png" alt="Wave activity flux equation" style="width: \textwidth;" />  
+</p>
+
+<p>(3) We can also break down the budget in synoptic time-scale with the use of co-spectral analysis.</p>
+<p align="center">
+<img src="/assets/img/Revise_fig4.png" alt="Wave activity flux equation" style="width: \textwidth;" />
+</p>
+
+
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2017/05/12/switching-to-jekyll/">
+        Switching to Jekyll
+      </a>
+    </h1>
+
+    <span class="post-date">12 May 2017</span>
+
+    
+        <p>I’m switching from a traditional html webpage builder to Jekyll user! Hope to update more often!</p>
+
+<p>I set up Jekyll in my Mac OS X with <a href="http://brew.sh">homebrew</a>,  <a href="https://github.com/rbenv/rbenv">rbenv</a> and <a href="https://rubygems.org/">RubyGems</a>.</p>
+
+<p>To see how to set jekyll up on Windows, refer to my <a href="/2017/02/12/jekyll-on-windows/">older post</a>.</p>
+
+    
+  </div>
+  
+</div>
+
+<div class="pagination">
+  
+    <a class="pagination-item older" href="/page3">Older</a>
+  
+  
+    
+      <a class="pagination-item newer" href="/">Newer</a>
+    
+  
+</div>
+
+<div>
+<p><!-- hitwebcounter Code START -->
+<a href="http://www.hitwebcounter.com" target="_blank">
+<img src="http://hitwebcounter.com/counter/counter.php?page=6563193&style=0006&nbdigits=5&type=page&initCount=0" title="my widget for counting" Alt="my widget for counting (since Dec24, 2016)"   border="0" >
+</a> <br/>
+</p>
+</div>
+  <link rel="stylesheet" href="/public/css/trial.css">
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  </body>
+</html>

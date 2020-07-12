@@ -1,0 +1,45 @@
+# Permalinks
+#
+# Use of `relative_permalinks` ensures post links from the index work properly.
+permalink:           pretty
+#relative_permalinks: true
+
+# Setup
+title:               'Clare S. Y. Huang'
+tagline:             'Data Scientist | Atmospheric Dynamicist'
+description:         'PhD in Geophysical Sciences (UChicago). Love coding, music and writing.'
+url:                 http://csyhuang.github.io
+baseurl:             ''
+paginate:            20
+
+# About/contact
+author:
+  name:              Clare S. Y. Huang
+  url:               https://twitter.com/ClareSYHuang
+  email:             csyhuang@uchicago.edu
+
+# Custom vars
+version:             1.0.0
+plugins: 
+  - jekyll-paginate
+  - jekyll-feed
+
+defaults:
+  - scope:
+      path: "assets/img"
+    values:
+      image: true
+
+# Exclude directories
+exclude: ["Raw_not_uploaded"]
+
+# Collections
+collections:
+  spark_the_def_guide:
+    output: true
+    permalink: /:collection/:name
+    sort_by: order
+  coursenotes:
+    output: true
+    permalink: /:collection/:name
+    sort_by: order

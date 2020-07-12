@@ -1,0 +1,11 @@
+I"�<p>The <a href="/publications/">publication page</a> 
+has been updated with 3 submitted manuscripts.</p>
+
+<p>Updates on Feb 9, 2018: The manuscript “Role of Finite-Amplitude Rossby Waves and Nonconservative 
+Processes in Downward Migration of Extratropical Flow Anomalies” has been accepted by <em>Journal of Atmospheric Sciences</em>.</p>
+
+<p>The subroutine 
+<code class="highlighter-rouge">wrapper.qgpv_eqlat_lwa_ncforce</code> for computing effective diffusivity, which quantifies the 
+damping on wave transiences by irreversible mixing in the stratosphere during a 
+stratospheric sudden warming event, can be found in <a href="http://hn2016-falwa.readthedocs.io/en/latest/Wrapper%20Functions.html">my python package</a>.</p>
+:ET

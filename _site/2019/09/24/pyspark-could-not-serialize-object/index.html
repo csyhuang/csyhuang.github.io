@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Pyspark error "Could not serialize object" &middot; Clare S. Y. Huang
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>PhD in Geophysical Sciences (UChicago). Love coding, music and writing.</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+    <a class="sidebar-nav-item" href="/about_me.html" >About me</a>    
+
+    
+
+    
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/bookshelf/">Bookshelf</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/climate_tools/">Climate Tools</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/ds_notes/">Data Science Notes</a>
+        
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/publications/">Publications</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/pyspark_solutions/">PySpark/SQL Solutions</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/research/">Academic Research</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/tools/">Handy Tools</a>
+        
+      
+    
+
+<!--    <a class="sidebar-nav-item" href="/archive/v1.0.0.zip">Download</a> -->
+
+    <a class="sidebar-nav-item" href="http://github.com/csyhuang/"  target="_blank">Github</a>
+<!--    <span class="sidebar-nav-item">Currently v1.0.0</span> --->
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2020 Shao Ying (Clare) Huang. All rights reserved.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/" title="Home">Clare S. Y. Huang</a>
+            <small>Data Scientist | Atmospheric Dynamicist</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+  <h1 class="post-title">Pyspark error "Could not serialize object"</h1>
+  <span class="post-date">24 Sep 2019</span>
+  <p>This post is related to the idea discuss in the post <a href="https://www.placeiq.com/2017/11/how-to-solve-non-serializable-errors-when-instantiating-objects-in-spark-udfs/">“How to Solve Non-Serializable Errors When Instantiating Objects In Spark UDFs”</a>. Here I discuss the solution in a hypothetical scenario in pyspark.
+<!--more-->
+Suppose I have a class to transform string to sum of numbers like this:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pyspark.sql.functions</span> <span class="k">as</span> <span class="n">F</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">udf</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql.types</span> <span class="kn">import</span> <span class="n">IntegerType</span>
+
+<span class="k">class</span> <span class="nc">AnimalsToNumbers</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spark</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_mapping</span> <span class="o">=</span> <span class="p">{</span><span class="s">'elephant'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'bear'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">'cat'</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_spark</span> <span class="o">=</span> <span class="n">spark</span>
+        
+    <span class="k">def</span> <span class="nf">addition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">animal_str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">([</span><span class="bp">self</span><span class="p">.</span><span class="n">_mapping</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">animal_str</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">'+'</span><span class="p">)])</span>
+    
+    <span class="k">def</span> <span class="nf">add_up_animals</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
+        <span class="n">addition_udf</span> <span class="o">=</span> <span class="n">F</span><span class="p">.</span><span class="n">udf</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">addition</span><span class="p">,</span> <span class="n">IntegerType</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">df</span><span class="p">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">'sum'</span><span class="p">,</span> <span class="n">addition_udf</span><span class="p">(</span><span class="s">'animal'</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>(In practical cases, <code class="highlighter-rouge">self._mapping</code> is a huge object containing the dictionary and other attributes that are derived from methods in the <code class="highlighter-rouge">AnimalsToNumbers</code> class.) If I want to transform a dataframe <code class="highlighter-rouge">df</code> that looks like this:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-------------+
+|       animal|
++-------------+
+|elephant+bear|
+|     cat+bear|
++-------------+
+</code></pre></div></div>
+
+<p>The operation</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">AnimalsToNumbers</span><span class="p">(</span><span class="n">spark</span><span class="p">).</span><span class="n">add_up_animals</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>will lead to an error like this:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
+Py4JError                                 Traceback (most recent call last)
+~/anaconda3/envs/pyspark_demo/lib/python3.5/site-packages/pyspark/serializers.py in dumps(self, obj)
+    589         try:
+--&gt; 590             return cloudpickle.dumps(obj, 2)
+    591         except pickle.PickleError:
+...
+PicklingError: Could not serialize object: Py4JError: An error occurred while calling o25.__getstate__. Trace:
+py4j.Py4JException: Method __getstate__([]) does not exist
+	at py4j.reflection.ReflectionEngine.getMethod(ReflectionEngine.java:318)
+	at py4j.reflection.ReflectionEngine.getMethod(ReflectionEngine.java:326)
+	at py4j.Gateway.invoke(Gateway.java:274)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.GatewayConnection.run(GatewayConnection.java:238)
+	at java.lang.Thread.run(Thread.java:748)
+</code></pre></div></div>
+
+<p>The issue is that, as <code class="highlighter-rouge">self._mapping</code> appears in the function <code class="highlighter-rouge">addition</code>, when applying <code class="highlighter-rouge">addition_udf</code> to the pyspark dataframe, the object <code class="highlighter-rouge">self</code> (i.e. the <code class="highlighter-rouge">AnimalsToNumbers</code> class) has to be serialized but it can’t be.</p>
+
+<p>A (surprisingly simple) way is to create a reference to the dictionary (<code class="highlighter-rouge">self._mapping</code>) but not the object:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">AnimalsToNumbers</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spark</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_mapping</span> <span class="o">=</span> <span class="p">{</span><span class="s">'elephant'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'bear'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">'cat'</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_spark</span> <span class="o">=</span> <span class="n">spark</span>
+        
+    
+    <span class="k">def</span> <span class="nf">add_up_animals</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
+        <span class="n">mapping</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">_mapping</span>
+        <span class="k">def</span> <span class="nf">addition</span><span class="p">(</span><span class="n">animal_str</span><span class="p">):</span>
+            <span class="k">return</span> <span class="nb">sum</span><span class="p">([</span><span class="n">mapping</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">animal_str</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">'+'</span><span class="p">)])</span>
+
+        <span class="n">addition_udf</span> <span class="o">=</span> <span class="n">F</span><span class="p">.</span><span class="n">udf</span><span class="p">(</span><span class="n">addition</span><span class="p">,</span> <span class="n">IntegerType</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">df</span><span class="p">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">'sum'</span><span class="p">,</span> <span class="n">addition_udf</span><span class="p">(</span><span class="s">'animal'</span><span class="p">))</span>
+
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">AnimalsToNumbers(spark).add_up_animals(df).show()</code> would yield:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-------------+---+
+|       animal|sum|
++-------------+---+
+|elephant+bear|  5|
+|     cat+bear| 13|
++-------------+---+
+
+</code></pre></div></div>
+
+<p>Yay :)</p>
+
+
+</div>
+
+<div>
+<a href="javascript:history.back()"> << Previous Page</a>
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2020/04/18/spark-definitive-guide-reading-note/">
+            Reading Notes on Spark - The Definitive Guide
+            <small>18 Apr 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2020/04/17/add-read-more-on-front-page/">
+            READ MORE button via jekyll
+            <small>17 Apr 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2020/04/16/faster-outer-join-by-two-left-joins/">
+            More efficient way to do outer join with large dataframes
+            <small>16 Apr 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+
+<div id="disqus_thread"></div>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://csyhuang.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  </body>
+</html>

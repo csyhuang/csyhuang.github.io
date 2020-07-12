@@ -1,0 +1,17 @@
+I"Î<p>Here is a curation of some solutions to simple problems encountered when working with pyspark.</p>
+
+<h3 id="how-to-replace-string-in-a-column">How to replace string in a column?</h3>
+
+<p><a href="https://stackoverflow.com/questions/37038014/pyspark-replace-strings-in-spark-dataframe-column">Source</a></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">new_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">withColumn</span><span class="p">(</span><span class="n">col_name</span><span class="p">,</span> <span class="n">regexp_replace</span><span class="p">(</span><span class="n">col_name</span><span class="p">,</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">replacement</span><span class="p">))</span>
+</code></pre></div></div>
+
+<h3 id="how-to-avoid-duplicate-columns-when-joining-two-dataframe-on-columns-with-the-same-name">How to avoid duplicate columns when joining two dataframe on columns with the same name?</h3>
+
+<p><a href="https://docs.databricks.com/spark/latest/faq/join-two-dataframes-duplicated-column.html">Source</a></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">left_df</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">right_df</span><span class="p">,</span> <span class="p">[</span><span class="s">"name"</span><span class="p">])</span>
+</code></pre></div></div>
+:ET

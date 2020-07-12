@@ -1,0 +1,101 @@
+---
+layout: default
+title: Blog
+---
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="row">
+  <div class="col-sm-8">
+<!-- 
+  <p class="influidcontainer">I have just completed my Ph.D degree in Geophysical Sciences in the University of Chicago and currently work as a postdoctoral research assistant in Professor Noboru Nakamura's group.
+  My <a href="{{ site.baseurl }}/research">dissertation</a> focuses on developing an atmospheric Rossby wave diagnostic theory that quantifies the severity of extreme weather events. I am now working on the search of predictive features of atmospheric blocking using the local wave activity theory I developed and some machine learning techniques.
+  Check out my <a href="https://github.com/csyhuang/hn2016_falwa" target="blank">python library</a> to implement this diagnosis on climate data!
+  </p>
+  <p class="influidcontainer">
+  I also participated in the <a href="http://insightdatascience.com">Insight Data Science Fellowship Program</a> in 2017 summer as a Health Data Fellow to learn about data science and health industry.
+  Currently, I work in the Research Analytics team at <a href="http://tempus.com/">Tempus</a>.
+  </p>
+ -->
+  <p class="influidcontainer">
+  I love to share what I've learnt with others. Check out my blog posts and notes about my 
+  academic research, as well as technical solutions on software engineering and data 
+  science challenges.
+  </p>  
+  </div>
+  
+
+  <div class="col-sm-4">
+<!-- 
+
+    <img src="/assets/img/profile_pic_square.jpg">
+    
+ -->
+    <div align="right">
+      <p><a href="http://csyhuang.github.io/feed.xml"  target="_blank"><i class="fa fa-rss" aria-hidden="true"></i> RSS Feed </a></p>
+      <p><a href="mailto:csyhuang@uchicago.edu"><i class="fa fa-envelope" aria-hidden="true"></i> Email </a></p>
+    </div>
+    
+    
+  </div>
+</div>
+
+
+<!-- 
+Welcome to my personal homepage! Please use the <b>left-side menu</b> to navigate to pages related to my academic work. This index page is maintained in a blog-like manner that I'll constantly put in things I've learnt, and updated content of this website.
+  </div>
+</div>
+ -->
+<div class="clear"></div>
+<hr>
+
+<div class="posts">
+  {% for post in paginator.posts %}
+  <div class="post">
+    <h1 class="post-title">
+      <a href="{{ post.url }}">
+        {{ post.title }}
+      </a>
+    </h1>
+
+    <span class="post-date">{{ post.date | date_to_string }}</span>
+
+    {% if post.content contains '<!--more-->' %}
+        <div>
+            {{ post.content | split:'<!--more-->' | first }}
+        </div>
+        <input type="checkbox" class="read-more-state" id="{{ post.url }}"/>
+        <div class="read-more">
+            {{ post.content | split:'<!--more-->' | last }}
+        </div>
+        <label for="{{ post.url }}" class="read-more-trigger"></label>
+    {% else %}
+        {{ post.content }}
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>
+
+<div class="pagination">
+  {% if paginator.next_page %}
+    <a class="pagination-item older" href="{{ site.baseurl }}/page{{paginator.next_page}}">Older</a>
+  {% else %}
+    <span class="pagination-item older">Older</span>
+  {% endif %}
+  {% if paginator.previous_page %}
+    {% if paginator.page == 2 %}
+      <a class="pagination-item newer" href="{{ site.baseurl }}/">Newer</a>
+    {% else %}
+      <a class="pagination-item newer" href="{{ site.baseurl }}/page{{paginator.previous_page}}">Newer</a>
+    {% endif %}
+  {% else %}
+    <span class="pagination-item newer">Newer</span>
+  {% endif %}
+</div>
+
+<div>
+<p><!-- hitwebcounter Code START -->
+<a href="http://www.hitwebcounter.com" target="_blank">
+<img src="http://hitwebcounter.com/counter/counter.php?page=6563193&style=0006&nbdigits=5&type=page&initCount=0" title="my widget for counting" Alt="my widget for counting (since Dec24, 2016)"   border="0" >
+</a> <br/>
+</p>
+</div>
+  <link rel="stylesheet" href="{{ site.baseurl }}/public/css/trial.css">

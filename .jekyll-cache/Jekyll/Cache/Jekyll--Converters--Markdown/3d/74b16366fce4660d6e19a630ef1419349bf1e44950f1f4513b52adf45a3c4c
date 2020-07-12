@@ -1,0 +1,46 @@
+I"j<p>Below are the procedures I used to install Jekyll with problem solvers:</p>
+
+<p>Main reference sites:</p>
+
+<p><a href="https://jekyllrb.com/docs/windows/">Jekyll on Windows</a><br />
+<a href="https://davidburela.wordpress.com/2015/11/28/easily-install-jekyll-on-windows-with-3-command-prompt-entries-and-chocolatey/">Easily install Jekyll on Windows with 3 command prompt entries and Chocolatey</a><br />
+<!--more-->
+Procedures:</p>
+<ol>
+  <li>Open Powershell</li>
+  <li>Run Powershell as administrator: [<a href="http://stackoverflow.com/questions/7690994/powershell-running-a-command-as-administrator">Reference</a>]
+    <blockquote>
+      <p>Start-Process powershell -Verb runAs</p>
+    </blockquote>
+  </li>
+  <li>Change execution policy to enable installation of Chocolatey (a package manager): [<a href="http://stackoverflow.com/questions/4037939/powershell-says-execution-of-scripts-is-disabled-on-this-system">Reference</a>]
+    <blockquote>
+      <p>Set-ExecutionPolicy RemoteSigned</p>
+    </blockquote>
+  </li>
+  <li>Installing Chocolatey: [<a href="https://chocolatey.org/install">Reference</a>]
+    <blockquote>
+      <p>iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex</p>
+    </blockquote>
+  </li>
+  <li>Update the certificate to install ruby: [<a href="http://guides.rubygems.org/ssl-certificate-update/">Reference</a>]<br />
+<a href="http://guides.rubygems.org/ssl-certificate-update/">http://guides.rubygems.org/ssl-certificate-update/</a></li>
+  <li>Install ruby:
+    <blockquote>
+      <p>choco install ruby -y</p>
+    </blockquote>
+  </li>
+  <li>Close the window and open a new command prompt with Administrator access (i.e. step 2)</li>
+  <li>Install gem bundler
+    <blockquote>
+      <p>gem install bundler</p>
+    </blockquote>
+  </li>
+  <li>Install Jekyll
+    <blockquote>
+      <p>gem install jekyll</p>
+    </blockquote>
+  </li>
+  <li>Done :)</li>
+</ol>
+:ET

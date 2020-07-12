@@ -1,0 +1,107 @@
+I"h<p>Pandas dataframe can be converted to pyspark dataframe easily in the newest version of <code class="highlighter-rouge">pandas</code> after <code class="highlighter-rouge">v0.19.2</code>. If you are using an older version of pandas, you have to do a bit more work for such conversion as follows.</p>
+
+<p>First, load the packages and initiate a spark session.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span><span class="p">,</span> <span class="n">DataFrame</span><span class="p">,</span> <span class="n">Row</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+
+<span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="p">.</span><span class="n">builder</span> \
+        <span class="p">.</span><span class="n">master</span><span class="p">(</span><span class="s">"local"</span><span class="p">)</span> \
+        <span class="p">.</span><span class="n">appName</span><span class="p">(</span><span class="s">"Pandas to pyspark DF"</span><span class="p">)</span> \
+        <span class="p">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+</code></pre></div></div>
+<!--more-->
+<p>Here is an example of pandas dataframe to be converted.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s">'index'</span><span class="p">:[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)],</span>
+                   <span class="s">'alphabet'</span><span class="p">:[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="s">'pyspark'</span><span class="p">]})</span>
+<span class="n">df</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>index</th>
+      <th>alphabet</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>p</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>y</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>s</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>p</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>a</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5</td>
+      <td>r</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>6</td>
+      <td>k</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>To convert it to a <code class="highlighter-rouge">pyspark</code> dataframe, one has to create a list of <code class="highlighter-rouge">Row</code> objects and pass it into <code class="highlighter-rouge">createDataFrame</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df_pyspark</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span>
+    <span class="n">Row</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s">'index'</span><span class="p">],</span> <span class="n">alphabet</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s">'alphabet'</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="p">.</span><span class="n">iterrows</span><span class="p">()</span>
+<span class="p">])</span>
+<span class="n">df_pyspark</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+--------+-----+
+|alphabet|index|
++--------+-----+
+|       p|    0|
+|       y|    1|
+|       s|    2|
+|       p|    3|
+|       a|    4|
+|       r|    5|
+|       k|    6|
++--------+-----+
+</code></pre></div></div>
+
+:ET

@@ -1,0 +1,44 @@
+I"P<p>Today I wanted to setup an automated kickstarter scraper on <a href="http://pythonanywhere.com">Python Anywhere</a> but realized that 
+only MySQL is freely supported there (while I’ve been using PostgreSQL). So, a time to switch?</p>
+
+<p>Here is how I install MySQL on my Mac and have it accessed with <em>SQLAlchemy</em>:</p>
+
+<ol>
+  <li>Download and install <a href="https://dev.mysql.com/doc/refman/5.6/en/osx-installation-pkg.html">MySQL from Oracle</a>.</li>
+  <li>Go to <em>System Preferences</em> to start the MySQL server.</li>
+  <li>Navigate to the bin directory and login with the temporary password shown at the end of the installation:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /usr/local/mysql/bin
+./mysql <span class="nt">-u</span> root <span class="nt">-p</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Create another set of <em>username</em> and <em>password</em> that you use instead of <em>root</em>.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE USER username@localhost IDENTIFIED BY <span class="s1">'password'</span>
+</code></pre></div>    </div>
+  </li>
+  <li>I have installed <em>pymysql</em> and <em>sqlalchemy</em> in Python to access the MySQL database. To access the database:</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy_utils</span> <span class="kn">import</span> <span class="n">database_exists</span><span class="p">,</span> <span class="n">create_database</span>
+
+<span class="c1"># dbname is the database name
+# user_id and user_password are what you put in above
+</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s">"mysql+pymysql://%s:%s@localhost:3306/%s"</span>
+                       <span class="o">%</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span><span class="n">user_password</span><span class="p">,</span><span class="n">dbname</span><span class="p">),</span><span class="n">echo</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">database_exists</span><span class="p">(</span><span class="n">engine</span><span class="p">.</span><span class="n">url</span><span class="p">):</span> 
+    <span class="n">create_database</span><span class="p">(</span><span class="n">engine</span><span class="p">.</span><span class="n">url</span><span class="p">)</span>			<span class="c1"># Create database if it doesn't exist.
+</span>    
+<span class="n">con</span> <span class="o">=</span> <span class="n">engine</span><span class="p">.</span><span class="n">connect</span><span class="p">()</span> <span class="c1"># Connect to the MySQL engine
+</span><span class="n">table_name</span> <span class="o">=</span> <span class="s">'new_table'</span>
+<span class="n">command</span> <span class="o">=</span> <span class="s">"DROP TABLE IF EXISTS new_table;"</span> <span class="c1"># Drop if such table exist
+</span><span class="n">con</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Executing SQL commands is rather easy by using:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">con</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Enjoy! :)</p>
+:ET
