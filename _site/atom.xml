@@ -4,13 +4,35 @@
  <title>Clare S. Y. Huang</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2020-07-12T13:14:49-05:00</updated>
+ <updated>2020-07-14T18:04:02-05:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Clare S. Y. Huang</name>
    <email>csyhuang@uchicago.edu</email>
  </author>
 
+ 
+ <entry>
+   <title>Minor release of my python package + release procedures</title>
+   <link href="http://localhost:4000/2020/07/14/hn2016_falwa-release0.4.1/"/>
+   <updated>2020-07-14T00:00:00-05:00</updated>
+   <id>http://localhost:4000/2020/07/14/hn2016_falwa-release0.4.1</id>
+   <content type="html">&lt;p&gt;[&lt;a href=&quot;https://github.com/csyhuang/hn2016_falwa/releases/tag/0.4.1&quot;&gt;hn2016_falwa Release 0.4.1&lt;/a&gt;] A minor release of my python package &lt;a href=&quot;https://github.com/csyhuang/hn2016_falwa&quot;&gt;hn2016_falwa&lt;/a&gt; is published. Thanks &lt;a href=&quot;https://github.com/chpolste&quot;&gt;Christopher Polster&lt;/a&gt; for submitting a pull request that fixes the interface of &lt;code class=&quot;highlighter-rouge&quot;&gt;BarotropicField&lt;/code&gt;. Moreover, I added procedures to process masked array in &lt;code class=&quot;highlighter-rouge&quot;&gt;QGField&lt;/code&gt; such that it can be conveniently used to process ERA5 data which is stored as masked array in netCDF files.&lt;/p&gt;
+
+&lt;p&gt;As a memo to myself - procedures for a release (which I often forget and have to google 😅):&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Update version number in &lt;code class=&quot;highlighter-rouge&quot;&gt;setup.py&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;readme.md&lt;/code&gt; and documentation pages.&lt;/li&gt;
+  &lt;li&gt;Add a (light-weighted) tag to the commit: &lt;code class=&quot;highlighter-rouge&quot;&gt;git tag &amp;lt;tagname&amp;gt;&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Not only push the commits but also the tag by &lt;code class=&quot;highlighter-rouge&quot;&gt;git push origin &amp;lt;tagname&amp;gt;&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If I have time, I would update the version on PYPI too:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Create the &lt;code class=&quot;highlighter-rouge&quot;&gt;dist/&lt;/code&gt; directory and the installation files: &lt;code class=&quot;highlighter-rouge&quot;&gt;python3 setup.py sdist bdist_wheel&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Upload the package: &lt;code class=&quot;highlighter-rouge&quot;&gt;python3 -m twine upload --repository testpypi dist/*&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Reading Notes on Spark - The Definitive Guide</title>

@@ -11,7 +11,7 @@
 
   <title>
     
-      Ubuntu on Windows &middot; Clare S. Y. Huang
+      Minor release of my python package + release procedures &middot; Clare S. Y. Huang
     
   </title>
 
@@ -145,9 +145,22 @@
 
       <div class="container content">
         <div class="post">
-  <h1 class="post-title">Ubuntu on Windows</h1>
-  <span class="post-date">19 Nov 2018</span>
-  <p>Found a useful article: <a href="https://www.howtogeek.com/261383/how-to-access-your-ubuntu-bash-files-in-windows-and-your-windows-system-drive-in-bash/">How to Access Your Ubuntu Bash Files in Windows (and Your Windows System Drive in Bash)</a>.</p>
+  <h1 class="post-title">Minor release of my python package + release procedures</h1>
+  <span class="post-date">14 Jul 2020</span>
+  <p>[<a href="https://github.com/csyhuang/hn2016_falwa/releases/tag/0.4.1">hn2016_falwa Release 0.4.1</a>] A minor release of my python package <a href="https://github.com/csyhuang/hn2016_falwa">hn2016_falwa</a> is published. Thanks <a href="https://github.com/chpolste">Christopher Polster</a> for submitting a pull request that fixes the interface of <code class="highlighter-rouge">BarotropicField</code>. Moreover, I added procedures to process masked array in <code class="highlighter-rouge">QGField</code> such that it can be conveniently used to process ERA5 data which is stored as masked array in netCDF files.</p>
+
+<p>As a memo to myself - procedures for a release (which I often forget and have to google 😅):</p>
+<ul>
+  <li>Update version number in <code class="highlighter-rouge">setup.py</code>, <code class="highlighter-rouge">readme.md</code> and documentation pages.</li>
+  <li>Add a (light-weighted) tag to the commit: <code class="highlighter-rouge">git tag &lt;tagname&gt;</code>.</li>
+  <li>Not only push the commits but also the tag by <code class="highlighter-rouge">git push origin &lt;tagname&gt;</code>.</li>
+</ul>
+
+<p>If I have time, I would update the version on PYPI too:</p>
+<ul>
+  <li>Create the <code class="highlighter-rouge">dist/</code> directory and the installation files: <code class="highlighter-rouge">python3 setup.py sdist bdist_wheel</code></li>
+  <li>Upload the package: <code class="highlighter-rouge">python3 -m twine upload --repository testpypi dist/*</code></li>
+</ul>
 
 </div>
 
@@ -158,15 +171,6 @@
 <div class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
-    
-      <li>
-        <h3>
-          <a href="/2020/07/14/hn2016_falwa-release0.4.1/">
-            Minor release of my python package + release procedures
-            <small>14 Jul 2020</small>
-          </a>
-        </h3>
-      </li>
     
       <li>
         <h3>
@@ -182,6 +186,15 @@
           <a href="/2020/04/17/add-read-more-on-front-page/">
             READ MORE button via jekyll
             <small>17 Apr 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2020/04/16/faster-outer-join-by-two-left-joins/">
+            More efficient way to do outer join with large dataframes
+            <small>16 Apr 2020</small>
           </a>
         </h3>
       </li>

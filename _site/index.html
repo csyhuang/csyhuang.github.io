@@ -193,6 +193,34 @@ Welcome to my personal homepage! Please use the <b>left-side menu</b> to navigat
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/2020/07/14/hn2016_falwa-release0.4.1/">
+        Minor release of my python package + release procedures
+      </a>
+    </h1>
+
+    <span class="post-date">14 Jul 2020</span>
+
+    
+        <p>[<a href="https://github.com/csyhuang/hn2016_falwa/releases/tag/0.4.1">hn2016_falwa Release 0.4.1</a>] A minor release of my python package <a href="https://github.com/csyhuang/hn2016_falwa">hn2016_falwa</a> is published. Thanks <a href="https://github.com/chpolste">Christopher Polster</a> for submitting a pull request that fixes the interface of <code class="highlighter-rouge">BarotropicField</code>. Moreover, I added procedures to process masked array in <code class="highlighter-rouge">QGField</code> such that it can be conveniently used to process ERA5 data which is stored as masked array in netCDF files.</p>
+
+<p>As a memo to myself - procedures for a release (which I often forget and have to google 😅):</p>
+<ul>
+  <li>Update version number in <code class="highlighter-rouge">setup.py</code>, <code class="highlighter-rouge">readme.md</code> and documentation pages.</li>
+  <li>Add a (light-weighted) tag to the commit: <code class="highlighter-rouge">git tag &lt;tagname&gt;</code>.</li>
+  <li>Not only push the commits but also the tag by <code class="highlighter-rouge">git push origin &lt;tagname&gt;</code>.</li>
+</ul>
+
+<p>If I have time, I would update the version on PYPI too:</p>
+<ul>
+  <li>Create the <code class="highlighter-rouge">dist/</code> directory and the installation files: <code class="highlighter-rouge">python3 setup.py sdist bdist_wheel</code></li>
+  <li>Upload the package: <code class="highlighter-rouge">python3 -m twine upload --repository testpypi dist/*</code></li>
+</ul>
+
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/2020/04/18/spark-definitive-guide-reading-note/">
         Reading Notes on Spark - The Definitive Guide
       </a>
@@ -1108,39 +1136,6 @@ only showing top 5 rows
 
     
         <p>Found a useful article: <a href="https://www.howtogeek.com/261383/how-to-access-your-ubuntu-bash-files-in-windows-and-your-windows-system-drive-in-bash/">How to Access Your Ubuntu Bash Files in Windows (and Your Windows System Drive in Bash)</a>.</p>
-
-    
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/07/01/python-packaging/">
-        Resources on Python Packaging
-      </a>
-    </h1>
-
-    <span class="post-date">01 Jul 2018</span>
-
-    
-        <p>On my way figuring out how to properly write unit test for my python package, 
-I have come across the useful pages below:</p>
-
-<ul>
-  <li><a href="http://python-packaging.readthedocs.io/">Python Packaging (official page)</a> 
-(comprehensive manual)</li>
-  <li><a href="https://docs.pytest.org/en/latest/goodpractices.html">SetupTools (official page)</a>: I 
-read about how to use the development mode here.</li>
-  <li><a href="http://docs.python-guide.org/en/latest/writing/tests/">Testing Your Code</a> 
-from the Hitchhiker’s Guide to Python (introductory)</li>
-  <li><a href="https://docs.pytest.org/en/latest/goodpractices.html">Good Integration Practices</a> 
-from pytest</li>
-  <li>(more to update)</li>
-</ul>
-
-<p>Unit tests are worth the time writing to make sure your package works as you expected. 
-I also found some commercial packages using unit tests as sample script for user to 
-refer to (e.g. <a href="https://github.com/allenai/allennlp">AllenNLP</a>).</p>
-
 
     
   </div>
