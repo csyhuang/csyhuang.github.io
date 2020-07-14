@@ -4,7 +4,7 @@
  <title>Clare S. Y. Huang</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2020-07-14T18:04:02-05:00</updated>
+ <updated>2020-07-14T18:58:39-05:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Clare S. Y. Huang</name>
@@ -31,6 +31,15 @@
   &lt;li&gt;Create the &lt;code class=&quot;highlighter-rouge&quot;&gt;dist/&lt;/code&gt; directory and the installation files: &lt;code class=&quot;highlighter-rouge&quot;&gt;python3 setup.py sdist bdist_wheel&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;Upload the package: &lt;code class=&quot;highlighter-rouge&quot;&gt;python3 -m twine upload --repository testpypi dist/*&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Bulk download of ERA5 data from CDSAPI</title>
+   <link href="http://localhost:4000/2020/06/30/bulk-download-of-era5/"/>
+   <updated>2020-06-30T00:00:00-05:00</updated>
+   <id>http://localhost:4000/2020/06/30/bulk-download-of-era5</id>
+   <content type="html">&lt;p&gt;I wrote a sample script to download ERA5 reanalysis data via CDSAPI month by month. &lt;a href=&quot;https://github.com/csyhuang/download_era5&quot;&gt;Here is the GitHub repo&lt;/a&gt; with instructions how to use it.&lt;/p&gt;
 </content>
  </entry>
  

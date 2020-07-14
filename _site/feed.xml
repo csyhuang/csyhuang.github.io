@@ -177,6 +177,15 @@
       </item>
     
       <item>
+        <title>Bulk download of ERA5 data from CDSAPI</title>
+        <description>&lt;p&gt;I wrote a sample script to download ERA5 reanalysis data via CDSAPI month by month. &lt;a href=&quot;https://github.com/csyhuang/download_era5&quot;&gt;Here is the GitHub repo&lt;/a&gt; with instructions how to use it.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 30 Jun 2020 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000//2020/06/30/bulk-download-of-era5/</link>
+        <guid isPermaLink="true">http://localhost:4000//2020/06/30/bulk-download-of-era5/</guid>
+      </item>
+    
+      <item>
         <title>Reading Notes on Spark - The Definitive Guide</title>
         <description>&lt;p&gt;I am reading the book &lt;a href=&quot;https://www.oreilly.com/library/view/spark-the-definitive/9781491912201/&quot;&gt;Spark: The Definitive Guide&lt;/a&gt; by Bill Chambers, Matei Zaharia. Here are my reading notes:
 &lt;!--more--&gt;&lt;/p&gt;
@@ -471,57 +480,6 @@ Here we go. 😉&lt;/p&gt;
         <pubDate>Mon, 14 Oct 2019 00:00:00 -0500</pubDate>
         <link>http://localhost:4000//2019/10/14/notes-on-handling-rnn-training-problem/</link>
         <guid isPermaLink="true">http://localhost:4000//2019/10/14/notes-on-handling-rnn-training-problem/</guid>
-      </item>
-    
-      <item>
-        <title>Generate sequence from an array column of pyspark dataframe</title>
-        <description>&lt;p&gt;Suppose I have a Hive table that has a column of sequences,&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+------------------+
-|          sequence|
-+------------------+
-|      [3, 23, 564]|
-+------------------+
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;how to generate a column that contains permutations of each sequence in multiple rows? The desired output shall look like:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+------------------+------------------+
-|          sequence|       permutation|
-+------------------+------------------+
-|      [3, 23, 564]|      [3, 23, 564]|
-|      [3, 23, 564]|      [3, 564, 23]|
-|      [3, 23, 564]|      [23, 3, 564]|
-|      [3, 23, 564]|      [23, 564, 3]|
-|      [3, 23, 564]|      [564, 3, 23]|
-|      [3, 23, 564]|      [564, 23, 3]|
-+------------------+------------------+
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;In order to get multiple rows out of each row, we need to use the function &lt;code class=&quot;highlighter-rouge&quot;&gt;explode&lt;/code&gt;. First, we write a user-defined function (UDF) to return the list of permutations given a array (sequence):&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;itertools&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyspark.sql&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SparkSession&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Row&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyspark.sql.types&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IntegerType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ArrayType&lt;/span&gt;
-
-&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;udf_type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ArrayType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ArrayType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IntegerType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())))&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;permutation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;itertools&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;permutations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;udf_type&lt;/code&gt; function is adapted from the &lt;a href=&quot;https://johnpaton.net/posts/clean-spark-udfs/&quot;&gt;blog post by John Paton&lt;/a&gt;. The output type is specified to be an array of “array of integers”.&lt;/p&gt;
-
-&lt;p&gt;The application of this function with &lt;code class=&quot;highlighter-rouge&quot;&gt;explode&lt;/code&gt; will yield the result above:&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark_session&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Row&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sequence&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;23&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;564&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])])&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;withColumn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'permutation'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;explode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;permutation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'sequence'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-</description>
-        <pubDate>Wed, 25 Sep 2019 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000//2019/09/25/pyspark-generate-sequences/</link>
-        <guid isPermaLink="true">http://localhost:4000//2019/09/25/pyspark-generate-sequences/</guid>
       </item>
     
   </channel>
