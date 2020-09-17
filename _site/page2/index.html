@@ -193,6 +193,158 @@ Welcome to my personal homepage! Please use the <b>left-side menu</b> to navigat
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/2018/12/14/read-libsvm-to-pyspark-df/">
+        Read libsvm files into PySpark dataframe
+      </a>
+    </h1>
+
+    <span class="post-date">14 Dec 2018</span>
+
+    
+        <div>
+            <p>I wanted to load the libsvm files provided in <a href="https://github.com/tensorflow/ranking">tensorflow/ranking</a> into PySpark dataframe, but couldn’t find existing modules for that. Here is a version I wrote to do the job. (Disclaimer: not the most elegant solution, but it works.)
+
+        </div>
+        <input type="checkbox" class="read-more-state" id="/2018/12/14/read-libsvm-to-pyspark-df/"/>
+        <div class="read-more">
+            
+First of all, load the pyspark utilities required.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark</span> <span class="kn">import</span> <span class="n">SparkContext</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span><span class="p">,</span> <span class="n">Row</span>
+<span class="kn">from</span> <span class="nn">pyspark.ml.linalg</span> <span class="kn">import</span> <span class="n">SparseVector</span>
+</code></pre></div></div>
+
+<p>Initiate a spark session for creation of dataframe.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="p">(</span><span class="s">"local"</span><span class="p">,</span> <span class="s">"read_libsvm"</span><span class="p">)</span>
+<span class="n">spark_session</span> <span class="o">=</span> <span class="n">SparkSession</span> \
+    <span class="p">.</span><span class="n">builder</span> \
+    <span class="p">.</span><span class="n">appName</span><span class="p">(</span><span class="s">"read_libsvm"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Get the path to the data files.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">_TRAIN_DATA_PATH</span><span class="o">=</span><span class="s">"data/train.txt"</span>
+<span class="n">_TEST_DATA_PATH</span><span class="o">=</span><span class="s">"data/test.txt"</span>
+</code></pre></div></div>
+
+<p>Here is the module I wrote for the purpose:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">read_libsvm</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">query_id</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+    <span class="s">'''
+    A utility function that takes in a libsvm file and turn it to a pyspark dataframe.
+
+    Args:
+        filepath (str): The file path to the data file.
+        query_id (bool): whether 'qid' is present in the file.
+
+    Returns:
+        A pyspark dataframe that contains the data loaded.
+    '''</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">raw_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">.</span><span class="n">split</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">f</span><span class="p">.</span><span class="n">readlines</span><span class="p">()]</span>
+
+    <span class="n">train_outcome</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">raw_data</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">query_id</span><span class="p">:</span>
+        <span class="n">train_qid</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">lstrip</span><span class="p">(</span><span class="s">'qid:'</span><span class="p">))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">raw_data</span><span class="p">]</span>
+
+    <span class="n">index_value_dict</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">raw_data</span><span class="p">:</span>
+        <span class="n">index_value_dict</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="nb">dict</span><span class="p">([(</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">':'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">':'</span><span class="p">)[</span><span class="mi">1</span><span class="p">]))</span>
+                                       <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[(</span><span class="mi">1</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">query_id</span><span class="p">)):]]))</span>
+
+    <span class="n">max_idx</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="nb">max</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">keys</span><span class="p">())</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">index_value_dict</span><span class="p">])</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">Row</span><span class="p">(</span>
+            <span class="n">qid</span><span class="o">=</span><span class="n">train_qid</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+            <span class="n">label</span><span class="o">=</span><span class="n">train_outcome</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+            <span class="n">feat_vector</span><span class="o">=</span><span class="n">SparseVector</span><span class="p">(</span><span class="n">max_idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">index_value_dict</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">index_value_dict</span><span class="p">))</span>
+    <span class="p">]</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">spark_session</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">df</span>
+
+</code></pre></div></div>
+
+<p>Let’s see how the train and test sets look like in the tf-ranking package:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">train_df</span> <span class="o">=</span> <span class="n">read_libsvm</span><span class="p">(</span><span class="n">_TRAIN_DATA_PATH</span><span class="p">)</span>
+<span class="n">test_df</span> <span class="o">=</span> <span class="n">read_libsvm</span><span class="p">(</span><span class="n">_TEST_DATA_PATH</span><span class="p">)</span>
+
+<span class="n">train_df</span><span class="p">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+--------------------+-----+---+
+|         feat_vector|label|qid|
++--------------------+-----+---+
+|(137,[5,13,17,42,...|    0|  1|
+|(137,[11,13,18,30...|    2|  1|
+|(137,[11,27,29,39...|    2|  1|
+|(137,[5,10,26,31,...|    1|  1|
+|(137,[13,17,22,24...|    2|  2|
++--------------------+-----+---+
+only showing top 5 rows
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">test_df</span><span class="p">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+--------------------+-----+---+
+|         feat_vector|label|qid|
++--------------------+-----+---+
+|(137,[2,7,37,40,4...|    1|  1|
+|(137,[1,8,12,15,2...|    2|  1|
+|(137,[4,11,15,16,...|    0|  1|
+|(137,[14,19,20,33...|    0|  1|
+|(137,[9,12,19,26,...|    1|  2|
++--------------------+-----+---+
+only showing top 5 rows
+</code></pre></div></div>
+
+
+        </div>
+        <label for="/2018/12/14/read-libsvm-to-pyspark-df/" class="read-more-trigger"></label>
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2018/11/28/pyspark-solution-1/">
+        Simple pyspark solutions
+      </a>
+    </h1>
+
+    <span class="post-date">28 Nov 2018</span>
+
+    
+        <p>Here is a curation of some solutions to simple problems encountered when working with pyspark.</p>
+
+<h3 id="how-to-replace-string-in-a-column">How to replace string in a column?</h3>
+
+<p><a href="https://stackoverflow.com/questions/37038014/pyspark-replace-strings-in-spark-dataframe-column">Source</a></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">new_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">withColumn</span><span class="p">(</span><span class="n">col_name</span><span class="p">,</span> <span class="n">regexp_replace</span><span class="p">(</span><span class="n">col_name</span><span class="p">,</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">replacement</span><span class="p">))</span>
+</code></pre></div></div>
+
+<h3 id="how-to-avoid-duplicate-columns-when-joining-two-dataframe-on-columns-with-the-same-name">How to avoid duplicate columns when joining two dataframe on columns with the same name?</h3>
+
+<p><a href="https://docs.databricks.com/spark/latest/faq/join-two-dataframes-duplicated-column.html">Source</a></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">left_df</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">right_df</span><span class="p">,</span> <span class="p">[</span><span class="s">"name"</span><span class="p">])</span>
+</code></pre></div></div>
+
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/2018/11/19/ubuntu-on-windows/">
         Ubuntu on Windows
       </a>
@@ -849,44 +1001,6 @@ only MySQL is freely supported there (while I’ve been using PostgreSQL). So, a
 </ul>
 
 <p>More updates later.</p>
-
-    
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2017/06/11/setup-ubuntu-aws/">
-        Setting up ubuntu on AWS
-      </a>
-    </h1>
-
-    <span class="post-date">11 Jun 2017</span>
-
-    
-        <p><a href="(https://stackoverflow.com/questions/32389599/anaconda-importerror-libsm-so-6-cannot-open-shared-object-file-no-such-file-o)">Solution</a> for the error <em>libSM.so.6: cannot open shared object file</em>.</p>
-
-    
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2017/06/10/Python-packages-for-Sentiment-Analysis/">
-        Python packages for Sentiment Analysis
-      </a>
-    </h1>
-
-    <span class="post-date">10 Jun 2017</span>
-
-    
-        <p>On top of utilities in <em>nltk.sentiment</em>, there are also some packages for training and combining classifiers:</p>
-
-<ul>
-  <li><a href="https://github.com/japerk/nltk-trainer">NLTK-trainer</a> by <a href="https://www.linkedin.com/in/jacobperkins">Jacob Perkins</a>, accompanied by the <a href="https://github.com/japerk/nltk3-cookbook">NLTK-cookbook</a> he wrote.</li>
-  <li><a href="https://github.com/clips/pattern">Pattern.en</a> developed by the <a href="http://www.clips.ua.ac.be/">Computational Linguistics Research Group</a></li>
-  <li>Data sets for training a sentiment classifier: <a href="https://www.cs.cornell.edu/people/pabo/movie-review-data/">Movie Review Data</a></li>
-</ul>
-
-<p>(More to be updated)</p>
 
     
   </div>
