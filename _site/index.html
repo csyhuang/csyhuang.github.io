@@ -311,6 +311,94 @@ For example, if I have a DataFrame that looks like this:</p>
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/2020/08/01/custom-transformer/">
+        Custom Transformer that can be fitted into Pipeline
+      </a>
+    </h1>
+
+    <span class="post-date">01 Aug 2020</span>
+
+    
+        <div>
+            <p>How to construct a custom Transformer that can be fitted into a Pipeline object? I learned from a colleague today how to do that.</p>
+
+<p>Below is an example that includes all key components:
+
+        </div>
+        <input type="checkbox" class="read-more-state" id="/2020/08/01/custom-transformer/"/>
+        <div class="read-more">
+            </p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark</span> <span class="kn">import</span> <span class="n">keyword_only</span>
+<span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Transformer</span>
+<span class="kn">from</span> <span class="nn">pyspark.ml.param.shared</span> <span class="kn">import</span> <span class="n">HasInputCol</span><span class="p">,</span> <span class="n">HasOutputCol</span><span class="p">,</span> <span class="n">Param</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="n">TypeConverters</span>
+<span class="kn">from</span> <span class="nn">pyspark.ml.util</span> <span class="kn">import</span> <span class="n">DefaultParamsReadable</span><span class="p">,</span> <span class="n">DefaultParamsWritable</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">DataFrame</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql.types</span> <span class="kn">import</span> <span class="n">StringType</span>
+<span class="kn">import</span> <span class="nn">pyspark.sql.functions</span> <span class="k">as</span> <span class="n">F</span>
+
+<span class="k">class</span> <span class="nc">CustomTransformer</span><span class="p">(</span><span class="n">Transformer</span><span class="p">,</span> <span class="n">HasInputCol</span><span class="p">,</span> <span class="n">HasOutputCol</span><span class="p">,</span> <span class="n">DefaultParamsReadable</span><span class="p">,</span> <span class="n">DefaultParamsWritable</span><span class="p">):</span>
+  <span class="n">input_col</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="p">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s">"input_col"</span><span class="p">,</span> <span class="s">"input column name."</span><span class="p">,</span> <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="p">.</span><span class="n">toString</span><span class="p">)</span>
+  <span class="n">output_col</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="p">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s">"output_col"</span><span class="p">,</span> <span class="s">"output column name."</span><span class="p">,</span> <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="p">.</span><span class="n">toString</span><span class="p">)</span>
+  
+  <span class="o">@</span><span class="n">keyword_only</span>
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s">"input"</span><span class="p">,</span> <span class="n">output_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s">"output"</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">CustomTransformer</span><span class="p">,</span> <span class="bp">self</span><span class="p">).</span><span class="n">__init__</span><span class="p">()</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">_setDefault</span><span class="p">(</span><span class="n">input_col</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">output_col</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+    <span class="n">kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">_input_kwargs</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">set_params</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    
+  <span class="o">@</span><span class="n">keyword_only</span>
+  <span class="k">def</span> <span class="nf">set_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s">"input"</span><span class="p">,</span> <span class="n">output_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s">"output"</span><span class="p">):</span>
+    <span class="n">kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">_input_kwargs</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">_set</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    
+  <span class="k">def</span> <span class="nf">get_input_col</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">getOrDefault</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">input_col</span><span class="p">)</span>
+  
+  <span class="k">def</span> <span class="nf">get_output_col</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">getOrDefault</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">output_col</span><span class="p">)</span>
+  
+  <span class="k">def</span> <span class="nf">_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="n">DataFrame</span><span class="p">):</span>
+    <span class="n">input_col</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">get_input_col</span><span class="p">()</span>
+    <span class="n">output_col</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">get_output_col</span><span class="p">()</span>
+    <span class="c1"># The custom action: concatenate the integer form of the doubles from the Vector
+</span>    <span class="n">transform_udf</span> <span class="o">=</span> <span class="n">F</span><span class="p">.</span><span class="n">udf</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s">'/'</span><span class="p">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">y</span><span class="p">))</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]),</span> <span class="n">StringType</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">df</span><span class="p">.</span><span class="n">withColumn</span><span class="p">(</span><span class="n">output_col</span><span class="p">,</span> <span class="n">transform_udf</span><span class="p">(</span><span class="n">input_col</span><span class="p">))</span>
+  
+</code></pre></div></div>
+
+<p>Let’s test it with a dataframe</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df = spark.createDataFrame([(Vectors.dense([2.0, 1.0, 3.0]),), (Vectors.dense([0.4, 0.9, 7.0]),)], ["numbers"])
+</code></pre></div></div>
+<p>and a Pipeline like this:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">ElementwiseProduct</span>
+<span class="kn">from</span> <span class="nn">pyspark.ml.linalg</span> <span class="kn">import</span> <span class="n">Vectors</span>
+<span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+
+<span class="n">elementwise_product</span> <span class="o">=</span> <span class="n">ElementwiseProduct</span><span class="p">(</span><span class="n">scalingVec</span><span class="o">=</span><span class="n">Vectors</span><span class="p">.</span><span class="n">dense</span><span class="p">([</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">]),</span> <span class="n">inputCol</span><span class="o">=</span><span class="s">"numbers"</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s">"product"</span><span class="p">)</span>
+<span class="n">custom_transformer</span> <span class="o">=</span> <span class="n">CustomTransformer</span><span class="p">(</span><span class="n">input_col</span><span class="o">=</span><span class="s">"product"</span><span class="p">,</span> <span class="n">output_col</span><span class="o">=</span><span class="s">"results"</span><span class="p">)</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">elementwise_product</span><span class="p">,</span> <span class="n">custom_transformer</span><span class="p">])</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">results</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>I manage to get the expected results:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-------------+--------------+-------+
+|      numbers|       product|results|
++-------------+--------------+-------+
+|[2.0,1.0,3.0]|[4.0,3.0,15.0]| 4/3/15|
+|[0.4,0.9,7.0]|[0.8,2.7,35.0]| 0/2/35|
++-------------+--------------+-------+
+</code></pre></div></div>
+
+        </div>
+        <label for="/2020/08/01/custom-transformer/" class="read-more-trigger"></label>
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/2020/07/14/hn2016_falwa-release0.4.1/">
         Minor release of my python package + release procedures
       </a>
@@ -1051,58 +1139,6 @@ git merge master         # incorporate the changes into mybranch
 
         </div>
         <label for="/2019/06/20/useful-git-commands/" class="read-more-trigger"></label>
-    
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2019/06/13/comparison-between-different-statistical-language-models/">
-        Comparison between different statistical language models
-      </a>
-    </h1>
-
-    <span class="post-date">13 Jun 2019</span>
-
-    
-        <p>When researching on different machine learning models for modeling languages (i.e. sequence model), here are some useful resources I found online:</p>
-
-<h3 id="articles">Articles</h3>
-
-<ul>
-  <li><a href="https://www.alibabacloud.com/blog/hmm-memm-and-crf-a-comparative-analysis-of-statistical-modeling-methods_592049?spm=a2c41.11544604.0.0">HMM, MEMM, and CRF: A Comparative Analysis of Statistical Modeling Methods</a> by Alibaba Clouder</li>
-  <li><a href="http://blog.echen.me/2012/01/03/introduction-to-conditional-random-fields/">Introduction to Conditional Random Fields</a> by Edwin Chen</li>
-  <li><a href="http://homepages.inf.ed.ac.uk/csutton/publications/crftut-fnt.pdf">An Introduction to Conditional Random Fields</a> by Charles Sutton and Andrew McCallum</li>
-  <li><a href="http://www.albertauyeung.com/post/python-sequence-labelling-with-crf/">Performing Sequence Labelling using CRF in Python</a> by Albert AuYeung</li>
-  <li>(more to update)</li>
-</ul>
-
-<h3 id="courses">Courses</h3>
-<ul>
-  <li><a href="http://www.yisongyue.com/courses/cs155/2016_winter/">Machine Learning &amp; Data Mining</a> by <a href="mailto:yyue@caltech.edu">Yisong Yue</a> at CalTech</li>
-</ul>
-
-<!-- https://towardsdatascience.com/conditional-random-field-tutorial-in-pytorch-ca0d04499463
-
-http://web.cse.ohio-state.edu/~fosler-lussier.1/papers/IEEE_CRF_SALP_FoslerEtalPreprint.pdf
-
-https://web.stanford.edu/~jurafsky/asru09.pdf
-
-https://towardsdatascience.com/review-crf-rnn-conditional-random-fields-as-recurrent-neural-networks-semantic-segmentation-a11eb6e40c8c
-
-http://www.robots.ox.ac.uk/~szheng/papers/CRFasRNN.pdf
-
-
-https://blog.paperspace.com/recurrent-neural-networks-part-1-2/
-
-https://medium.com/deep-writing
-
-https://www.quora.com/Are-recurrent-neural-networks-RNNs-considered-a-generative-model-in-Machine-Learning
-
-
-https://towardsdatascience.com/evaluating-text-output-in-nlp-bleu-at-your-own-risk-e8609665a213
-
- -->
-
     
   </div>
   
