@@ -193,6 +193,62 @@ Welcome to my personal homepage! Please use the <b>left-side menu</b> to navigat
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/2019/06/20/useful-git-commands/">
+        Useful Git commands at work
+      </a>
+    </h1>
+
+    <span class="post-date">20 Jun 2019</span>
+
+    
+        <div>
+            <p>Below are solutions I curated online to solve problems related to Git when collaborating with others and working on several branches together. <em>This post will be updated from time to time.</em>
+
+        </div>
+        <input type="checkbox" class="read-more-state" id="/2019/06/20/useful-git-commands/"/>
+        <div class="read-more">
+            </p>
+<h3 id="copy-a-file-from-one-branch-to-another">Copy a file from one branch to another</h3>
+<p>To copy a file to the current branch from another branch (<a href="https://stackoverflow.com/questions/307579/how-do-i-copy-a-version-of-a-single-file-from-one-git-branch-to-another/7099164">ref</a>)</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout another_branch the_file_you_want.txt
+</code></pre></div></div>
+
+<h3 id="merge-changes-from-master-branch-to-yours">Merge changes from master branch to yours</h3>
+<p>To merge changes from another branch to yours, you can use <code class="highlighter-rouge">merge</code> or <code class="highlighter-rouge">rebase</code> depending on the preferred commit order. BitBucket has a <a href="https://www.atlassian.com/git/tutorials/merging-vs-rebasing">nice tutorial</a> discussing the difference btween the two. Usually I’d love to have the changes pulled from another branch as a single commit with <code class="highlighter-rouge">git merge</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout master      # the branch with changes
+git pull                 # pull the remote changes to local master branch
+git checkout mybranch    # go back to mybranch
+git merge master         # incorporate the changes into mybranch
+</code></pre></div></div>
+
+<h3 id="how-to-use-git-revert">How to use <code class="highlighter-rouge">git revert</code></h3>
+<p><a href="https://www.atlassian.com/git/tutorials/undoing-changes/git-revert">Useful tutorial</a> from BitBucket on <code class="highlighter-rouge">git revert</code>.</p>
+
+<h3 id="compare-differences-between-branches-and-output-the-results">Compare differences between branches and output the results</h3>
+<p>If you want to compare the difference between your (more updated) branch and the master branch, use the command</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff master..your_branch
+</code></pre></div></div>
+<p>You can save the comparison results into a text file with colors by</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff master..your_branch &gt; your_branch_to_master.diff
+</code></pre></div></div>
+<p>The color can be viewed when you open the <code class="highlighter-rouge">.diff</code> file with <a href="https://www.sublimetext.com/">Sublime</a>.</p>
+
+<h3 id="update-password-for-git-on-mac-os-x">Update password for Git on Mac OS X</h3>
+<p>use the following command</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config --global credential.helper osxkeychain
+</code></pre></div></div>
+
+<p>[to be continued]</p>
+
+
+        </div>
+        <label for="/2019/06/20/useful-git-commands/" class="read-more-trigger"></label>
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/2019/06/13/comparison-between-different-statistical-language-models/">
         Comparison between different statistical language models
       </a>
@@ -1005,29 +1061,6 @@ only MySQL is freely supported there (while I’ve been using PostgreSQL). So, a
 
 <p><a href="https://github.com/erocarrera/pydot">pydot</a> and <a href="http://www.graphviz.org/">graphviz</a>: Draw graphs of objects and arrows</p>
 
-
-    
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2017/08/10/deep-learning-resources/">
-        Free Online Deep Learning Resources
-      </a>
-    </h1>
-
-    <span class="post-date">10 Aug 2017</span>
-
-    
-        <p>These are resources related to deep learning from conversation with friends:</p>
-
-<p><a href="https://github.com/songrotek/Deep-Learning-Papers-Reading-Roadmap">Deep Learning Paper Reading Roadmap</a></p>
-
-<p><a href="http://neuralnetworksanddeeplearning.com/">Neural Networks and Deep Learning</a></p>
-
-<p>Books introduced in newsletter of Data Science Central:</p>
-
-<p><a href="http://www.deeplearningbook.org/">Deep Learning Book</a></p>
 
     
   </div>

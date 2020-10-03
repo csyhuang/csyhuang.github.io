@@ -4,13 +4,37 @@
  <title>Clare S. Y. Huang</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2020-09-17T18:24:10-05:00</updated>
+ <updated>2020-10-03T14:10:39-05:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Clare S. Y. Huang</name>
    <email>csyhuang@uchicago.edu</email>
  </author>
 
+ 
+ <entry>
+   <title>Submitting pull request from forked repo to main repo</title>
+   <link href="http://localhost:4000/2020/10/03/pull-request-from-forked-repo/"/>
+   <updated>2020-10-03T00:00:00-05:00</updated>
+   <id>http://localhost:4000/2020/10/03/pull-request-from-forked-repo</id>
+   <content type="html">&lt;p&gt;It’s &lt;a href=&quot;https://hacktoberfest.digitalocean.com/&quot;&gt;HacktoberFest&lt;/a&gt; again! 👻 Here are some useful commands to merge your forked repo with upstream changes from the original repo (Also see &lt;a href=&quot;https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/syncing-a-fork&quot;&gt;GitHub Docs&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;After forking, specify remote upstream repository:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You can then check the upstream locations via the command &lt;code class=&quot;highlighter-rouge&quot;&gt;git remote -v&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Before submitting a pull request, you have to make sure your branch contains all the commits from upstream. You can do so by:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git fetch upstream
+git checkout master
+git merge upstream/master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;🤓 Have fun coding! ⌨️&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Split a vector/list in a pyspark DataFrame into columns</title>

@@ -11,7 +11,7 @@
 
   <title>
     
-      Reading Notes on Spark - The Definitive Guide &middot; Clare S. Y. Huang
+      Submitting pull request from forked repo to main repo &middot; Clare S. Y. Huang
     
   </title>
 
@@ -145,20 +145,24 @@
 
       <div class="container content">
         <div class="post">
-  <h1 class="post-title">Reading Notes on Spark - The Definitive Guide</h1>
-  <span class="post-date">18 Apr 2020</span>
-  <p>I am reading the book <a href="https://www.oreilly.com/library/view/spark-the-definitive/9781491912201/">Spark: The Definitive Guide</a> by Bill Chambers, Matei Zaharia. Here are my reading notes:
-<!--more--></p>
+  <h1 class="post-title">Submitting pull request from forked repo to main repo</h1>
+  <span class="post-date">03 Oct 2020</span>
+  <p>It’s <a href="https://hacktoberfest.digitalocean.com/">HacktoberFest</a> again! 👻 Here are some useful commands to merge your forked repo with upstream changes from the original repo (Also see <a href="https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/syncing-a-fork">GitHub Docs</a>).</p>
 
-<ul>
-  <li>
-    <p><a href="/spark_the_def_guide/ch1">Ch.1 - What is Apache Spark?</a></p>
-  </li>
-  <li>
-    <p><a href="/spark_the_def_guide/ch2">Ch.2 - A Gentle Introduction to Spark</a></p>
-  </li>
-</ul>
+<p>After forking, specify remote upstream repository:</p>
 
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
+</code></pre></div></div>
+
+<p>You can then check the upstream locations via the command <code class="highlighter-rouge">git remote -v</code>.</p>
+
+<p>Before submitting a pull request, you have to make sure your branch contains all the commits from upstream. You can do so by:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git fetch upstream
+git checkout master
+git merge upstream/master
+</code></pre></div></div>
+
+<p>🤓 Have fun coding! ⌨️</p>
 
 </div>
 
@@ -169,15 +173,6 @@
 <div class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
-    
-      <li>
-        <h3>
-          <a href="/2020/10/03/pull-request-from-forked-repo/">
-            Submitting pull request from forked repo to main repo
-            <small>03 Oct 2020</small>
-          </a>
-        </h3>
-      </li>
     
       <li>
         <h3>
@@ -193,6 +188,15 @@
           <a href="/2020/09/14/dense-rank-and-character-order/">
             Ranking hierarchical labels with SQL
             <small>14 Sep 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2020/08/01/custom-transformer/">
+            Custom Transformer that can be fitted into Pipeline
+            <small>01 Aug 2020</small>
           </a>
         </h3>
       </li>

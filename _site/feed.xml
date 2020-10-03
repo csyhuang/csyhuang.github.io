@@ -155,6 +155,30 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Submitting pull request from forked repo to main repo</title>
+        <description>&lt;p&gt;It’s &lt;a href=&quot;https://hacktoberfest.digitalocean.com/&quot;&gt;HacktoberFest&lt;/a&gt; again! 👻 Here are some useful commands to merge your forked repo with upstream changes from the original repo (Also see &lt;a href=&quot;https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/syncing-a-fork&quot;&gt;GitHub Docs&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;After forking, specify remote upstream repository:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You can then check the upstream locations via the command &lt;code class=&quot;highlighter-rouge&quot;&gt;git remote -v&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Before submitting a pull request, you have to make sure your branch contains all the commits from upstream. You can do so by:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git fetch upstream
+git checkout master
+git merge upstream/master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;🤓 Have fun coding! ⌨️&lt;/p&gt;
+</description>
+        <pubDate>Sat, 03 Oct 2020 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000//2020/10/03/pull-request-from-forked-repo/</link>
+        <guid isPermaLink="true">http://localhost:4000//2020/10/03/pull-request-from-forked-repo/</guid>
+      </item>
+    
+      <item>
         <title>Split a vector/list in a pyspark DataFrame into columns</title>
         <description>&lt;h2 id=&quot;split-an-array-column&quot;&gt;Split an array column&lt;/h2&gt;
 &lt;p&gt;To split a column with arrays of strings, e.g. a DataFrame that looks like,&lt;/p&gt;
@@ -461,49 +485,6 @@ Here we go. 😉&lt;/p&gt;
         <pubDate>Thu, 09 Apr 2020 00:00:00 -0500</pubDate>
         <link>http://localhost:4000//2020/04/09/hn2016_falwa-release0.4.0/</link>
         <guid isPermaLink="true">http://localhost:4000//2020/04/09/hn2016_falwa-release0.4.0/</guid>
-      </item>
-    
-      <item>
-        <title>Tips for writing more efficient SQL</title>
-        <description>&lt;p&gt;Learned from colleagues some points to pay attention to when writing SQL queries. (This post will be updated from time to time.)&lt;/p&gt;
-
-&lt;h1 id=&quot;partitioned-tables&quot;&gt;Partitioned tables&lt;/h1&gt;
-
-&lt;p&gt;&lt;strong&gt;Always&lt;/strong&gt; specify the partition in the &lt;code class=&quot;highlighter-rouge&quot;&gt;where&lt;/code&gt; clause. If you have to retrieve data from several partitions, loop through it one-by-one.&lt;/p&gt;
-
-&lt;h1 id=&quot;distinct-elements&quot;&gt;Distinct elements&lt;/h1&gt;
-
-&lt;p&gt;Note that the two queries&lt;/p&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;DISTINCT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;table_X&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;and&lt;/p&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;table_X&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;GROUP&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;give the same result. However, the second SQL query will be executed faster. There is no difference calling &lt;code class=&quot;highlighter-rouge&quot;&gt;distinct&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;group by&lt;/code&gt; via (py)spark though.&lt;/p&gt;
-
-&lt;h1 id=&quot;join-vs-where&quot;&gt;JOIN v.s. WHERE&lt;/h1&gt;
-
-&lt;p&gt;Always use &lt;code class=&quot;highlighter-rouge&quot;&gt;where&lt;/code&gt; to filter the table to be joined to the smallest, e.g.&lt;/p&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;credit&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;c&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;INNER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;JOIN&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;purchase&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20190207&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;eligibility&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;True&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Note that the line &lt;code class=&quot;highlighter-rouge&quot;&gt;WHERE c.eligibility = True&lt;/code&gt; is executed to filter the table &lt;code class=&quot;highlighter-rouge&quot;&gt;credit&lt;/code&gt; before the &lt;code class=&quot;highlighter-rouge&quot;&gt;JOIN&lt;/code&gt;. This shrinks the table &lt;code class=&quot;highlighter-rouge&quot;&gt;credit&lt;/code&gt; to the smallest before joining.&lt;/p&gt;
-</description>
-        <pubDate>Fri, 07 Feb 2020 00:00:00 -0600</pubDate>
-        <link>http://localhost:4000//2020/02/07/tips-for-writing-more-efficient-sql/</link>
-        <guid isPermaLink="true">http://localhost:4000//2020/02/07/tips-for-writing-more-efficient-sql/</guid>
       </item>
     
   </channel>
