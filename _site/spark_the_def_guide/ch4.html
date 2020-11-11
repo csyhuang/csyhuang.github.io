@@ -11,7 +11,7 @@
 
   <title>
     
-      Udemy's course on Web Development &middot; Clare S. Y. Huang
+      Ch.4 - Structured API Overview &middot; Clare S. Y. Huang
     
   </title>
 
@@ -145,34 +145,130 @@
 
       <div class="container content">
         <div class="post">
-  <h1 class="post-title">Udemy's course on Web Development</h1>
+  <h1 class="post-title">Ch.4 - Structured API Overview</h1>
   <span class="post-date">11 Nov 2020</span>
-  <p>There are a bunch of <a href="https://www.offers.com/udemy/">free courses</a> on Udemy. Here are some notes from the lectures. I’ll keep updating it.</p>
+  <h1 id="transformations-vs-actions">Transformations v.s. Actions</h1>
 
-<h2 id="free-code-editors-both-downloadable-and-online">Free code editors (both downloadable and online)</h2>
-
-<h3 id="script-editor">Script editor</h3>
 <ul>
-  <li><a href="https://notepad-plus-plus.org">Notepad++</a></li>
-  <li><a href="http://lighttable.com/">Light table</a></li>
-  <li><a href="http://brackets.io">Brackets</a></li>
-  <li><a href="http://atom.io">Atom</a></li>
-  <li><a href="http://www.sublimetext.com/">Sublime</a></li>
+  <li>Spark is a Distributed programming model.</li>
+  <li>Multiple <em>transformations</em> build up a directed acyclic graph of instructions.</li>
+  <li>An <em>action</em> is the execution of the graph of instructions by breaking it down into <em>stages</em> and <em>Tasks</em>.</li>
+  <li>Transformation <em>creates</em> a new DataFrame/Dataset. Computation or conversion to native language types are done by calling an <em>action</em>.</li>
 </ul>
 
-<h3 id="html-editor">HTML editor</h3>
+<h1 id="dataframes-and-datasets">DataFrames and Datasets</h1>
+
 <ul>
-  <li><a href="http://www.adobe.com/products/dreamweaver.html">Dreamweaver</a></li>
-  <li><a href="https://www.activestate.com/komodo-ide">Komodo</a></li>
+  <li>Both are (distributed) table-like collections with well-defined rows and columns.</li>
+  <li>They represent <strong>immutable, lazy evaluated plans</strong> that specify what operations to apply to data residing at a location to generate outputs.</li>
+  <li>Tables and views are DataFrames equivalent.</li>
 </ul>
 
-<h3 id="online-editor">Online editor</h3>
+<h1 id="schemas">Schemas</h1>
+
 <ul>
-  <li><a href="http://codepen.io">Codepen.io</a></li>
-  <li><a href="http://jsfiddle.net/">Javascript - jsfiddle.net</a></li>
-  <li><a href="http://dabblet.com">CSS editor - dabblet.com</a></li>
-  <li><a href="http://liveweave.com">Web editor - liveweave.com. Really good functionality.</a></li>
-  <li><a href="http://macaw.co/">Web design tool - Macaw</a></li>
+  <li>A schema defines the <em>column names</em> and <em>types</em> of a DataFrame.</li>
+</ul>
+
+<h1 id="overview-of-structured-spark-types">Overview of Structured Spark Types</h1>
+
+<h2 id="catalyst">Catalyst</h2>
+<ul>
+  <li>Spark use <em>Catalyst</em> to maintain its own type information throughout the planning and processing of work.</li>
+  <li>This enables a <em>wide variety of execution optimization</em></li>
+  <li>Manipulations operate strictly on Spark <em>type</em> most of the time (even for Python/R)</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="nb">range</span><span class="p">(</span><span class="mi">500</span><span class="p">).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"number"</span><span class="p">)</span>
+<span class="n">df</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">"number"</span><span class="p">]</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h1 id="dataframe-vs-datasets">DataFrame v.s. Datasets</h1>
+
+<h2 id="dataframes">DataFrames</h2>
+<ul>
+  <li>“untyped”: only check whether those types line up to those specified in the schema at <em>runtime</em></li>
+  <li>DataFrames are simply Datasets of Type <code class="highlighter-rouge">Row</code></li>
+</ul>
+
+<h2 id="datasets">DataSets</h2>
+<ul>
+  <li>“typed”: check whether types conform to the specification at <em>compile time</em></li>
+  <li>Only available in Scala</li>
+</ul>
+
+<h2 id="rows">Rows</h2>
+<ul>
+  <li><code class="highlighter-rouge">Row</code> is a rcord of data</li>
+  <li><code class="highlighter-rouge">Row</code> type is Spark’s internal representation of its optimized in-memory format for computation</li>
+  <li>It is highly specialized and efficient computation because:
+    <ul>
+      <li>high garbage-collection and object instantiation costs using JVM types is avoided</li>
+    </ul>
+  </li>
+  <li>Rows can be manually created from:
+    <ul>
+      <li>SQL</li>
+      <li>RDD</li>
+      <li>from data source</li>
+      <li>from scratch (e.g. <code class="highlighter-rouge">spark.range(2).collect()</code>)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="columns">Columns</h2>
+
+<p>Possible types to represent includes:</p>
+<ul>
+  <li><em>simple type</em>, e.g. integer, string</li>
+  <li><em>complex type</em>, e.g. array, map</li>
+  <li><em>null value</em></li>
+</ul>
+
+<h1 id="overview-of-structured-api-execution">Overview of Structured API Execution</h1>
+
+<ol>
+  <li>Write DataFrame/Dataset/SQL Code.</li>
+  <li>Valid code would be converted to a <em>Logical Plan</em></li>
+  <li>Spark turns the <em>Logical Plan</em> to a <em>Physical Plan</em> (check this)(?)</li>
+  <li>Spark executes the Physical Plan (RDD manipulation) on the cluster</li>
+</ol>
+
+<h2 id="logical-planning">Logical Planning</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+                                                         Logical
+                              Analysis                 Optimization
+User Code -&gt; Unresolved plan ---------&gt; Resolved Plan --------------&gt; Optimized Plan
+                                 ^
+                                 |
+                                 |
+                              Catalog
+
+</code></pre></div></div>
+
+<ul>
+  <li>Spark uses the <em>catalog</em>, a repository of all tables and DataFrame information, to <em>resolve</em> columns and tables in the <em>analyzer</em>.</li>
+  <li><strong>Catalyst Optimizer</strong> is a collection of <em>rules</em> that attempt to optimize the logical plan by <strong>pushing down predicates or selection</strong>.</li>
+  <li>Resolved physical plan is passed through the <em>Catalyst Optimizer</em> to obtain an optimized plan.</li>
+</ul>
+
+<h2 id="physical-planning">Physical Planning</h2>
+
+<p>The <em>physical plan</em> specifies how the logical plan will execute on the cluster by generating different physical execution strategy and comparing them through a <em>cost model</em>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+  Optimized          Various          Cost            Best             Executed
+logical plan ---&gt; Physical Plans ---&gt; Model ---&gt; Physical Plan ---&gt; on the cluster
+
+</code></pre></div></div>
+
+<h2 id="execution">Execution</h2>
+
+<ul>
+  <li>Upon selecting a physical plan, Spark runs all the code over RDDs, the lower-level programming interface of Spark.</li>
+  <li>Spark performs further optimizations at runtime, generating native Java bytecode that can remove entire tasks or stages during execution.</li>
+  <li>The results is finally returned to the user.</li>
 </ul>
 
 </div>

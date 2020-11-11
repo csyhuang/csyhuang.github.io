@@ -11,7 +11,7 @@
 
   <title>
     
-      Udemy's course on Web Development &middot; Clare S. Y. Huang
+      New pip release and changes in its way to resolve dependency conflicts &middot; Clare S. Y. Huang
     
   </title>
 
@@ -145,35 +145,23 @@
 
       <div class="container content">
         <div class="post">
-  <h1 class="post-title">Udemy's course on Web Development</h1>
-  <span class="post-date">11 Nov 2020</span>
-  <p>There are a bunch of <a href="https://www.offers.com/udemy/">free courses</a> on Udemy. Here are some notes from the lectures. I’ll keep updating it.</p>
+  <h1 class="post-title">New pip release and changes in its way to resolve dependency conflicts</h1>
+  <span class="post-date">03 Oct 2020</span>
+  <p>When I was trying to set up a conda environment to run a package…</p>
 
-<h2 id="free-code-editors-both-downloadable-and-online">Free code editors (both downloadable and online)</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ERROR: After October 2020 you may experience errors when installing or updating packages. This is because pip will change the way that it resolves dependency conflicts.
 
-<h3 id="script-editor">Script editor</h3>
-<ul>
-  <li><a href="https://notepad-plus-plus.org">Notepad++</a></li>
-  <li><a href="http://lighttable.com/">Light table</a></li>
-  <li><a href="http://brackets.io">Brackets</a></li>
-  <li><a href="http://atom.io">Atom</a></li>
-  <li><a href="http://www.sublimetext.com/">Sublime</a></li>
-</ul>
+We recommend you use --use-feature=2020-resolver to test your packages with the new resolver before it becomes the default.
 
-<h3 id="html-editor">HTML editor</h3>
-<ul>
-  <li><a href="http://www.adobe.com/products/dreamweaver.html">Dreamweaver</a></li>
-  <li><a href="https://www.activestate.com/komodo-ide">Komodo</a></li>
-</ul>
+numpydoc 1.1.0 requires sphinx&gt;=1.6.5, but you'll have sphinx 1.5.3 which is incompatible.
+</code></pre></div></div>
 
-<h3 id="online-editor">Online editor</h3>
-<ul>
-  <li><a href="http://codepen.io">Codepen.io</a></li>
-  <li><a href="http://jsfiddle.net/">Javascript - jsfiddle.net</a></li>
-  <li><a href="http://dabblet.com">CSS editor - dabblet.com</a></li>
-  <li><a href="http://liveweave.com">Web editor - liveweave.com. Really good functionality.</a></li>
-  <li><a href="http://macaw.co/">Web design tool - Macaw</a></li>
-</ul>
+<p>After googling, I found <a href="https://stackoverflow.com/questions/63277123/what-is-use-feature-2020-resolver-error-message-with-jupyter-installation-on">this post on StackOverflow</a> explaining the issue - it is related to the changes in <a href="https://discuss.python.org/t/announcement-pip-20-2-release/4863">pip’s release 20.2</a>.</p>
+
+<p>To implement the check, install packages with the command</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install</span> <span class="nt">--use-feature</span><span class="o">=</span>2020-resolver package
+</code></pre></div></div>
 
 </div>
 
@@ -205,8 +193,8 @@
     
       <li>
         <h3>
-          <a href="/2020/10/03/update-in-pip-in-october/">
-            New pip release and changes in its way to resolve dependency conflicts
+          <a href="/2020/10/03/pull-request-from-forked-repo/">
+            Submitting pull request from forked repo to main repo
             <small>03 Oct 2020</small>
           </a>
         </h3>

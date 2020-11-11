@@ -6,7 +6,7 @@ order: 1
 comments: true
 ---
 
-## Spark's toolkit
+# Spark's toolkit
 <table style="border-collapse: collapse; min-width: 100%;"><colgroup><col style="width: 130px;"><col style="width: 130px;"><col style="width: 130px;"></colgroup>
 	<tbody>
 		<tr>
@@ -36,31 +36,31 @@ comments: true
 </table>
 <!--more-->
 
-## Unified aspect of Spark:
+# Unified aspect of Spark:
 - Consistent, compassable APIs
 - Unified engine for parallel data processing
 - “Structured APIs” (Datasets, DataFrames, SQL)
 
-## Computing engines:
+# Computing engines:
 - Azure Storage and Amazon S3
 - Distributed file systems (e.g. Apache Hadoop)
 - Key-value stores (e.g. Apache Cassandra)
 - Message buses (e.g. Apache Kafka)
 Spark focuses on performing computations over the data, no matter where it resides.
 
-## Hadoop:
+# Hadoop:
 - Storage system: the Hadoop file system/HDFS designed for low-cost stage over clusters of commodity servers
 - Computing system: MapReduce
 Environments for which Hadoop architecture cannot work: public cloud/streaming application -> Spark can work on that too
 
-## Libraries:
+# Libraries:
 - SQL
 - Structured data (Spark SQL)
 - Machine learning (MLlib)
 - Stream processing (Spark Streaming and newer Structured Streaming)
 - Graph analysis (GraphX)
 
-## Context: the big data problem
+# Context: the big data problem
 - Hardware advancement: (before 2005) computer became faster every year through processor speed increase
 - The trend in hardware stopped around 2005 due to hard limit in heat dissipation
 - Developer switch towards adding more parallel CPU cores all running at the same speed
@@ -68,7 +68,7 @@ Environments for which Hadoop architecture cannot work: public cloud/streaming a
 - Collecting data is extremely inexpensive
 - Processing huge amount of data requires large, parallel computation, often on clusters of machines
 
-## Running Spark
+# Running Spark
 - Spark can be used from Python, Java, Scala, R, or SQL
 - Spark is written in Scala, and runs on the Java Virtual Machine (JVM)
 - To run Spark, one has to install Java

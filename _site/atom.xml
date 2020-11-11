@@ -4,13 +4,65 @@
  <title>Clare S. Y. Huang</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2020-10-03T14:10:39-05:00</updated>
+ <updated>2020-11-11T15:40:06-06:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Clare S. Y. Huang</name>
    <email>csyhuang@uchicago.edu</email>
  </author>
 
+ 
+ <entry>
+   <title>Notes on ModelOps and MLOps talks</title>
+   <link href="http://localhost:4000/2020/10/29/odsc-west-talk-on-mlops/"/>
+   <updated>2020-10-29T00:00:00-05:00</updated>
+   <id>http://localhost:4000/2020/10/29/odsc-west-talk-on-mlops</id>
+   <content type="html">&lt;p&gt;I wrote a short article on Medium, &lt;a href=&quot;https://claresyhuang.medium.com/odsc-west-2020-notes-on-modelops-and-mlops-talks-a2e0d10f3c46&quot;&gt;ODSC West 2020: Notes on ModelOps and MLOps talks&lt;/a&gt;, about what I learned from two talks in ODSC West 2020.&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Running a single test case in the unittest suite</title>
+   <link href="http://localhost:4000/2020/10/07/unittest-notes/"/>
+   <updated>2020-10-07T00:00:00-05:00</updated>
+   <id>http://localhost:4000/2020/10/07/unittest-notes</id>
+   <content type="html">&lt;p&gt;If your unit tests are written using the &lt;code class=&quot;highlighter-rouge&quot;&gt;unittest&lt;/code&gt; package, to run a &lt;em&gt;single&lt;/em&gt; test case in the TestSuite, the command line syntax is&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python setup.py &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; tests.test_module.TestClass.test_case
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Stack Overflow reference: &lt;a href=&quot;https://stackoverflow.com/questions/21167516/does-unittest-allow-single-case-suite-testing-through-setup-py-test&quot;&gt;Does unittest allow single case/suite testing through “setup.py test”?&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;If your unit tests are written using &lt;code class=&quot;highlighter-rouge&quot;&gt;pytest&lt;/code&gt;, the command used would be&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pytest tests/test_module.py::test_case
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>New pip release and changes in its way to resolve dependency conflicts</title>
+   <link href="http://localhost:4000/2020/10/03/update-in-pip-in-october/"/>
+   <updated>2020-10-03T00:00:00-05:00</updated>
+   <id>http://localhost:4000/2020/10/03/update-in-pip-in-october</id>
+   <content type="html">&lt;p&gt;When I was trying to set up a conda environment to run a package…&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ERROR: After October 2020 you may experience errors when installing or updating packages. This is because pip will change the way that it resolves dependency conflicts.
+
+We recommend you use --use-feature=2020-resolver to test your packages with the new resolver before it becomes the default.
+
+numpydoc 1.1.0 requires sphinx&amp;gt;=1.6.5, but you'll have sphinx 1.5.3 which is incompatible.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;After googling, I found &lt;a href=&quot;https://stackoverflow.com/questions/63277123/what-is-use-feature-2020-resolver-error-message-with-jupyter-installation-on&quot;&gt;this post on StackOverflow&lt;/a&gt; explaining the issue - it is related to the changes in &lt;a href=&quot;https://discuss.python.org/t/announcement-pip-20-2-release/4863&quot;&gt;pip’s release 20.2&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;To implement the check, install packages with the command&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--use-feature&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2020-resolver package
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Submitting pull request from forked repo to main repo</title>
@@ -262,6 +314,12 @@ For example, if I have a DataFrame that looks like this:&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;&lt;a href=&quot;/spark_the_def_guide/ch2&quot;&gt;Ch.2 - A Gentle Introduction to Spark&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;/spark_the_def_guide/ch3&quot;&gt;Ch.3 - A Tour of Spark’s Toolset&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;/spark_the_def_guide/ch4&quot;&gt;Ch.4 - Structured API Overview&lt;/a&gt;&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 

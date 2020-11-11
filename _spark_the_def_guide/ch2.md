@@ -6,7 +6,7 @@ order: 2
 comments: true
 ---
 
-## Spark:
+# Spark:
 - Manages and coordinates the execution of tasks on data across a cluster of computers
 - Manager can be Spark’s standalone cluster manager, YARN, or Mesos
 - Driver:
@@ -23,24 +23,24 @@ comments: true
         - Reporting the state of computation that executor back to the driver node
 <!--more-->
 
-## Spark Session:
+# Spark Session:
 - Entry point of any spark program
 - Translates python/R code into code that it then can run on the executor JVMs
 - A driver process via which you control your Spark Application
 - Has one-to-one correspondence to a Spark Application
 - `spark-submit`: submit a precompiled application to Spark
 
-## Spark Dataframe:
+# Spark Dataframe:
 - A distributed collection - each part (set of rows) exists on a different executor
 - A table of data with **rows** and **columns**
 - Schema: the list that defines the **columns** and the **types**
 
-## Partitions:
+# Partitions:
 - Spark breaks up data into chunks called partitions
 - A partition is a collection of rows
 - The efficiency of parallelism is determined by **the number of partitions** and **the number of executors**
 
-## Transformations:
+# Transformations:
 - The core data structure are **immutable** (i.e. cannot be changed after they’re created)
 - Transformation is a way to “change” a DataFrame
 - **Abstract transformation**: spark will not act on transformations until we call an **action**
@@ -56,12 +56,12 @@ comments: true
 - Transformation are simply ways of specifying *different series of data manipulation*
 - Reading data is a *lazy operation* (narrow transformation): `spark.read.option("inferSchema", "true").option("header", "true").csv("...")`
 
-## Lazy evaluation:
+# Lazy evaluation:
 - Spark waits until the *very last moment* to execute the graph of computation instructions
 - Spark compiles a plan from your raw DataFrame transformations to a streamlined physical plan that will run as efficiently as possible across the cluster
 - E.g., a predicate pushdown on DataFrames filters the data in the database query, reducing the number of entries retrieved from the database and improving query performance
 
-## Actions:
+# Actions:
 - An action instructs Spark to compute a result from a series of transformation
 - Three kinds of actions:
     - View data in the console (e.g. `df.show()`)
@@ -69,10 +69,10 @@ comments: true
     - Write to output data source (e.g. `df.write...`)
 - Example of action:  `df.take(5)`
 
-## Spark UI:
+# Spark UI:
 - Spark UI in local mode: `http://localhost:4040`
 
-## Concepts from an end-to-end example
+# Concepts from an end-to-end example
 - **schema inference**: let Spark guess what the schema of the DataFrame should be
 - Physical plan called via `df.explain()`: the plan is read from top (end results) to bottom (source(s) of data)
 - Set the number of output partitions from the shuffle: `spark.conf.set("spark.sql.shuffle.partitions", "5")`

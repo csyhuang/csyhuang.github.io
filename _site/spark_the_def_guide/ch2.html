@@ -146,8 +146,8 @@
       <div class="container content">
         <div class="post">
   <h1 class="post-title">Ch.2 - A Gentle Introduction to Spark</h1>
-  <span class="post-date">03 Oct 2020</span>
-  <h2 id="spark">Spark:</h2>
+  <span class="post-date">11 Nov 2020</span>
+  <h1 id="spark">Spark:</h1>
 <ul>
   <li>Manages and coordinates the execution of tasks on data across a cluster of computers</li>
   <li>Manager can be Spark’s standalone cluster manager, YARN, or Mesos</li>
@@ -178,7 +178,7 @@
   </li>
 </ul>
 
-<h2 id="spark-session">Spark Session:</h2>
+<h1 id="spark-session">Spark Session:</h1>
 <ul>
   <li>Entry point of any spark program</li>
   <li>Translates python/R code into code that it then can run on the executor JVMs</li>
@@ -187,21 +187,21 @@
   <li><code class="highlighter-rouge">spark-submit</code>: submit a precompiled application to Spark</li>
 </ul>
 
-<h2 id="spark-dataframe">Spark Dataframe:</h2>
+<h1 id="spark-dataframe">Spark Dataframe:</h1>
 <ul>
   <li>A distributed collection - each part (set of rows) exists on a different executor</li>
   <li>A table of data with <strong>rows</strong> and <strong>columns</strong></li>
   <li>Schema: the list that defines the <strong>columns</strong> and the <strong>types</strong></li>
 </ul>
 
-<h2 id="partitions">Partitions:</h2>
+<h1 id="partitions">Partitions:</h1>
 <ul>
   <li>Spark breaks up data into chunks called partitions</li>
   <li>A partition is a collection of rows</li>
   <li>The efficiency of parallelism is determined by <strong>the number of partitions</strong> and <strong>the number of executors</strong></li>
 </ul>
 
-<h2 id="transformations">Transformations:</h2>
+<h1 id="transformations">Transformations:</h1>
 <ul>
   <li>The core data structure are <strong>immutable</strong> (i.e. cannot be changed after they’re created)</li>
   <li>Transformation is a way to “change” a DataFrame</li>
@@ -228,14 +228,14 @@
   <li>Reading data is a <em>lazy operation</em> (narrow transformation): <code class="highlighter-rouge">spark.read.option("inferSchema", "true").option("header", "true").csv("...")</code></li>
 </ul>
 
-<h2 id="lazy-evaluation">Lazy evaluation:</h2>
+<h1 id="lazy-evaluation">Lazy evaluation:</h1>
 <ul>
   <li>Spark waits until the <em>very last moment</em> to execute the graph of computation instructions</li>
   <li>Spark compiles a plan from your raw DataFrame transformations to a streamlined physical plan that will run as efficiently as possible across the cluster</li>
   <li>E.g., a predicate pushdown on DataFrames filters the data in the database query, reducing the number of entries retrieved from the database and improving query performance</li>
 </ul>
 
-<h2 id="actions">Actions:</h2>
+<h1 id="actions">Actions:</h1>
 <ul>
   <li>An action instructs Spark to compute a result from a series of transformation</li>
   <li>Three kinds of actions:
@@ -248,12 +248,12 @@
   <li>Example of action:  <code class="highlighter-rouge">df.take(5)</code></li>
 </ul>
 
-<h2 id="spark-ui">Spark UI:</h2>
+<h1 id="spark-ui">Spark UI:</h1>
 <ul>
   <li>Spark UI in local mode: <code class="highlighter-rouge">http://localhost:4040</code></li>
 </ul>
 
-<h2 id="concepts-from-an-end-to-end-example">Concepts from an end-to-end example</h2>
+<h1 id="concepts-from-an-end-to-end-example">Concepts from an end-to-end example</h1>
 <ul>
   <li><strong>schema inference</strong>: let Spark guess what the schema of the DataFrame should be</li>
   <li>Physical plan called via <code class="highlighter-rouge">df.explain()</code>: the plan is read from top (end results) to bottom (source(s) of data)</li>
@@ -280,27 +280,27 @@
     
       <li>
         <h3>
-          <a href="/2020/10/03/pull-request-from-forked-repo/">
-            Submitting pull request from forked repo to main repo
+          <a href="/2020/10/29/odsc-west-talk-on-mlops/">
+            Notes on ModelOps and MLOps talks
+            <small>29 Oct 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2020/10/07/unittest-notes/">
+            Running a single test case in the unittest suite
+            <small>07 Oct 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2020/10/03/update-in-pip-in-october/">
+            New pip release and changes in its way to resolve dependency conflicts
             <small>03 Oct 2020</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/2020/09/17/split-vector-to-columns/">
-            Split a vector/list in a pyspark DataFrame into columns
-            <small>17 Sep 2020</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/2020/09/14/dense-rank-and-character-order/">
-            Ranking hierarchical labels with SQL
-            <small>14 Sep 2020</small>
           </a>
         </h3>
       </li>

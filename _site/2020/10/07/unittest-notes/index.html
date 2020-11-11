@@ -11,7 +11,7 @@
 
   <title>
     
-      Udemy's course on Web Development &middot; Clare S. Y. Huang
+      Running a single test case in the unittest suite &middot; Clare S. Y. Huang
     
   </title>
 
@@ -145,35 +145,19 @@
 
       <div class="container content">
         <div class="post">
-  <h1 class="post-title">Udemy's course on Web Development</h1>
-  <span class="post-date">11 Nov 2020</span>
-  <p>There are a bunch of <a href="https://www.offers.com/udemy/">free courses</a> on Udemy. Here are some notes from the lectures. I’ll keep updating it.</p>
+  <h1 class="post-title">Running a single test case in the unittest suite</h1>
+  <span class="post-date">07 Oct 2020</span>
+  <p>If your unit tests are written using the <code class="highlighter-rouge">unittest</code> package, to run a <em>single</em> test case in the TestSuite, the command line syntax is</p>
 
-<h2 id="free-code-editors-both-downloadable-and-online">Free code editors (both downloadable and online)</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python setup.py <span class="nb">test</span> <span class="nt">-m</span> tests.test_module.TestClass.test_case
+</code></pre></div></div>
 
-<h3 id="script-editor">Script editor</h3>
-<ul>
-  <li><a href="https://notepad-plus-plus.org">Notepad++</a></li>
-  <li><a href="http://lighttable.com/">Light table</a></li>
-  <li><a href="http://brackets.io">Brackets</a></li>
-  <li><a href="http://atom.io">Atom</a></li>
-  <li><a href="http://www.sublimetext.com/">Sublime</a></li>
-</ul>
+<p>Stack Overflow reference: <a href="https://stackoverflow.com/questions/21167516/does-unittest-allow-single-case-suite-testing-through-setup-py-test">Does unittest allow single case/suite testing through “setup.py test”?</a></p>
 
-<h3 id="html-editor">HTML editor</h3>
-<ul>
-  <li><a href="http://www.adobe.com/products/dreamweaver.html">Dreamweaver</a></li>
-  <li><a href="https://www.activestate.com/komodo-ide">Komodo</a></li>
-</ul>
+<p>If your unit tests are written using <code class="highlighter-rouge">pytest</code>, the command used would be</p>
 
-<h3 id="online-editor">Online editor</h3>
-<ul>
-  <li><a href="http://codepen.io">Codepen.io</a></li>
-  <li><a href="http://jsfiddle.net/">Javascript - jsfiddle.net</a></li>
-  <li><a href="http://dabblet.com">CSS editor - dabblet.com</a></li>
-  <li><a href="http://liveweave.com">Web editor - liveweave.com. Really good functionality.</a></li>
-  <li><a href="http://macaw.co/">Web design tool - Macaw</a></li>
-</ul>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pytest tests/test_module.py::test_case
+</code></pre></div></div>
 
 </div>
 
@@ -196,17 +180,17 @@
     
       <li>
         <h3>
-          <a href="/2020/10/07/unittest-notes/">
-            Running a single test case in the unittest suite
-            <small>07 Oct 2020</small>
+          <a href="/2020/10/03/update-in-pip-in-october/">
+            New pip release and changes in its way to resolve dependency conflicts
+            <small>03 Oct 2020</small>
           </a>
         </h3>
       </li>
     
       <li>
         <h3>
-          <a href="/2020/10/03/update-in-pip-in-october/">
-            New pip release and changes in its way to resolve dependency conflicts
+          <a href="/2020/10/03/pull-request-from-forked-repo/">
+            Submitting pull request from forked repo to main repo
             <small>03 Oct 2020</small>
           </a>
         </h3>

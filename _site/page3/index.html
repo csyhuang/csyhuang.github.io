@@ -193,6 +193,122 @@ Welcome to my personal homepage! Please use the <b>left-side menu</b> to navigat
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/2017/11/05/tensorflow-on-mac/">
+        Compiling tensorflow on Mac with SSE, AVX, FMA etc.
+      </a>
+    </h1>
+
+    <span class="post-date">05 Nov 2017</span>
+
+    
+        <p>(Ideally, I shall run tensorflow somewhere else rather than on my MacBook.)</p>
+
+<p>When I install keras with Anaconda on my Mac OS X, with tensorflow as the backend, the following warning comes up when
+ running the sample script:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+</code></pre></div></div>
+
+<p>To use those instructions (<em>SSE4.1 SSE4.2 AVX AVX2 FMA</em>), tensorflow has to be compiled from source. The instructions are available <a href="https://www.tensorflow.org/install/install_sources">here</a>. 
+Using the following command to build the source:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bazel build <span class="nt">-c</span> opt <span class="nt">--copt</span><span class="o">=</span><span class="nt">-march</span><span class="o">=</span>native <span class="nt">--copt</span><span class="o">=</span><span class="nt">-mfpmath</span><span class="o">=</span>both <span class="nt">--config</span><span class="o">=</span>cuda <span class="nt">-k</span> //tensorflow/tools/pip_package:build_pip_package
+</code></pre></div></div>
+<p>I got the following error:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Problem with java installation: couldn't find/access rt.jar in /Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home
+</code></pre></div></div>
+<p>It happens that <em>rt.jar</em> is not present in Java 9. To solve it, install a version of Java 8:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew cask <span class="nb">install </span>caskroom/versions/java8
+</code></pre></div></div>
+<p>and then specify the path of Java 8 (Change the version number ‘1.8.0_162’ to that of the version you installed):</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">JAVA_HOME</span><span class="o">=</span><span class="si">$(</span>/usr/libexec/java_home <span class="nt">-v</span> 1.8.0_162<span class="si">)</span>
+</code></pre></div></div>
+<p>Afterwards, I try to build tensorflow from source again, and it successfully includes the instructions above.</p>
+
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2017/09/09/install-mysql/">
+        Setting up MySQL / access with python on Mac OS
+      </a>
+    </h1>
+
+    <span class="post-date">09 Sep 2017</span>
+
+    
+        <p>Today I wanted to setup an automated kickstarter scraper on <a href="http://pythonanywhere.com">Python Anywhere</a> but realized that 
+only MySQL is freely supported there (while I’ve been using PostgreSQL). So, a time to switch?</p>
+
+<p>Here is how I install MySQL on my Mac and have it accessed with <em>SQLAlchemy</em>:</p>
+
+<ol>
+  <li>Download and install <a href="https://dev.mysql.com/doc/refman/5.6/en/osx-installation-pkg.html">MySQL from Oracle</a>.</li>
+  <li>Go to <em>System Preferences</em> to start the MySQL server.</li>
+  <li>Navigate to the bin directory and login with the temporary password shown at the end of the installation:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /usr/local/mysql/bin
+./mysql <span class="nt">-u</span> root <span class="nt">-p</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Create another set of <em>username</em> and <em>password</em> that you use instead of <em>root</em>.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE USER username@localhost IDENTIFIED BY <span class="s1">'password'</span>
+</code></pre></div>    </div>
+  </li>
+  <li>I have installed <em>pymysql</em> and <em>sqlalchemy</em> in Python to access the MySQL database. To access the database:</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy_utils</span> <span class="kn">import</span> <span class="n">database_exists</span><span class="p">,</span> <span class="n">create_database</span>
+
+<span class="c1"># dbname is the database name
+# user_id and user_password are what you put in above
+</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s">"mysql+pymysql://%s:%s@localhost:3306/%s"</span>
+                       <span class="o">%</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span><span class="n">user_password</span><span class="p">,</span><span class="n">dbname</span><span class="p">),</span><span class="n">echo</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">database_exists</span><span class="p">(</span><span class="n">engine</span><span class="p">.</span><span class="n">url</span><span class="p">):</span> 
+    <span class="n">create_database</span><span class="p">(</span><span class="n">engine</span><span class="p">.</span><span class="n">url</span><span class="p">)</span>			<span class="c1"># Create database if it doesn't exist.
+</span>    
+<span class="n">con</span> <span class="o">=</span> <span class="n">engine</span><span class="p">.</span><span class="n">connect</span><span class="p">()</span> <span class="c1"># Connect to the MySQL engine
+</span><span class="n">table_name</span> <span class="o">=</span> <span class="s">'new_table'</span>
+<span class="n">command</span> <span class="o">=</span> <span class="s">"DROP TABLE IF EXISTS new_table;"</span> <span class="c1"># Drop if such table exist
+</span><span class="n">con</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Executing SQL commands is rather easy by using:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">con</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Enjoy! :)</p>
+
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2017/08/18/software-engineering-project-note-taking/">
+        Software Engineering Project Note-taking
+      </a>
+    </h1>
+
+    <span class="post-date">18 Aug 2017</span>
+
+    
+        <p>Learnt a lot from peers today! :D Here are quick notes on packages they have used for their software engineering project:</p>
+
+<p><a href="https://hub.docker.com/">Docker Hub</a>: You store your docker images there.</p>
+
+<p><a href="https://www.digitalocean.com/">DigitalOcean</a>: The docker images are pulled there, together with the images.</p>
+
+<p><a href="https://www.youtube.com/watch?v=LQ6pFgQXQ0Q">Sphinx tutorial</a>: Useful instructions how to set Python documentation up</p>
+
+<p><a href="https://github.com/erocarrera/pydot">pydot</a> and <a href="http://www.graphviz.org/">graphviz</a>: Draw graphs of objects and arrows</p>
+
+
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/2017/08/10/deep-learning-resources/">
         Free Online Deep Learning Resources
       </a>

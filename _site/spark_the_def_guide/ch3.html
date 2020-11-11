@@ -11,7 +11,7 @@
 
   <title>
     
-      Udemy's course on Web Development &middot; Clare S. Y. Huang
+      Ch.3 - A Tour of Spark's Toolset &middot; Clare S. Y. Huang
     
   </title>
 
@@ -145,35 +145,55 @@
 
       <div class="container content">
         <div class="post">
-  <h1 class="post-title">Udemy's course on Web Development</h1>
+  <h1 class="post-title">Ch.3 - A Tour of Spark's Toolset</h1>
   <span class="post-date">11 Nov 2020</span>
-  <p>There are a bunch of <a href="https://www.offers.com/udemy/">free courses</a> on Udemy. Here are some notes from the lectures. I’ll keep updating it.</p>
+  <h1 id="running-production-applications">Running Production Applications</h1>
 
-<h2 id="free-code-editors-both-downloadable-and-online">Free code editors (both downloadable and online)</h2>
-
-<h3 id="script-editor">Script editor</h3>
 <ul>
-  <li><a href="https://notepad-plus-plus.org">Notepad++</a></li>
-  <li><a href="http://lighttable.com/">Light table</a></li>
-  <li><a href="http://brackets.io">Brackets</a></li>
-  <li><a href="http://atom.io">Atom</a></li>
-  <li><a href="http://www.sublimetext.com/">Sublime</a></li>
+  <li><code class="highlighter-rouge">spark-submit</code> sends your application code to a cluster and launch it to execute there. The application will run until it exists (completes the task) or encounters an error.</li>
+  <li>Resources needed and how the application should be run can be specified in <em>command-line arguments</em>.</li>
 </ul>
 
-<h3 id="html-editor">HTML editor</h3>
+<h2 id="example-calculate-pi-locally">Example: calculate pi locally</h2>
+
+<p>Scala version:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./bin/spark-submit <span class="se">\</span>
+  <span class="nt">--class</span> org.apache.spark.example.SparkPi <span class="se">\</span>
+  <span class="nt">--master</span> <span class="nb">local</span>
+  ./example/jars/spark-example_2.11-2.2.0.jar 10  <span class="c"># which jar and class to run, followed by the argument</span>
+</code></pre></div></div>
+
+<p>Python version:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./bin/spark-submit <span class="se">\</span>
+  <span class="nt">--master</span> <span class="nb">local</span>
+  ./example/src/main/python/pi.py 10  <span class="c"># which jar and class to run, followed by the argument</span>
+</code></pre></div></div>
+
+<p>The <code class="highlighter-rouge">--master</code> argument specifies where you submit the application to. It can also be a cluster running Spark’s standalone cluster manager, Mesos or YARN.</p>
+
+<h1 id="datasets-type-safe-structured-apis">Datasets: Type-Safe Structured APIs</h1>
+
 <ul>
-  <li><a href="http://www.adobe.com/products/dreamweaver.html">Dreamweaver</a></li>
-  <li><a href="https://www.activestate.com/komodo-ide">Komodo</a></li>
+  <li>Datasets: for writing statically typed code in Java and Scala</li>
+  <li>Not available in python or R because those languages are <em>dynamically typed</em></li>
+  <li>API available for <em>Datasets</em> are <em>type-safe</em>: one cannot accidentally view the objects in a Dataset as being of another class than the class one puts in initially
+    <ul>
+      <li>e.g. a <code class="highlighter-rouge">Dataset[Person]</code> would be guaranteed to contain objects of class <code class="highlighter-rouge">Person</code>.</li>
+      <li><code class="highlighter-rouge">collect</code> or <code class="highlighter-rouge">take</code> on a Dataset would give you the proper type in the Dataset, not DataFrame Rows.</li>
+    </ul>
+  </li>
 </ul>
 
-<h3 id="online-editor">Online editor</h3>
+<h1 id="structured-streaming">Structured Streaming</h1>
+
 <ul>
-  <li><a href="http://codepen.io">Codepen.io</a></li>
-  <li><a href="http://jsfiddle.net/">Javascript - jsfiddle.net</a></li>
-  <li><a href="http://dabblet.com">CSS editor - dabblet.com</a></li>
-  <li><a href="http://liveweave.com">Web editor - liveweave.com. Really good functionality.</a></li>
-  <li><a href="http://macaw.co/">Web design tool - Macaw</a></li>
+  <li>Running operations in a <em>streaming</em> fashion instead of <em>batch mode</em> can <strong>reduce latency</strong> and <strong>allow for incremental processing</strong>.</li>
+  <li>Advantage of <em>structured streaming</em>: allows you to extract value out of streaming system with virtually <em>no code changes</em></li>
 </ul>
+
+<p>(More notes on streaming in Chapters 20-23)</p>
 
 </div>
 

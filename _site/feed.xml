@@ -1,523 +1,261 @@
-<!DOCTYPE html>
-<html lang="en-us">
-
-  <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-  <!-- Enable responsiveness on mobile devices-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-  <title>
-    
-       &middot; Clare S. Y. Huang
-    
-  </title>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="/public/css/poole.css">
-  <link rel="stylesheet" href="/public/css/syntax.css">
-  <link rel="stylesheet" href="/public/css/lanyon.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
-
-  <!-- Icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
-  <link rel="shortcut icon" href="/public/favicon.ico">
-
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-</head>
-
-
-  <body>
-
-    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
-     styles, `#sidebar-checkbox` for behavior. -->
-<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
-
-<!-- Toggleable sidebar -->
-<div class="sidebar" id="sidebar">
-  <div class="sidebar-item">
-    <p>PhD in Geophysical Sciences (UChicago). Love coding, music and writing.</p>
-  </div>
-
-  <nav class="sidebar-nav">
-    <a class="sidebar-nav-item" href="/">Home</a>
-    <a class="sidebar-nav-item" href="/about_me.html" >About me</a>    
-
-    
-
-    
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-    
-      
-        
-          <a class="sidebar-nav-item" href="/bookshelf/">Bookshelf</a>
-        
-      
-    
-      
-        
-          <a class="sidebar-nav-item" href="/climate_tools/">Climate Tools</a>
-        
-      
-    
-      
-        
-          <a class="sidebar-nav-item" href="/ds_notes/">Data Science Notes</a>
-        
-      
-    
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-          <a class="sidebar-nav-item" href="/publications/">Publications</a>
-        
-      
-    
-      
-        
-          <a class="sidebar-nav-item" href="/pyspark_solutions/">PySpark/SQL Solutions</a>
-        
-      
-    
-      
-        
-          <a class="sidebar-nav-item" href="/research/">Academic Research</a>
-        
-      
-    
-      
-        
-          <a class="sidebar-nav-item" href="/tools/">Handy Tools</a>
-        
-      
-    
-
-<!--    <a class="sidebar-nav-item" href="/archive/v1.0.0.zip">Download</a> -->
-
-    <a class="sidebar-nav-item" href="http://github.com/csyhuang/"  target="_blank">Github</a>
-<!--    <span class="sidebar-nav-item">Currently v1.0.0</span> --->
-  </nav>
-
-  <div class="sidebar-item">
-    <p>
-      &copy; 2020 Shao Ying (Clare) Huang. All rights reserved.
-    </p>
-  </div>
-</div>
-
-
-    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
-         content to avoid any CSS collisions with our real content. -->
-    <div class="wrap">
-      <div class="masthead">
-        <div class="container">
-          <h3 class="masthead-title">
-            <a href="/" title="Home">Clare S. Y. Huang</a>
-            <small>Data Scientist | Atmospheric Dynamicist</small>
-          </h3>
-        </div>
-      </div>
-
-      <div class="container content">
-        <div class="page">
-  <h1 class="page-title"></h1>
-  <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title></title>
+    <title>Clare S. Y. Huang</title>
     <description>PhD in Geophysical Sciences (UChicago). Love coding, music and writing.</description>
-    <link>http://localhost:4000</link>
+    <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
-        <title>Submitting pull request from forked repo to main repo</title>
-        <description>&lt;p&gt;It’s &lt;a href=&quot;https://hacktoberfest.digitalocean.com/&quot;&gt;HacktoberFest&lt;/a&gt; again! 👻 Here are some useful commands to merge your forked repo with upstream changes from the original repo (Also see &lt;a href=&quot;https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/syncing-a-fork&quot;&gt;GitHub Docs&lt;/a&gt;).&lt;/p&gt;
+        <title>Notes on ModelOps and MLOps talks</title>
+        <description>
+          
+          I wrote a short article on Medium, ODSC West 2020: Notes on ModelOps and MLOps talks, about what I learned from two talks in ODSC West 2020.
 
-&lt;p&gt;After forking, specify remote upstream repository:&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;You can then check the upstream locations via the command &lt;code class=&quot;highlighter-rouge&quot;&gt;git remote -v&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Before submitting a pull request, you have to make sure your branch contains all the commits from upstream. You can do so by:&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git fetch upstream
-git checkout master
-git merge upstream/master
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;🤓 Have fun coding! ⌨️&lt;/p&gt;
-</description>
+        </description>
+        <pubDate>Thu, 29 Oct 2020 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2020/10/29/odsc-west-talk-on-mlops/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/10/29/odsc-west-talk-on-mlops/</guid>
+      </item>
+    
+      <item>
+        <title>Running a single test case in the unittest suite</title>
+        <description>
+          
+          If your unit tests are written using the unittest package, to run a single test case in the TestSuite, the command line syntax is python setup.py test -m tests.test_module.TestClass.test_case Stack Overflow reference: Does unittest allow single case/suite testing through “setup.py test”? If your unit tests are written using pytest, the...
+        </description>
+        <pubDate>Wed, 07 Oct 2020 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2020/10/07/unittest-notes/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/10/07/unittest-notes/</guid>
+      </item>
+    
+      <item>
+        <title>New pip release and changes in its way to resolve dependency conflicts</title>
+        <description>
+          
+          When I was trying to set up a conda environment to run a package… ERROR: After October 2020 you may experience errors when installing or updating packages. This is because pip will change the way that it resolves dependency conflicts. We recommend you use --use-feature=2020-resolver to test your packages with...
+        </description>
         <pubDate>Sat, 03 Oct 2020 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000//2020/10/03/pull-request-from-forked-repo/</link>
-        <guid isPermaLink="true">http://localhost:4000//2020/10/03/pull-request-from-forked-repo/</guid>
+        <link>http://localhost:4000/2020/10/03/update-in-pip-in-october/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/10/03/update-in-pip-in-october/</guid>
+      </item>
+    
+      <item>
+        <title>Submitting pull request from forked repo to main repo</title>
+        <description>
+          
+          It’s HacktoberFest again! 👻 Here are some useful commands to merge your forked repo with upstream changes from the original repo (Also see GitHub Docs). After forking, specify remote upstream repository: git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git You can then check the upstream locations via the command git remote -v. Before...
+        </description>
+        <pubDate>Sat, 03 Oct 2020 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2020/10/03/pull-request-from-forked-repo/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/10/03/pull-request-from-forked-repo/</guid>
       </item>
     
       <item>
         <title>Split a vector/list in a pyspark DataFrame into columns</title>
-        <description>&lt;h2 id=&quot;split-an-array-column&quot;&gt;Split an array column&lt;/h2&gt;
-&lt;p&gt;To split a column with arrays of strings, e.g. a DataFrame that looks like,&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+---------+
-|   strCol|
-+---------+
-|[A, B, C]|
-+---------+
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;into separate columns, the following code without the use of UDF works.&lt;/p&gt;
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyspark.sql.functions&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;df2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;strCol&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;df2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Output:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+---------+---------+---------+
-|strCol[0]|strCol[1]|strCol[2]|
-+---------+---------+---------+
-|        A|        B|        C|
-+---------+---------+---------+
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;split-a-vector-column&quot;&gt;Split a vector column&lt;/h2&gt;
-&lt;p&gt;To split a column with doubles stored in DenseVector format, e.g. a DataFrame that looks like,&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+-------------+
-|       intCol|
-+-------------+
-|[2.0,3.0,4.0]|
-+-------------+
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;one have to construct a UDF that does the convertion of DenseVector to array(python list) first:&lt;/p&gt;
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyspark.sql.functions&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyspark.sql.types&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ArrayType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DoubleType&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;split_array_to_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;to_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toArray&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tolist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;udf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ArrayType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DoubleType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()))(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;df3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split_array_to_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;intCol&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;split_int&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;\
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;split_int&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;df3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Output:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+------------+------------+------------+
-|split_int[0]|split_int[1]|split_int[2]|
-+------------+------------+------------+
-|         2.0|         3.0|         4.0|
-+------------+------------+------------+
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</description>
+        <description>
+          
+          Split an array column To split a column with arrays of strings, e.g. a DataFrame that looks like, +---------+ | strCol| +---------+ |[A, B, C]| +---------+ into separate columns, the following code without the use of UDF works. import pyspark.sql.functions as F df2 = df.select([F.col(&quot;strCol&quot;)[i] for i in range(3)]) df2.show()...
+        </description>
         <pubDate>Thu, 17 Sep 2020 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000//2020/09/17/split-vector-to-columns/</link>
-        <guid isPermaLink="true">http://localhost:4000//2020/09/17/split-vector-to-columns/</guid>
+        <link>http://localhost:4000/2020/09/17/split-vector-to-columns/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/09/17/split-vector-to-columns/</guid>
       </item>
     
       <item>
         <title>Ranking hierarchical labels with SQL</title>
-        <description>&lt;p&gt;To give indices to hierarchical labels, I can use &lt;code class=&quot;highlighter-rouge&quot;&gt;DENSE_RANK()&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;RANK()&lt;/code&gt; depending on the situation. 
-For example, if I have a DataFrame that looks like this:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+------+----------+
-|Fridge|    Fruits|
-+------+----------+
-|     A|     apple|
-|     B|    orange|
-|     C|     apple|
-|     D|     pears|
-|     C|Watermelon|
-+------+----------+
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The following SQL code&lt;/p&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;Fridge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;Fruits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;DENSE_RANK&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OVER&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Fridge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Fruits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Loc_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;DENSE_RANK&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OVER&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Fridge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Fridge_id_dense&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;RANK&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OVER&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Fridge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Fridge_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;DENSE_RANK&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OVER&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Fruits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Fruit_id_dense&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;RANK&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OVER&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Fruits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Fruit_id&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fridge_list&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;would yield the following table&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+------+----------+------+---------------+---------+--------------+--------+
-|Fridge|    Fruits|Loc_id|Fridge_id_dense|Fridge_id|Fruit_id_dense|Fruit_id|
-+------+----------+------+---------------+---------+--------------+--------+
-|     A|     apple|     1|              1|        1|             2|       2|
-|     B|    orange|     2|              2|        2|             3|       4|
-|     C|Watermelon|     3|              3|        3|             1|       1|
-|     C|     apple|     4|              3|        3|             2|       2|
-|     D|     pears|     5|              4|        5|             4|       5|
-+------+----------+------+---------------+---------+--------------+--------+
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</description>
+        <description>
+          
+          To give indices to hierarchical labels, I can use DENSE_RANK() or RANK() depending on the situation. For example, if I have a DataFrame that looks like this: +------+----------+ |Fridge| Fruits| +------+----------+ | A| apple| | B| orange| | C| apple| | D| pears| | C|Watermelon| +------+----------+ The following SQL code...
+        </description>
         <pubDate>Mon, 14 Sep 2020 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000//2020/09/14/dense-rank-and-character-order/</link>
-        <guid isPermaLink="true">http://localhost:4000//2020/09/14/dense-rank-and-character-order/</guid>
+        <link>http://localhost:4000/2020/09/14/dense-rank-and-character-order/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/09/14/dense-rank-and-character-order/</guid>
       </item>
     
       <item>
         <title>Custom Transformer that can be fitted into Pipeline</title>
-        <description>&lt;p&gt;How to construct a custom Transformer that can be fitted into a Pipeline object? I learned from a colleague today how to do that.&lt;/p&gt;
-
-&lt;p&gt;Below is an example that includes all key components:
-&lt;!--more--&gt;&lt;/p&gt;
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyspark&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;keyword_only&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyspark.ml&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Transformer&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyspark.ml.param.shared&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HasInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HasOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Param&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TypeConverters&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyspark.ml.util&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DefaultParamsReadable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DefaultParamsWritable&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyspark.sql&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DataFrame&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyspark.sql.types&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;StringType&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyspark.sql.functions&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CustomTransformer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Transformer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HasInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HasOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DefaultParamsReadable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DefaultParamsWritable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;input_col&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Param&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_dummy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;input_col&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;input column name.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;typeConverter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TypeConverters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;output_col&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Param&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_dummy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;output_col&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;output column name.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;typeConverter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TypeConverters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  
-  &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keyword_only&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;input_col&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;input&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;output_col&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;output&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CustomTransformer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_setDefault&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input_col&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;output_col&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_input_kwargs&lt;/span&gt;
-    &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;set_params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    
-  &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keyword_only&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;set_params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;input_col&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;input&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;output_col&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;output&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_input_kwargs&lt;/span&gt;
-    &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get_input_col&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getOrDefault&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input_col&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get_output_col&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getOrDefault&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;output_col&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;_transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;input_col&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_input_col&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;output_col&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_output_col&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;# The custom action: concatenate the integer form of the doubles from the Vector
-&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;transform_udf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;udf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'/'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;StringType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;withColumn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;output_col&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;transform_udf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input_col&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-  
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Let’s test it with a dataframe&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;df = spark.createDataFrame([(Vectors.dense([2.0, 1.0, 3.0]),), (Vectors.dense([0.4, 0.9, 7.0]),)], [&quot;numbers&quot;])
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;and a Pipeline like this:&lt;/p&gt;
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyspark.ml.feature&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ElementwiseProduct&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyspark.ml.linalg&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Vectors&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyspark.ml&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;elementwise_product&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ElementwiseProduct&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scalingVec&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Vectors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dense&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;2.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;3.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;5.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;numbers&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;outputCol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;product&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;custom_transformer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CustomTransformer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input_col&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;product&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;output_col&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;results&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;elementwise_product&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;custom_transformer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;I manage to get the expected results:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+-------------+--------------+-------+
-|      numbers|       product|results|
-+-------------+--------------+-------+
-|[2.0,1.0,3.0]|[4.0,3.0,15.0]| 4/3/15|
-|[0.4,0.9,7.0]|[0.8,2.7,35.0]| 0/2/35|
-+-------------+--------------+-------+
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</description>
+        <description>
+          
+          How to construct a custom Transformer that can be fitted into a Pipeline object? I learned from a colleague today how to do that. Below is an example that includes all key components: from pyspark import keyword_only from pyspark.ml import Transformer from pyspark.ml.param.shared import HasInputCol, HasOutputCol, Param, Params, TypeConverters from...
+        </description>
         <pubDate>Sat, 01 Aug 2020 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000//2020/08/01/custom-transformer/</link>
-        <guid isPermaLink="true">http://localhost:4000//2020/08/01/custom-transformer/</guid>
+        <link>http://localhost:4000/2020/08/01/custom-transformer/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/08/01/custom-transformer/</guid>
       </item>
     
       <item>
         <title>Minor release of my python package + release procedures</title>
-        <description>&lt;p&gt;[&lt;a href=&quot;https://github.com/csyhuang/hn2016_falwa/releases/tag/0.4.1&quot;&gt;hn2016_falwa Release 0.4.1&lt;/a&gt;] A minor release of my python package &lt;a href=&quot;https://github.com/csyhuang/hn2016_falwa&quot;&gt;hn2016_falwa&lt;/a&gt; is published. Thanks &lt;a href=&quot;https://github.com/chpolste&quot;&gt;Christopher Polster&lt;/a&gt; for submitting a pull request that fixes the interface of &lt;code class=&quot;highlighter-rouge&quot;&gt;BarotropicField&lt;/code&gt;. Moreover, I added procedures to process masked array in &lt;code class=&quot;highlighter-rouge&quot;&gt;QGField&lt;/code&gt; such that it can be conveniently used to process ERA5 data which is stored as masked array in netCDF files.&lt;/p&gt;
-
-&lt;p&gt;As a memo to myself - procedures for a release (which I often forget and have to google 😅):&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Update version number in &lt;code class=&quot;highlighter-rouge&quot;&gt;setup.py&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;readme.md&lt;/code&gt; and documentation pages.&lt;/li&gt;
-  &lt;li&gt;Add a (light-weighted) tag to the commit: &lt;code class=&quot;highlighter-rouge&quot;&gt;git tag &amp;lt;tagname&amp;gt;&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;Not only push the commits but also the tag by &lt;code class=&quot;highlighter-rouge&quot;&gt;git push origin &amp;lt;tagname&amp;gt;&lt;/code&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;If I have time, I would update the version on PYPI too:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Create the &lt;code class=&quot;highlighter-rouge&quot;&gt;dist/&lt;/code&gt; directory and the installation files: &lt;code class=&quot;highlighter-rouge&quot;&gt;python3 setup.py sdist bdist_wheel&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Upload the package: &lt;code class=&quot;highlighter-rouge&quot;&gt;python3 -m twine upload --repository testpypi dist/*&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+        <description>
+          
+          [hn2016_falwa Release 0.4.1] A minor release of my python package hn2016_falwa is published. Thanks Christopher Polster for submitting a pull request that fixes the interface of BarotropicField. Moreover, I added procedures to process masked array in QGField such that it can be conveniently used to process ERA5 data which is...
+        </description>
         <pubDate>Tue, 14 Jul 2020 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000//2020/07/14/hn2016_falwa-release0.4.1/</link>
-        <guid isPermaLink="true">http://localhost:4000//2020/07/14/hn2016_falwa-release0.4.1/</guid>
+        <link>http://localhost:4000/2020/07/14/hn2016_falwa-release0.4.1/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/07/14/hn2016_falwa-release0.4.1/</guid>
       </item>
     
       <item>
         <title>Bulk download of ERA5 data from CDSAPI</title>
-        <description>&lt;p&gt;I wrote a sample script to download ERA5 reanalysis data via CDSAPI month by month. &lt;a href=&quot;https://github.com/csyhuang/download_era5&quot;&gt;Here is the GitHub repo&lt;/a&gt; with instructions how to use it.&lt;/p&gt;
-</description>
+        <description>
+          
+          I wrote a sample script to download ERA5 reanalysis data via CDSAPI month by month. Here is the GitHub repo with instructions how to use it.
+
+        </description>
         <pubDate>Tue, 30 Jun 2020 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000//2020/06/30/bulk-download-of-era5/</link>
-        <guid isPermaLink="true">http://localhost:4000//2020/06/30/bulk-download-of-era5/</guid>
+        <link>http://localhost:4000/2020/06/30/bulk-download-of-era5/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/06/30/bulk-download-of-era5/</guid>
       </item>
     
       <item>
         <title>Reading Notes on Spark - The Definitive Guide</title>
-        <description>&lt;p&gt;I am reading the book &lt;a href=&quot;https://www.oreilly.com/library/view/spark-the-definitive/9781491912201/&quot;&gt;Spark: The Definitive Guide&lt;/a&gt; by Bill Chambers, Matei Zaharia. Here are my reading notes:
-&lt;!--more--&gt;&lt;/p&gt;
+        <description>
+          
+          I am reading the book Spark: The Definitive Guide by Bill Chambers, Matei Zaharia. Here are my reading notes:
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;/spark_the_def_guide/ch1&quot;&gt;Ch.1 - What is Apache Spark?&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;/spark_the_def_guide/ch2&quot;&gt;Ch.2 - A Gentle Introduction to Spark&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
 
-</description>
+
+  
+    Ch.1 - What is Apache Spark?
+  
+  
+    Ch.2 - A Gentle Introduction to Spark
+  
+  
+    Ch.3 - A Tour of Spark’s Toolset
+  
+  
+    Ch.4 - Structured API Overview
+  
+
+
+
+        </description>
         <pubDate>Sat, 18 Apr 2020 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000//2020/04/18/spark-definitive-guide-reading-note/</link>
-        <guid isPermaLink="true">http://localhost:4000//2020/04/18/spark-definitive-guide-reading-note/</guid>
+        <link>http://localhost:4000/2020/04/18/spark-definitive-guide-reading-note/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/04/18/spark-definitive-guide-reading-note/</guid>
       </item>
     
       <item>
         <title>READ MORE button via jekyll</title>
-        <description>&lt;p&gt;Found a workable solution adding “read more” button to jekyll posts from &lt;a href=&quot;https://jonnylangefeld.com/blog/how-to-add-a-read-more-button-that-doesnt-suck-to-your-jekyll-blog&quot;&gt;Jonny Langefeld’s blog post&lt;/a&gt;. 😄 Thanks for the solution!
-&lt;!--more--&gt;
-Here we go. 😉&lt;/p&gt;
-</description>
+        <description>
+          
+          Found a workable solution adding “read more” button to jekyll posts from Jonny Langefeld’s blog post. 😄 Thanks for the solution!
+
+Here we go. 😉
+
+        </description>
         <pubDate>Fri, 17 Apr 2020 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000//2020/04/17/add-read-more-on-front-page/</link>
-        <guid isPermaLink="true">http://localhost:4000//2020/04/17/add-read-more-on-front-page/</guid>
+        <link>http://localhost:4000/2020/04/17/add-read-more-on-front-page/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/04/17/add-read-more-on-front-page/</guid>
       </item>
     
       <item>
         <title>More efficient way to do outer join with large dataframes</title>
-        <description>&lt;p&gt;Today I learned from a colleague the way of doing &lt;code class=&quot;highlighter-rouge&quot;&gt;outer join&lt;/code&gt; of large dataframes more efficiently: instead of doing the &lt;code class=&quot;highlighter-rouge&quot;&gt;outer join&lt;/code&gt;, you can first &lt;code class=&quot;highlighter-rouge&quot;&gt;union&lt;/code&gt; the key column, and then implement &lt;code class=&quot;highlighter-rouge&quot;&gt;left join&lt;/code&gt; twice. I have done an experiment myself on the cluster with two dataframes (&lt;code class=&quot;highlighter-rouge&quot;&gt;df1&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;df2&lt;/code&gt;) - each dataframe has ~10k rows, and there is only ~10% of overlap(i.e. an inner-join would result in ~1k rows).&lt;/p&gt;
-
-&lt;p&gt;The usual way of doing outer join would be like:&lt;/p&gt;
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;df3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;how&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'outer'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;drop_duplicates&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Here is an equivalent way(I call it &lt;em&gt;union-left&lt;/em&gt; here) that takes less time to compute:&lt;/p&gt;
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;df3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;union&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;df3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x1_df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;how&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'left'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;df3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x2_df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;how&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'left'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;drop_duplicates&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The distribution of IDs in the two dataframes:&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt; &lt;/th&gt;
-      &lt;th&gt;df1 only&lt;/th&gt;
-      &lt;th&gt;overlap&lt;/th&gt;
-      &lt;th&gt;df2 only&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;# of ids&lt;/td&gt;
-      &lt;td&gt;8625&lt;/td&gt;
-      &lt;td&gt;914&lt;/td&gt;
-      &lt;td&gt;8623&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;Here is the distribution of computing times for &lt;code class=&quot;highlighter-rouge&quot;&gt;inner&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;left&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;outer&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;right&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;union-left&lt;/code&gt;(that gives same results as &lt;code class=&quot;highlighter-rouge&quot;&gt;outer&lt;/code&gt;) joins(I repeated each join 20 times):&lt;/p&gt;
-
-&lt;p&gt;&lt;img style=&quot;float: center;&quot; src=&quot;/assets/img/types_of_join_computing_time.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;For these sizes of dataframes, the &lt;code class=&quot;highlighter-rouge&quot;&gt;union-left&lt;/code&gt; join is on average ~20% faster than the equivalent &lt;code class=&quot;highlighter-rouge&quot;&gt;outer&lt;/code&gt; join.&lt;/p&gt;
-</description>
+        <description>
+          
+          Today I learned from a colleague the way of doing outer join of large dataframes more efficiently: instead of doing the outer join, you can first union the key column, and then implement left join twice. I have done an experiment myself on the cluster with two dataframes (df1 and...
+        </description>
         <pubDate>Thu, 16 Apr 2020 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000//2020/04/16/faster-outer-join-by-two-left-joins/</link>
-        <guid isPermaLink="true">http://localhost:4000//2020/04/16/faster-outer-join-by-two-left-joins/</guid>
+        <link>http://localhost:4000/2020/04/16/faster-outer-join-by-two-left-joins/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/04/16/faster-outer-join-by-two-left-joins/</guid>
       </item>
     
       <item>
         <title>Local wave activity calculation for Southern Hemisphere available in release0.4.0</title>
-        <description>&lt;p&gt;[hn2016_falwa Release 0.4.0] 😄I am happy to announce that the climate data analysis in Nakamura and Huang(2018, Science) for the southern hemisphere is also available &lt;a href=&quot;https://github.com/csyhuang/hn2016_falwa&quot;&gt;on GitHub&lt;/a&gt; now! (Finally, I have time to do a thorough check of the code and make the release…)&lt;/p&gt;
-
-&lt;p&gt;Check out the release note for enhanced functionality:&lt;br /&gt;
-&lt;a href=&quot;https://github.com/csyhuang/hn2016_falwa/releases/tag/0.4.0&quot;&gt;https://github.com/csyhuang/hn2016_falwa/releases/tag/0.4.0&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;The documentation page has been fixed too:&lt;br /&gt;
-&lt;a href=&quot;https://csyhuang.github.io/hn2016_falwa&quot;&gt;https://csyhuang.github.io/hn2016_falwa&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Jupyter notebook demonstrating the usage of the functions:&lt;br /&gt;
-&lt;a href=&quot;https://github.com/csyhuang/hn2016_falwa/blob/master/examples/nh2018_science/demo_script_for_nh2018.ipynb&quot;&gt;https://github.com/csyhuang/hn2016_falwa/blob/master/examples/nh2018_science/demo_script_for_nh2018.ipynb&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;If you have any questions/issues regarding the usage of the package, feel free to post on the &lt;a href=&quot;https://github.com/csyhuang/hn2016_falwa/issues&quot;&gt;Issue page&lt;/a&gt; of the repo! I will help you fix them soon as I can!&lt;/p&gt;
-</description>
+        <description>
+          
+          [hn2016_falwa Release 0.4.0] 😄I am happy to announce that the climate data analysis in Nakamura and Huang(2018, Science) for the southern hemisphere is also available on GitHub now! (Finally, I have time to do a thorough check of the code and make the release…) Check out the release note for...
+        </description>
         <pubDate>Thu, 09 Apr 2020 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000//2020/04/09/hn2016_falwa-release0.4.0/</link>
-        <guid isPermaLink="true">http://localhost:4000//2020/04/09/hn2016_falwa-release0.4.0/</guid>
+        <link>http://localhost:4000/2020/04/09/hn2016_falwa-release0.4.0/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/04/09/hn2016_falwa-release0.4.0/</guid>
+      </item>
+    
+      <item>
+        <title>Tips for writing more efficient SQL</title>
+        <description>
+          
+          Learned from colleagues some points to pay attention to when writing SQL queries. (This post will be updated from time to time.) Partitioned tables Always specify the partition in the where clause. If you have to retrieve data from several partitions, loop through it one-by-one. Distinct elements Note that the...
+        </description>
+        <pubDate>Fri, 07 Feb 2020 00:00:00 -0600</pubDate>
+        <link>http://localhost:4000/2020/02/07/tips-for-writing-more-efficient-sql/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/02/07/tips-for-writing-more-efficient-sql/</guid>
+      </item>
+    
+      <item>
+        <title>I started a comic series about bouldering (for fun)</title>
+        <description>
+          
+          This is not about work but for fun :D I recently started learning bouldering (2.5 months till now?) and that’s lots of fun! I keep updating a comic series - the Matchman Bouldering Series - on Instagram/Tumblr that records the ideas I learned from friends in every session collaborating with...
+        </description>
+        <pubDate>Fri, 20 Dec 2019 00:00:00 -0600</pubDate>
+        <link>http://localhost:4000/2019/12/20/comic-series-on-bouldering/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/12/20/comic-series-on-bouldering/</guid>
+      </item>
+    
+      <item>
+        <title>Conversion of pandas dataframe to pyspark dataframe with an older version of pandas</title>
+        <description>
+          
+          Pandas dataframe can be converted to pyspark dataframe easily in the newest version of pandas after v0.19.2. If you are using an older version of pandas, you have to do a bit more work for such conversion as follows. First, load the packages and initiate a spark session. from pyspark.sql...
+        </description>
+        <pubDate>Wed, 30 Oct 2019 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2019/10/30/pandas_to_pyspark_before_0.19.2/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/10/30/pandas_to_pyspark_before_0.19.2/</guid>
+      </item>
+    
+      <item>
+        <title>Common issues in RNN training</title>
+        <description>
+          
+          Exploding gradients and vanishing gradients are two common issues with the training of RNN. To avoid exploding gradients, one may use: Truncated Back-propagation through time (BPTT) Clip gradients at threshold RMSprop to adjust learning rate Vanishing gradients are harder to detect. To avoid it, one may use: Weight initialization ReLu...
+        </description>
+        <pubDate>Mon, 14 Oct 2019 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2019/10/14/notes-on-handling-rnn-training-problem/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/10/14/notes-on-handling-rnn-training-problem/</guid>
+      </item>
+    
+      <item>
+        <title>Generate sequence from an array column of pyspark dataframe</title>
+        <description>
+          
+          Suppose I have a Hive table that has a column of sequences, +------------------+ | sequence| +------------------+ | [3, 23, 564]| +------------------+ how to generate a column that contains permutations of each sequence in multiple rows? The desired output shall look like: +------------------+------------------+ | sequence| permutation| +------------------+------------------+ | [3, 23, 564]|...
+        </description>
+        <pubDate>Wed, 25 Sep 2019 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2019/09/25/pyspark-generate-sequences/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/09/25/pyspark-generate-sequences/</guid>
+      </item>
+    
+      <item>
+        <title>Pyspark error &quot;Could not serialize object&quot;</title>
+        <description>
+          
+          This post is related to the idea discuss in the post “How to Solve Non-Serializable Errors When Instantiating Objects In Spark UDFs”. Here I discuss the solution in a hypothetical scenario in pyspark. Suppose I have a class to transform string to sum of numbers like this: import pyspark.sql.functions as...
+        </description>
+        <pubDate>Tue, 24 Sep 2019 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2019/09/24/pyspark-could-not-serialize-object/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/09/24/pyspark-could-not-serialize-object/</guid>
+      </item>
+    
+      <item>
+        <title>Handling JSON in PostgreSQL</title>
+        <description>
+          
+          Found a useful cheatsheet that listed out operations on JSON in PostgreSQL.
+
+If I want to list the rows where column col1 in table table1 contains a JSON object with the key key1, I can use:
+
+select * from table1
+where col1-&amp;gt;'key1' IS NOT NULL
+
+
+        </description>
+        <pubDate>Mon, 16 Sep 2019 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2019/09/16/json-in-postgresql/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/09/16/json-in-postgresql/</guid>
       </item>
     
   </channel>
 </rss>
-
-</div>
-
-
-
-<link rel="stylesheet" href="/public/css/trial.css">
-  
-
-      </div>
-    </div>
-
-    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
-
-    <script>
-      (function(document) {
-        var toggle = document.querySelector('.sidebar-toggle');
-        var sidebar = document.querySelector('#sidebar');
-        var checkbox = document.querySelector('#sidebar-checkbox');
-
-        document.addEventListener('click', function(e) {
-          var target = e.target;
-
-          if(!checkbox.checked ||
-             sidebar.contains(target) ||
-             (target === checkbox || target === toggle)) return;
-
-          checkbox.checked = false;
-        }, false);
-      })(document);
-    </script>
-  </body>
-</html>

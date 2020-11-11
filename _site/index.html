@@ -193,6 +193,76 @@ Welcome to my personal homepage! Please use the <b>left-side menu</b> to navigat
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/2020/10/29/odsc-west-talk-on-mlops/">
+        Notes on ModelOps and MLOps talks
+      </a>
+    </h1>
+
+    <span class="post-date">29 Oct 2020</span>
+
+    
+        <p>I wrote a short article on Medium, <a href="https://claresyhuang.medium.com/odsc-west-2020-notes-on-modelops-and-mlops-talks-a2e0d10f3c46">ODSC West 2020: Notes on ModelOps and MLOps talks</a>, about what I learned from two talks in ODSC West 2020.</p>
+
+
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2020/10/07/unittest-notes/">
+        Running a single test case in the unittest suite
+      </a>
+    </h1>
+
+    <span class="post-date">07 Oct 2020</span>
+
+    
+        <p>If your unit tests are written using the <code class="highlighter-rouge">unittest</code> package, to run a <em>single</em> test case in the TestSuite, the command line syntax is</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python setup.py <span class="nb">test</span> <span class="nt">-m</span> tests.test_module.TestClass.test_case
+</code></pre></div></div>
+
+<p>Stack Overflow reference: <a href="https://stackoverflow.com/questions/21167516/does-unittest-allow-single-case-suite-testing-through-setup-py-test">Does unittest allow single case/suite testing through “setup.py test”?</a></p>
+
+<p>If your unit tests are written using <code class="highlighter-rouge">pytest</code>, the command used would be</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pytest tests/test_module.py::test_case
+</code></pre></div></div>
+
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2020/10/03/update-in-pip-in-october/">
+        New pip release and changes in its way to resolve dependency conflicts
+      </a>
+    </h1>
+
+    <span class="post-date">03 Oct 2020</span>
+
+    
+        <p>When I was trying to set up a conda environment to run a package…</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ERROR: After October 2020 you may experience errors when installing or updating packages. This is because pip will change the way that it resolves dependency conflicts.
+
+We recommend you use --use-feature=2020-resolver to test your packages with the new resolver before it becomes the default.
+
+numpydoc 1.1.0 requires sphinx&gt;=1.6.5, but you'll have sphinx 1.5.3 which is incompatible.
+</code></pre></div></div>
+
+<p>After googling, I found <a href="https://stackoverflow.com/questions/63277123/what-is-use-feature-2020-resolver-error-message-with-jupyter-installation-on">this post on StackOverflow</a> explaining the issue - it is related to the changes in <a href="https://discuss.python.org/t/announcement-pip-20-2-release/4863">pip’s release 20.2</a>.</p>
+
+<p>To implement the check, install packages with the command</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install</span> <span class="nt">--use-feature</span><span class="o">=</span>2020-resolver package
+</code></pre></div></div>
+
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/2020/10/03/pull-request-from-forked-repo/">
         Submitting pull request from forked repo to main repo
       </a>
@@ -494,6 +564,12 @@ For example, if I have a DataFrame that looks like this:</p>
   </li>
   <li>
     <p><a href="/spark_the_def_guide/ch2">Ch.2 - A Gentle Introduction to Spark</a></p>
+  </li>
+  <li>
+    <p><a href="/spark_the_def_guide/ch3">Ch.3 - A Tour of Spark’s Toolset</a></p>
+  </li>
+  <li>
+    <p><a href="/spark_the_def_guide/ch4">Ch.4 - Structured API Overview</a></p>
   </li>
 </ul>
 
@@ -1021,97 +1097,6 @@ py4j.Py4JException: Method __getstate__([]) does not exist
 <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">table1</span>
 <span class="k">where</span> <span class="n">col1</span><span class="o">-&gt;</span><span class="s1">'key1'</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span>
 </code></pre></div></div>
-
-    
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2019/09/15/lwa-package-updated-to-new-version/">
-        Local wave activity package updated to version 0.3.7
-      </a>
-    </h1>
-
-    <span class="post-date">15 Sep 2019</span>
-
-    
-        <p>The <a href="https://github.com/csyhuang/hn2016_falwa">python package</a> <code class="highlighter-rouge">hn2016_falwa</code> has just been updated with the following changes:</p>
-<ul>
-  <li>Switched the unittest framework from <code class="highlighter-rouge">unittest</code> to <code class="highlighter-rouge">pytest</code></li>
-  <li>Improved interface of the QGField object</li>
-  <li>Added a new function <code class="highlighter-rouge">hn2016_falwa.download_data.retrieve_erai</code> to download ERA-Interim data (but not connected to the main program yet)</li>
-</ul>
-
-<p>My package uses <code class="highlighter-rouge">f2py</code>. When switching from <code class="highlighter-rouge">unittest</code> to <code class="highlighter-rouge">pytest</code>, there are several changes to make in <code class="highlighter-rouge">setup.py</code> and <code class="highlighter-rouge">.travis</code> to accommodate such usage:</p>
-
-<p>In <code class="highlighter-rouge">setup</code> (<code class="highlighter-rouge">numpy.distutils.core.setup</code>), remove the argument</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">test_suite</span><span class="o">=</span><span class="s">'tests.my_module_suite'</span>
-</code></pre></div></div>
-<p>and add:</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">packages</span><span class="o">=</span><span class="n">find_packages</span><span class="p">(),</span>
-    <span class="n">setup_requires</span><span class="o">=</span><span class="p">[</span><span class="s">'pytest-runner'</span><span class="p">],</span>
-    <span class="n">tests_require</span><span class="o">=</span><span class="p">[</span><span class="s">'pytest'</span><span class="p">],</span>
-</code></pre></div></div>
-
-<p>In <code class="highlighter-rouge">.travis</code>, the <code class="highlighter-rouge">script</code> section looks like:</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>script:
-  - python setup.py pytest
-</code></pre></div></div>
-
-    
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2019/09/10/colloquium-at-uw-madison/">
-        Visit to AOS at UW-Madison
-      </a>
-    </h1>
-
-    <span class="post-date">10 Sep 2019</span>
-
-    
-        <p>I visited the <a href="https://www.aos.wisc.edu/">Department of Atmospheric and Oceanic Sciences</a> at the <a href="https://www.wisc.edu/">University of Wisconsin-Madison</a> for two days and had a lot of fun discussing atmospheric (and machine learning) research with the scientists there. Thanks Prof. Jon Martin for inviting me over!</p>
-
-<p>The colloquium I gave on Monday was an overview of the finite-amplitude local Rossby wave activity theory and its application to study blocking. We learned from this framework that atmospheric blocking can be modelled as a traffic jam problem. I also mentioned the follow-up work by <a href="https://journals.ametsoc.org/toc/atsc/current">Paradise et al. (2019, JAS)</a> that discusses the implication of this notion.</p>
-
-<p>The slides for my colloquium can be found below:</p>
-
-<p><a href="https://www.dropbox.com/s/ladgdo6tjkyhvmo/clare-uw-colloquium-20190909.pdf?dl=1"><img src="/assets/img/uw-colloquium-thumbnail.png" alt="Slides for UW-Madison Colloquium" /></a></p>
-
-    
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2019/07/24/rnn-papers/">
-        Papers on architecture of Recurrent Neural Networks (RNN)
-      </a>
-    </h1>
-
-    <span class="post-date">24 Jul 2019</span>
-
-    
-        <p>Bookmarking some papers mentioned in Andrew Ng’s course <a href="https://www.coursera.org/learn/nlp-sequence-models">Sequence Models</a>:</p>
-
-<h3 id="gate-recurrent-unit-gru">Gate Recurrent Unit (GRU)</h3>
-
-<ul>
-  <li>
-    <p>Cho, K., Van Merriënboer, B., Bahdanau, D., &amp; Bengio, Y. (2014). <a href="https://arxiv.org/abs/1409.1259">On the properties of neural machine translation: Encoder-decoder approaches</a>. <em>arXiv preprint arXiv:1409.1259</em>.</p>
-  </li>
-  <li>
-    <p>Chung, J., Gulcehre, C., Cho, K., &amp; Bengio, Y. (2014). <a href="https://arxiv.org/abs/1412.3555">Empirical evaluation of gated recurrent neural networks on sequence modeling</a>. <em>arXiv preprint arXiv:1412.3555</em>.</p>
-  </li>
-</ul>
-
-<h3 id="long-short-term-memory-lstm">Long short-term memory (LSTM)</h3>
-
-<ul>
-  <li>Hochreiter, S., &amp; Schmidhuber, J. (1997). <a href="https://www.bioinf.jku.at/publications/older/2604.pdf">Long short-term memory</a>. <em>Neural computation</em>, 9(8), 1735-1780.</li>
-</ul>
-
-<p>(More to update)</p>
 
     
   </div>
