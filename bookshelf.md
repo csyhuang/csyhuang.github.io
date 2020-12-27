@@ -16,6 +16,13 @@ Here is a collection of free books online that I find useful:
 - [Lovric, M. (2011). **International Encyclopedia of Statistical Science**. Springer.](https://link.springer.com/referencework/10.1007/978-3-642-04898-2)
 - [Friedman, J., Hastie, T., & Tibshirani, R. (2001). **The elements of statistical learning**. New York: Springer series in statistics.](https://web.stanford.edu/~hastie/Papers/ESLII.pdf)
 
+## Reinforcement Learning
+- [Sutton, R. S., & Barto, A. G. (2018). **Reinforcement learning: An introduction.** MIT press.](http://incompleteideas.net/book/the-book.html)
+
+## Model Interpretability
+- [Molnar, C. (2019). **Interpretable Machine Learning:
+A Guide for Making Black Box Models Explainable.**](https://christophm.github.io/interpretable-ml-book/)
+
 ## Natural Language Processing
 - [Jurafsky, D., & Martin, J. H. (2009). **Speech and language processing: An introduction to natural language processing, computational linguistics, and speech recognition**. Prentice Hall series in artificial intelligence.](https://web.stanford.edu/~jurafsky/slp3/)
 - [Dale, R., Moisl, H., & Somers, H. (2000). **Handbook of natural language processing**. CRC Press.](https://karczmarczuk.users.greyc.fr/TEACH/TAL/Doc/Handbook%20Of%20Natural%20Language%20Processing,%20Second%20Edition%20Chapman%20&%20Hall%20Crc%20Machine%20Learning%20&%20Pattern%20Recognition%202010.pdf)

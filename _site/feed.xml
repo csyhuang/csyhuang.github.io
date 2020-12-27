@@ -3,8 +3,30 @@
   <channel>
     <title>Clare S. Y. Huang</title>
     <description>PhD in Geophysical Sciences (UChicago). Love coding, music and writing.</description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <link>http://csyhuang.github.io/</link>
+    <atom:link href="http://csyhuang.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Added a directory for some of my music arrangements</title>
+        <description>
+          
+          🎹 I have been uploading improvised piano cover on my YouTube channel. Recently, I received some comments asking for the music sheet of my arrangement, and it seems to be a good idea to keep a record of my work. Therefore, I started making music sheets of my arrangement with...
+        </description>
+        <pubDate>Sat, 26 Dec 2020 00:00:00 -0600</pubDate>
+        <link>http://csyhuang.github.io/2020/12/26/added-page-music-arrangement/</link>
+        <guid isPermaLink="true">http://csyhuang.github.io/2020/12/26/added-page-music-arrangement/</guid>
+      </item>
+    
+      <item>
+        <title>Databricks Certified Associate Developer exam for Apache Spark 3.0</title>
+        <description>
+          
+          I passed the Databricks Certified Associate Developer exam for Apache Spark 3.0 (python). Here is my certificate! I registered for the exam when joining the Spark Summit this June, hoping to set a goal to push myself to dive deeper into spark architecture and performance tuning. [Experience sharing] On top...
+        </description>
+        <pubDate>Thu, 10 Dec 2020 00:00:00 -0600</pubDate>
+        <link>http://csyhuang.github.io/2020/12/10/databricks-certified-associate-developer-exam-spark-3/</link>
+        <guid isPermaLink="true">http://csyhuang.github.io/2020/12/10/databricks-certified-associate-developer-exam-spark-3/</guid>
+      </item>
     
       <item>
         <title>Notes on ModelOps and MLOps talks</title>
@@ -15,8 +37,8 @@
 
         </description>
         <pubDate>Thu, 29 Oct 2020 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2020/10/29/odsc-west-talk-on-mlops/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/10/29/odsc-west-talk-on-mlops/</guid>
+        <link>http://csyhuang.github.io/2020/10/29/odsc-west-talk-on-mlops/</link>
+        <guid isPermaLink="true">http://csyhuang.github.io/2020/10/29/odsc-west-talk-on-mlops/</guid>
       </item>
     
       <item>
@@ -26,8 +48,8 @@
           If your unit tests are written using the unittest package, to run a single test case in the TestSuite, the command line syntax is python setup.py test -m tests.test_module.TestClass.test_case Stack Overflow reference: Does unittest allow single case/suite testing through “setup.py test”? If your unit tests are written using pytest, the...
         </description>
         <pubDate>Wed, 07 Oct 2020 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2020/10/07/unittest-notes/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/10/07/unittest-notes/</guid>
+        <link>http://csyhuang.github.io/2020/10/07/unittest-notes/</link>
+        <guid isPermaLink="true">http://csyhuang.github.io/2020/10/07/unittest-notes/</guid>
       </item>
     
       <item>
@@ -37,8 +59,8 @@
           When I was trying to set up a conda environment to run a package… ERROR: After October 2020 you may experience errors when installing or updating packages. This is because pip will change the way that it resolves dependency conflicts. We recommend you use --use-feature=2020-resolver to test your packages with...
         </description>
         <pubDate>Sat, 03 Oct 2020 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2020/10/03/update-in-pip-in-october/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/10/03/update-in-pip-in-october/</guid>
+        <link>http://csyhuang.github.io/2020/10/03/update-in-pip-in-october/</link>
+        <guid isPermaLink="true">http://csyhuang.github.io/2020/10/03/update-in-pip-in-october/</guid>
       </item>
     
       <item>
@@ -48,8 +70,8 @@
           It’s HacktoberFest again! 👻 Here are some useful commands to merge your forked repo with upstream changes from the original repo (Also see GitHub Docs). After forking, specify remote upstream repository: git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git You can then check the upstream locations via the command git remote -v. Before...
         </description>
         <pubDate>Sat, 03 Oct 2020 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2020/10/03/pull-request-from-forked-repo/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/10/03/pull-request-from-forked-repo/</guid>
+        <link>http://csyhuang.github.io/2020/10/03/pull-request-from-forked-repo/</link>
+        <guid isPermaLink="true">http://csyhuang.github.io/2020/10/03/pull-request-from-forked-repo/</guid>
       </item>
     
       <item>
@@ -59,8 +81,8 @@
           Split an array column To split a column with arrays of strings, e.g. a DataFrame that looks like, +---------+ | strCol| +---------+ |[A, B, C]| +---------+ into separate columns, the following code without the use of UDF works. import pyspark.sql.functions as F df2 = df.select([F.col(&quot;strCol&quot;)[i] for i in range(3)]) df2.show()...
         </description>
         <pubDate>Thu, 17 Sep 2020 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2020/09/17/split-vector-to-columns/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/09/17/split-vector-to-columns/</guid>
+        <link>http://csyhuang.github.io/2020/09/17/split-vector-to-columns/</link>
+        <guid isPermaLink="true">http://csyhuang.github.io/2020/09/17/split-vector-to-columns/</guid>
       </item>
     
       <item>
@@ -70,8 +92,8 @@
           To give indices to hierarchical labels, I can use DENSE_RANK() or RANK() depending on the situation. For example, if I have a DataFrame that looks like this: +------+----------+ |Fridge| Fruits| +------+----------+ | A| apple| | B| orange| | C| apple| | D| pears| | C|Watermelon| +------+----------+ The following SQL code...
         </description>
         <pubDate>Mon, 14 Sep 2020 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2020/09/14/dense-rank-and-character-order/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/09/14/dense-rank-and-character-order/</guid>
+        <link>http://csyhuang.github.io/2020/09/14/dense-rank-and-character-order/</link>
+        <guid isPermaLink="true">http://csyhuang.github.io/2020/09/14/dense-rank-and-character-order/</guid>
       </item>
     
       <item>
@@ -81,8 +103,8 @@
           How to construct a custom Transformer that can be fitted into a Pipeline object? I learned from a colleague today how to do that. Below is an example that includes all key components: from pyspark import keyword_only from pyspark.ml import Transformer from pyspark.ml.param.shared import HasInputCol, HasOutputCol, Param, Params, TypeConverters from...
         </description>
         <pubDate>Sat, 01 Aug 2020 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2020/08/01/custom-transformer/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/08/01/custom-transformer/</guid>
+        <link>http://csyhuang.github.io/2020/08/01/custom-transformer/</link>
+        <guid isPermaLink="true">http://csyhuang.github.io/2020/08/01/custom-transformer/</guid>
       </item>
     
       <item>
@@ -92,8 +114,8 @@
           [hn2016_falwa Release 0.4.1] A minor release of my python package hn2016_falwa is published. Thanks Christopher Polster for submitting a pull request that fixes the interface of BarotropicField. Moreover, I added procedures to process masked array in QGField such that it can be conveniently used to process ERA5 data which is...
         </description>
         <pubDate>Tue, 14 Jul 2020 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2020/07/14/hn2016_falwa-release0.4.1/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/07/14/hn2016_falwa-release0.4.1/</guid>
+        <link>http://csyhuang.github.io/2020/07/14/hn2016_falwa-release0.4.1/</link>
+        <guid isPermaLink="true">http://csyhuang.github.io/2020/07/14/hn2016_falwa-release0.4.1/</guid>
       </item>
     
       <item>
@@ -104,37 +126,19 @@
 
         </description>
         <pubDate>Tue, 30 Jun 2020 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2020/06/30/bulk-download-of-era5/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/06/30/bulk-download-of-era5/</guid>
+        <link>http://csyhuang.github.io/2020/06/30/bulk-download-of-era5/</link>
+        <guid isPermaLink="true">http://csyhuang.github.io/2020/06/30/bulk-download-of-era5/</guid>
       </item>
     
       <item>
         <title>Reading Notes on Spark - The Definitive Guide</title>
         <description>
           
-          I am reading the book Spark: The Definitive Guide by Bill Chambers, Matei Zaharia. Here are my reading notes:
-
-
-
-  
-    Ch.1 - What is Apache Spark?
-  
-  
-    Ch.2 - A Gentle Introduction to Spark
-  
-  
-    Ch.3 - A Tour of Spark’s Toolset
-  
-  
-    Ch.4 - Structured API Overview
-  
-
-
-
+          I am reading the book Spark: The Definitive Guide by Bill Chambers, Matei Zaharia. Here are my reading notes: Ch.1 - What is Apache Spark? Ch.2 - A Gentle Introduction to Spark Ch.3 - A Tour of Spark’s Toolset Ch.4 - Structured API Overview Ch.5 - Basic Structured Operations Ch.6...
         </description>
         <pubDate>Sat, 18 Apr 2020 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2020/04/18/spark-definitive-guide-reading-note/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/04/18/spark-definitive-guide-reading-note/</guid>
+        <link>http://csyhuang.github.io/2020/04/18/spark-definitive-guide-reading-note/</link>
+        <guid isPermaLink="true">http://csyhuang.github.io/2020/04/18/spark-definitive-guide-reading-note/</guid>
       </item>
     
       <item>
@@ -147,8 +151,8 @@ Here we go. 😉
 
         </description>
         <pubDate>Fri, 17 Apr 2020 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2020/04/17/add-read-more-on-front-page/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/04/17/add-read-more-on-front-page/</guid>
+        <link>http://csyhuang.github.io/2020/04/17/add-read-more-on-front-page/</link>
+        <guid isPermaLink="true">http://csyhuang.github.io/2020/04/17/add-read-more-on-front-page/</guid>
       </item>
     
       <item>
@@ -158,8 +162,8 @@ Here we go. 😉
           Today I learned from a colleague the way of doing outer join of large dataframes more efficiently: instead of doing the outer join, you can first union the key column, and then implement left join twice. I have done an experiment myself on the cluster with two dataframes (df1 and...
         </description>
         <pubDate>Thu, 16 Apr 2020 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2020/04/16/faster-outer-join-by-two-left-joins/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/04/16/faster-outer-join-by-two-left-joins/</guid>
+        <link>http://csyhuang.github.io/2020/04/16/faster-outer-join-by-two-left-joins/</link>
+        <guid isPermaLink="true">http://csyhuang.github.io/2020/04/16/faster-outer-join-by-two-left-joins/</guid>
       </item>
     
       <item>
@@ -169,8 +173,8 @@ Here we go. 😉
           [hn2016_falwa Release 0.4.0] 😄I am happy to announce that the climate data analysis in Nakamura and Huang(2018, Science) for the southern hemisphere is also available on GitHub now! (Finally, I have time to do a thorough check of the code and make the release…) Check out the release note for...
         </description>
         <pubDate>Thu, 09 Apr 2020 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2020/04/09/hn2016_falwa-release0.4.0/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/04/09/hn2016_falwa-release0.4.0/</guid>
+        <link>http://csyhuang.github.io/2020/04/09/hn2016_falwa-release0.4.0/</link>
+        <guid isPermaLink="true">http://csyhuang.github.io/2020/04/09/hn2016_falwa-release0.4.0/</guid>
       </item>
     
       <item>
@@ -180,8 +184,8 @@ Here we go. 😉
           Learned from colleagues some points to pay attention to when writing SQL queries. (This post will be updated from time to time.) Partitioned tables Always specify the partition in the where clause. If you have to retrieve data from several partitions, loop through it one-by-one. Distinct elements Note that the...
         </description>
         <pubDate>Fri, 07 Feb 2020 00:00:00 -0600</pubDate>
-        <link>http://localhost:4000/2020/02/07/tips-for-writing-more-efficient-sql/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/02/07/tips-for-writing-more-efficient-sql/</guid>
+        <link>http://csyhuang.github.io/2020/02/07/tips-for-writing-more-efficient-sql/</link>
+        <guid isPermaLink="true">http://csyhuang.github.io/2020/02/07/tips-for-writing-more-efficient-sql/</guid>
       </item>
     
       <item>
@@ -191,8 +195,8 @@ Here we go. 😉
           This is not about work but for fun :D I recently started learning bouldering (2.5 months till now?) and that’s lots of fun! I keep updating a comic series - the Matchman Bouldering Series - on Instagram/Tumblr that records the ideas I learned from friends in every session collaborating with...
         </description>
         <pubDate>Fri, 20 Dec 2019 00:00:00 -0600</pubDate>
-        <link>http://localhost:4000/2019/12/20/comic-series-on-bouldering/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/12/20/comic-series-on-bouldering/</guid>
+        <link>http://csyhuang.github.io/2019/12/20/comic-series-on-bouldering/</link>
+        <guid isPermaLink="true">http://csyhuang.github.io/2019/12/20/comic-series-on-bouldering/</guid>
       </item>
     
       <item>
@@ -202,8 +206,8 @@ Here we go. 😉
           Pandas dataframe can be converted to pyspark dataframe easily in the newest version of pandas after v0.19.2. If you are using an older version of pandas, you have to do a bit more work for such conversion as follows. First, load the packages and initiate a spark session. from pyspark.sql...
         </description>
         <pubDate>Wed, 30 Oct 2019 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2019/10/30/pandas_to_pyspark_before_0.19.2/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/10/30/pandas_to_pyspark_before_0.19.2/</guid>
+        <link>http://csyhuang.github.io/2019/10/30/pandas_to_pyspark_before_0.19.2/</link>
+        <guid isPermaLink="true">http://csyhuang.github.io/2019/10/30/pandas_to_pyspark_before_0.19.2/</guid>
       </item>
     
       <item>
@@ -213,8 +217,8 @@ Here we go. 😉
           Exploding gradients and vanishing gradients are two common issues with the training of RNN. To avoid exploding gradients, one may use: Truncated Back-propagation through time (BPTT) Clip gradients at threshold RMSprop to adjust learning rate Vanishing gradients are harder to detect. To avoid it, one may use: Weight initialization ReLu...
         </description>
         <pubDate>Mon, 14 Oct 2019 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2019/10/14/notes-on-handling-rnn-training-problem/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/10/14/notes-on-handling-rnn-training-problem/</guid>
+        <link>http://csyhuang.github.io/2019/10/14/notes-on-handling-rnn-training-problem/</link>
+        <guid isPermaLink="true">http://csyhuang.github.io/2019/10/14/notes-on-handling-rnn-training-problem/</guid>
       </item>
     
       <item>
@@ -224,37 +228,8 @@ Here we go. 😉
           Suppose I have a Hive table that has a column of sequences, +------------------+ | sequence| +------------------+ | [3, 23, 564]| +------------------+ how to generate a column that contains permutations of each sequence in multiple rows? The desired output shall look like: +------------------+------------------+ | sequence| permutation| +------------------+------------------+ | [3, 23, 564]|...
         </description>
         <pubDate>Wed, 25 Sep 2019 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2019/09/25/pyspark-generate-sequences/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/09/25/pyspark-generate-sequences/</guid>
-      </item>
-    
-      <item>
-        <title>Pyspark error &quot;Could not serialize object&quot;</title>
-        <description>
-          
-          This post is related to the idea discuss in the post “How to Solve Non-Serializable Errors When Instantiating Objects In Spark UDFs”. Here I discuss the solution in a hypothetical scenario in pyspark. Suppose I have a class to transform string to sum of numbers like this: import pyspark.sql.functions as...
-        </description>
-        <pubDate>Tue, 24 Sep 2019 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2019/09/24/pyspark-could-not-serialize-object/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/09/24/pyspark-could-not-serialize-object/</guid>
-      </item>
-    
-      <item>
-        <title>Handling JSON in PostgreSQL</title>
-        <description>
-          
-          Found a useful cheatsheet that listed out operations on JSON in PostgreSQL.
-
-If I want to list the rows where column col1 in table table1 contains a JSON object with the key key1, I can use:
-
-select * from table1
-where col1-&amp;gt;'key1' IS NOT NULL
-
-
-        </description>
-        <pubDate>Mon, 16 Sep 2019 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2019/09/16/json-in-postgresql/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/09/16/json-in-postgresql/</guid>
+        <link>http://csyhuang.github.io/2019/09/25/pyspark-generate-sequences/</link>
+        <guid isPermaLink="true">http://csyhuang.github.io/2019/09/25/pyspark-generate-sequences/</guid>
       </item>
     
   </channel>

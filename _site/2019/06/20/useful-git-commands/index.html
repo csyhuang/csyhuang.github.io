@@ -86,6 +86,12 @@
     
       
         
+          <a class="sidebar-nav-item" href="/musicarrangement/">Music Arrangements</a>
+        
+      
+    
+      
+        
       
     
       
@@ -151,33 +157,33 @@
 <!--more--></p>
 <h3 id="copy-a-file-from-one-branch-to-another">Copy a file from one branch to another</h3>
 <p>To copy a file to the current branch from another branch (<a href="https://stackoverflow.com/questions/307579/how-do-i-copy-a-version-of-a-single-file-from-one-git-branch-to-another/7099164">ref</a>)</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout another_branch the_file_you_want.txt
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout another_branch the_file_you_want.txt
 </code></pre></div></div>
 
 <h3 id="merge-changes-from-master-branch-to-yours">Merge changes from master branch to yours</h3>
-<p>To merge changes from another branch to yours, you can use <code class="highlighter-rouge">merge</code> or <code class="highlighter-rouge">rebase</code> depending on the preferred commit order. BitBucket has a <a href="https://www.atlassian.com/git/tutorials/merging-vs-rebasing">nice tutorial</a> discussing the difference btween the two. Usually I’d love to have the changes pulled from another branch as a single commit with <code class="highlighter-rouge">git merge</code>.</p>
+<p>To merge changes from another branch to yours, you can use <code class="language-plaintext highlighter-rouge">merge</code> or <code class="language-plaintext highlighter-rouge">rebase</code> depending on the preferred commit order. BitBucket has a <a href="https://www.atlassian.com/git/tutorials/merging-vs-rebasing">nice tutorial</a> discussing the difference btween the two. Usually I’d love to have the changes pulled from another branch as a single commit with <code class="language-plaintext highlighter-rouge">git merge</code>.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout master      # the branch with changes
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout master      # the branch with changes
 git pull                 # pull the remote changes to local master branch
 git checkout mybranch    # go back to mybranch
 git merge master         # incorporate the changes into mybranch
 </code></pre></div></div>
 
-<h3 id="how-to-use-git-revert">How to use <code class="highlighter-rouge">git revert</code></h3>
-<p><a href="https://www.atlassian.com/git/tutorials/undoing-changes/git-revert">Useful tutorial</a> from BitBucket on <code class="highlighter-rouge">git revert</code>.</p>
+<h3 id="how-to-use-git-revert">How to use <code class="language-plaintext highlighter-rouge">git revert</code></h3>
+<p><a href="https://www.atlassian.com/git/tutorials/undoing-changes/git-revert">Useful tutorial</a> from BitBucket on <code class="language-plaintext highlighter-rouge">git revert</code>.</p>
 
 <h3 id="compare-differences-between-branches-and-output-the-results">Compare differences between branches and output the results</h3>
 <p>If you want to compare the difference between your (more updated) branch and the master branch, use the command</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff master..your_branch
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff master..your_branch
 </code></pre></div></div>
 <p>You can save the comparison results into a text file with colors by</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff master..your_branch &gt; your_branch_to_master.diff
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff master..your_branch &gt; your_branch_to_master.diff
 </code></pre></div></div>
-<p>The color can be viewed when you open the <code class="highlighter-rouge">.diff</code> file with <a href="https://www.sublimetext.com/">Sublime</a>.</p>
+<p>The color can be viewed when you open the <code class="language-plaintext highlighter-rouge">.diff</code> file with <a href="https://www.sublimetext.com/">Sublime</a>.</p>
 
 <h3 id="update-password-for-git-on-mac-os-x">Update password for Git on Mac OS X</h3>
 <p>use the following command</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config --global credential.helper osxkeychain
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config --global credential.helper osxkeychain
 </code></pre></div></div>
 
 <p>[to be continued]</p>
@@ -195,27 +201,27 @@ git merge master         # incorporate the changes into mybranch
     
       <li>
         <h3>
+          <a href="/2020/12/26/added-page-music-arrangement/">
+            Added a directory for some of my music arrangements
+            <small>26 Dec 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2020/12/10/databricks-certified-associate-developer-exam-spark-3/">
+            Databricks Certified Associate Developer exam for Apache Spark 3.0
+            <small>10 Dec 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
           <a href="/2020/10/29/odsc-west-talk-on-mlops/">
             Notes on ModelOps and MLOps talks
             <small>29 Oct 2020</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/2020/10/07/unittest-notes/">
-            Running a single test case in the unittest suite
-            <small>07 Oct 2020</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/2020/10/03/update-in-pip-in-october/">
-            New pip release and changes in its way to resolve dependency conflicts
-            <small>03 Oct 2020</small>
           </a>
         </h3>
       </li>
@@ -224,25 +230,22 @@ git merge master         # incorporate the changes into mybranch
 </div>
 
 
-<div id="disqus_thread"></div>
-<script>
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://csyhuang.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = 'http://csyhuang.github.io/2019/06/20/useful-git-commands/';
+      this.page.identifier = 'http://csyhuang.github.io/2019/06/20/useful-git-commands/';
+    };
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://csyhuang.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
 
       </div>
     </div>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Ch.6 - Working with different types of Data (UDFs) &middot; Clare S. Y. Huang
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>PhD in Geophysical Sciences (UChicago). Love coding, music and writing.</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+    <a class="sidebar-nav-item" href="/about_me.html" >About me</a>    
+
+    
+
+    
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/bookshelf/">Bookshelf</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/climate_tools/">Climate Tools</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/ds_notes/">Data Science Notes</a>
+        
+      
+    
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/musicarrangement/">Music Arrangements</a>
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/publications/">Publications</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/pyspark_solutions/">PySpark/SQL Solutions</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/research/">Academic Research</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/tools/">Handy Tools</a>
+        
+      
+    
+
+<!--    <a class="sidebar-nav-item" href="/archive/v1.0.0.zip">Download</a> -->
+
+    <a class="sidebar-nav-item" href="http://github.com/csyhuang/"  target="_blank">Github</a>
+<!--    <span class="sidebar-nav-item">Currently v1.0.0</span> --->
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2020 Shao Ying (Clare) Huang. All rights reserved.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/" title="Home">Clare S. Y. Huang</a>
+            <small>Data Scientist | Atmospheric Dynamicist</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+  <h1 class="post-title">Ch.6 - Working with different types of Data (UDFs)</h1>
+  <span class="post-date">26 Dec 2020</span>
+  <h1 id="user-defined-functions-udfs">User-Defined Functions (UDFs)</h1>
+
+<ul>
+  <li>UDFs are functions that operate on the data, record by record. These functions are registered as temporary functions to be used in that specific SparkSession/Context.</li>
+  <li>One needs to register the UDFs with Spark so that we can use them on all of our worker machines. Spark will serialize the function on the driver and trasfer it over the network to all executor processes.</li>
+  <li>Scalar-written UDFs can be used within the JVM.</li>
+  <li><strong>Attention: (not sure if this is still true)</strong> For python, spark starts a python process on the worker, serializes all of the data to a format that Python can understand, executes the function row by row on the data in the python process, then finally returns the results of the row operations to the JVM and Spark.</li>
+  <li>The real cost of Python process is in <em>serializing the data to Python</em>:
+    <ol>
+      <li>it is an expensive computation</li>
+      <li>After the data enters Python, Spark cannot manage the memory of the workers</li>
+      <li>One could potentially cause a worker to fail if it becomes resources constrained</li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="procedures">Procedures</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">power3</span><span class="p">(</span><span class="n">double_value</span><span class="p">):</span>
+    <span class="n">returns</span> <span class="n">double_value</span> <span class="o">**</span> <span class="mi">3</span>
+<span class="n">spark</span><span class="p">.</span><span class="n">udf</span><span class="p">.</span><span class="n">register</span><span class="p">(</span><span class="s">"power3py"</span><span class="p">,</span> <span class="n">power3</span><span class="p">,</span> <span class="n">DOubleType</span><span class="p">())</span>
+</code></pre></div></div>
+
+</div>
+
+<div>
+<a href="javascript:history.back()"> << Previous Page</a>
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2020/12/26/added-page-music-arrangement/">
+            Added a directory for some of my music arrangements
+            <small>26 Dec 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2020/12/10/databricks-certified-associate-developer-exam-spark-3/">
+            Databricks Certified Associate Developer exam for Apache Spark 3.0
+            <small>10 Dec 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2020/10/29/odsc-west-talk-on-mlops/">
+            Notes on ModelOps and MLOps talks
+            <small>29 Oct 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = 'http://csyhuang.github.io/spark_the_def_guide/ch6-udf';
+      this.page.identifier = 'http://csyhuang.github.io/spark_the_def_guide/ch6-udf';
+    };
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://csyhuang.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  </body>
+</html>

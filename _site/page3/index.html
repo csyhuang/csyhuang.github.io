@@ -86,6 +86,12 @@
     
       
         
+          <a class="sidebar-nav-item" href="/musicarrangement/">Music Arrangements</a>
+        
+      
+    
+      
+        
       
     
       
@@ -193,6 +199,53 @@ Welcome to my personal homepage! Please use the <b>left-side menu</b> to navigat
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/2017/11/20/significant-update-to-v0-2-0/">
+        My python library updated to v0.2.0!
+      </a>
+    </h1>
+
+    <span class="post-date">20 Nov 2017</span>
+
+    
+        <p>I have updated my python library <a href="http://github.com/csyhuang/hn2016_falwa">hn2016_falwa</a> to 
+v0.2.0 (see <a href="https://github.com/csyhuang/hn2016_falwa/releases/tag/v0.2.0">release note</a>! Now 
+it includes functions to compute the contribution of non-conservative forces to wave activity.</p>
+
+<p>Moreover, the <a href="http://hn2016-falwa.readthedocs.io/en/latest/">documentation page</a> generated 
+with Sphinx is now hosted on readthedocs.org! Check it out!</p>
+
+<p>A side note: somehow I made multiple commits to remedy mistake. The git commands to squash 
+the (3, for example) commits are:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git rebase -i origin/master~3 master
+git push origin +master
+</code></pre></div></div>
+
+
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2017/11/07/f2py-on-mac/">
+        Wrapping Fortrain Codes in Python
+      </a>
+    </h1>
+
+    <span class="post-date">07 Nov 2017</span>
+
+    
+        <p>To start with, the <a href="https://docs.scipy.org/doc/numpy-dev/f2py/getting-started.html">documentation in Numpy</a> explains how we can wrap fortran code in python using f2py.</p>
+
+<p>You need a fortran compiler to run f2py. I’ve found a <a href="http://hpc.sourceforge.net/">pre-compiled version of GCC</a> readily installed on Mac OS X.</p>
+
+<p>(To be continued)</p>
+
+
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/2017/11/05/tensorflow-on-mac/">
         Compiling tensorflow on Mac with SSE, AVX, FMA etc.
       </a>
@@ -205,7 +258,7 @@ Welcome to my personal homepage! Please use the <b>left-side menu</b> to navigat
 
 <p>When I install keras with Anaconda on my Mac OS X, with tensorflow as the backend, the following warning comes up when
  running the sample script:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
 </code></pre></div></div>
 
 <p>To use those instructions (<em>SSE4.1 SSE4.2 AVX AVX2 FMA</em>), tensorflow has to be compiled from source. The instructions are available <a href="https://www.tensorflow.org/install/install_sources">here</a>. 
@@ -213,7 +266,7 @@ Using the following command to build the source:</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bazel build <span class="nt">-c</span> opt <span class="nt">--copt</span><span class="o">=</span><span class="nt">-march</span><span class="o">=</span>native <span class="nt">--copt</span><span class="o">=</span><span class="nt">-mfpmath</span><span class="o">=</span>both <span class="nt">--config</span><span class="o">=</span>cuda <span class="nt">-k</span> //tensorflow/tools/pip_package:build_pip_package
 </code></pre></div></div>
 <p>I got the following error:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Problem with java installation: couldn't find/access rt.jar in /Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Problem with java installation: couldn't find/access rt.jar in /Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home
 </code></pre></div></div>
 <p>It happens that <em>rt.jar</em> is not present in Java 9. To solve it, install a version of Java 8:</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew cask <span class="nb">install </span>caskroom/versions/java8

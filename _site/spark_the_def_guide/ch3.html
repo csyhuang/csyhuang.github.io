@@ -86,6 +86,12 @@
     
       
         
+          <a class="sidebar-nav-item" href="/musicarrangement/">Music Arrangements</a>
+        
+      
+    
+      
+        
       
     
       
@@ -146,11 +152,11 @@
       <div class="container content">
         <div class="post">
   <h1 class="post-title">Ch.3 - A Tour of Spark's Toolset</h1>
-  <span class="post-date">11 Nov 2020</span>
+  <span class="post-date">26 Dec 2020</span>
   <h1 id="running-production-applications">Running Production Applications</h1>
 
 <ul>
-  <li><code class="highlighter-rouge">spark-submit</code> sends your application code to a cluster and launch it to execute there. The application will run until it exists (completes the task) or encounters an error.</li>
+  <li><code class="language-plaintext highlighter-rouge">spark-submit</code> sends your application code to a cluster and launch it to execute there. The application will run until it exists (completes the task) or encounters an error.</li>
   <li>Resources needed and how the application should be run can be specified in <em>command-line arguments</em>.</li>
 </ul>
 
@@ -171,7 +177,7 @@
   ./example/src/main/python/pi.py 10  <span class="c"># which jar and class to run, followed by the argument</span>
 </code></pre></div></div>
 
-<p>The <code class="highlighter-rouge">--master</code> argument specifies where you submit the application to. It can also be a cluster running Spark’s standalone cluster manager, Mesos or YARN.</p>
+<p>The <code class="language-plaintext highlighter-rouge">--master</code> argument specifies where you submit the application to. It can also be a cluster running Spark’s standalone cluster manager, Mesos or YARN.</p>
 
 <h1 id="datasets-type-safe-structured-apis">Datasets: Type-Safe Structured APIs</h1>
 
@@ -180,8 +186,8 @@
   <li>Not available in python or R because those languages are <em>dynamically typed</em></li>
   <li>API available for <em>Datasets</em> are <em>type-safe</em>: one cannot accidentally view the objects in a Dataset as being of another class than the class one puts in initially
     <ul>
-      <li>e.g. a <code class="highlighter-rouge">Dataset[Person]</code> would be guaranteed to contain objects of class <code class="highlighter-rouge">Person</code>.</li>
-      <li><code class="highlighter-rouge">collect</code> or <code class="highlighter-rouge">take</code> on a Dataset would give you the proper type in the Dataset, not DataFrame Rows.</li>
+      <li>e.g. a <code class="language-plaintext highlighter-rouge">Dataset[Person]</code> would be guaranteed to contain objects of class <code class="language-plaintext highlighter-rouge">Person</code>.</li>
+      <li><code class="language-plaintext highlighter-rouge">collect</code> or <code class="language-plaintext highlighter-rouge">take</code> on a Dataset would give you the proper type in the Dataset, not DataFrame Rows.</li>
     </ul>
   </li>
 </ul>
@@ -207,27 +213,27 @@
     
       <li>
         <h3>
+          <a href="/2020/12/26/added-page-music-arrangement/">
+            Added a directory for some of my music arrangements
+            <small>26 Dec 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2020/12/10/databricks-certified-associate-developer-exam-spark-3/">
+            Databricks Certified Associate Developer exam for Apache Spark 3.0
+            <small>10 Dec 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
           <a href="/2020/10/29/odsc-west-talk-on-mlops/">
             Notes on ModelOps and MLOps talks
             <small>29 Oct 2020</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/2020/10/07/unittest-notes/">
-            Running a single test case in the unittest suite
-            <small>07 Oct 2020</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/2020/10/03/update-in-pip-in-october/">
-            New pip release and changes in its way to resolve dependency conflicts
-            <small>03 Oct 2020</small>
           </a>
         </h3>
       </li>
@@ -236,25 +242,22 @@
 </div>
 
 
-<div id="disqus_thread"></div>
-<script>
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://csyhuang.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = 'http://csyhuang.github.io/spark_the_def_guide/ch3';
+      this.page.identifier = 'http://csyhuang.github.io/spark_the_def_guide/ch3';
+    };
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://csyhuang.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
 
       </div>
     </div>

@@ -1,7 +1,0 @@
-I"z<p>To start with, the <a href="https://docs.scipy.org/doc/numpy-dev/f2py/getting-started.html">documentation in Numpy</a> explains how we can wrap fortran code in python using f2py.</p>
-
-<p>You need a fortran compiler to run f2py. I’ve found a <a href="http://hpc.sourceforge.net/">pre-compiled version of GCC</a> readily installed on Mac OS X.</p>
-
-<p>(To be continued)</p>
-
-:ET

@@ -86,6 +86,12 @@
     
       
         
+          <a class="sidebar-nav-item" href="/musicarrangement/">Music Arrangements</a>
+        
+      
+    
+      
+        
       
     
       
@@ -147,7 +153,7 @@
         <div class="post">
   <h1 class="post-title">More efficient way to do outer join with large dataframes</h1>
   <span class="post-date">16 Apr 2020</span>
-  <p>Today I learned from a colleague the way of doing <code class="highlighter-rouge">outer join</code> of large dataframes more efficiently: instead of doing the <code class="highlighter-rouge">outer join</code>, you can first <code class="highlighter-rouge">union</code> the key column, and then implement <code class="highlighter-rouge">left join</code> twice. I have done an experiment myself on the cluster with two dataframes (<code class="highlighter-rouge">df1</code> and <code class="highlighter-rouge">df2</code>) - each dataframe has ~10k rows, and there is only ~10% of overlap(i.e. an inner-join would result in ~1k rows).</p>
+  <p>Today I learned from a colleague the way of doing <code class="language-plaintext highlighter-rouge">outer join</code> of large dataframes more efficiently: instead of doing the <code class="language-plaintext highlighter-rouge">outer join</code>, you can first <code class="language-plaintext highlighter-rouge">union</code> the key column, and then implement <code class="language-plaintext highlighter-rouge">left join</code> twice. I have done an experiment myself on the cluster with two dataframes (<code class="language-plaintext highlighter-rouge">df1</code> and <code class="language-plaintext highlighter-rouge">df2</code>) - each dataframe has ~10k rows, and there is only ~10% of overlap(i.e. an inner-join would result in ~1k rows).</p>
 
 <p>The usual way of doing outer join would be like:</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df3</span> <span class="o">=</span> <span class="n">df1</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s">'outer'</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s">'id'</span><span class="p">).</span><span class="n">drop_duplicates</span><span class="p">()</span>
@@ -180,11 +186,11 @@
   </tbody>
 </table>
 
-<p>Here is the distribution of computing times for <code class="highlighter-rouge">inner</code>, <code class="highlighter-rouge">left</code>, <code class="highlighter-rouge">outer</code>, <code class="highlighter-rouge">right</code> and <code class="highlighter-rouge">union-left</code>(that gives same results as <code class="highlighter-rouge">outer</code>) joins(I repeated each join 20 times):</p>
+<p>Here is the distribution of computing times for <code class="language-plaintext highlighter-rouge">inner</code>, <code class="language-plaintext highlighter-rouge">left</code>, <code class="language-plaintext highlighter-rouge">outer</code>, <code class="language-plaintext highlighter-rouge">right</code> and <code class="language-plaintext highlighter-rouge">union-left</code>(that gives same results as <code class="language-plaintext highlighter-rouge">outer</code>) joins(I repeated each join 20 times):</p>
 
 <p><img style="float: center;" src="/assets/img/types_of_join_computing_time.png" /></p>
 
-<p>For these sizes of dataframes, the <code class="highlighter-rouge">union-left</code> join is on average ~20% faster than the equivalent <code class="highlighter-rouge">outer</code> join.</p>
+<p>For these sizes of dataframes, the <code class="language-plaintext highlighter-rouge">union-left</code> join is on average ~20% faster than the equivalent <code class="language-plaintext highlighter-rouge">outer</code> join.</p>
 
 </div>
 
@@ -198,27 +204,27 @@
     
       <li>
         <h3>
+          <a href="/2020/12/26/added-page-music-arrangement/">
+            Added a directory for some of my music arrangements
+            <small>26 Dec 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2020/12/10/databricks-certified-associate-developer-exam-spark-3/">
+            Databricks Certified Associate Developer exam for Apache Spark 3.0
+            <small>10 Dec 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
           <a href="/2020/10/29/odsc-west-talk-on-mlops/">
             Notes on ModelOps and MLOps talks
             <small>29 Oct 2020</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/2020/10/07/unittest-notes/">
-            Running a single test case in the unittest suite
-            <small>07 Oct 2020</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/2020/10/03/update-in-pip-in-october/">
-            New pip release and changes in its way to resolve dependency conflicts
-            <small>03 Oct 2020</small>
           </a>
         </h3>
       </li>
@@ -227,25 +233,22 @@
 </div>
 
 
-<div id="disqus_thread"></div>
-<script>
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://csyhuang.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = 'http://csyhuang.github.io/2020/04/16/faster-outer-join-by-two-left-joins/';
+      this.page.identifier = 'http://csyhuang.github.io/2020/04/16/faster-outer-join-by-two-left-joins/';
+    };
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://csyhuang.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
 
       </div>
     </div>

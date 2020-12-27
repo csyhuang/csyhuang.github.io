@@ -86,6 +86,12 @@
     
       
         
+          <a class="sidebar-nav-item" href="/musicarrangement/">Music Arrangements</a>
+        
+      
+    
+      
+        
       
     
       
@@ -193,6 +199,50 @@ Welcome to my personal homepage! Please use the <b>left-side menu</b> to navigat
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/2020/12/26/added-page-music-arrangement/">
+        Added a directory for some of my music arrangements
+      </a>
+    </h1>
+
+    <span class="post-date">26 Dec 2020</span>
+
+    
+        <p>🎹 I have been uploading improvised piano cover on my YouTube channel. Recently, I received some comments asking for the music sheet of my arrangement, and it seems to be a good idea to keep a record of my work. Therefore, I started making music sheets of my arrangement with <a href="https://musescore.org/">MuseScore</a> to share with others.</p>
+
+<p>🎼 Check out the page <a href="/musicarrangement/">Music Arrangement</a> for the collection of arrangement with music sheets I’ve made. For the rest of my recordings, go to my YouTube Channel <a href="https://youtube.com/phyclare">Clare’s Studio</a>.</p>
+
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2020/12/10/databricks-certified-associate-developer-exam-spark-3/">
+        Databricks Certified Associate Developer exam for Apache Spark 3.0
+      </a>
+    </h1>
+
+    <span class="post-date">10 Dec 2020</span>
+
+    
+        <p>I passed the <strong>Databricks Certified Associate Developer exam for Apache Spark 3.0 (python)</strong>. Here is <a href="https://academy.databricks.com/award/certification/9099bdd0-4245-3b63-8265-fc234ef098f6/view">my certificate</a>!</p>
+
+<p>I registered for the exam when joining the Spark Summit this June, hoping to set a goal to push myself to dive deeper into spark architecture and performance tuning.</p>
+
+<p>[Experience sharing] On top of coding with pyspark at work (which helps me with most of the syntax questions in the exam), my exam preparation mainly involves reading the two books, <a href="https://www.oreilly.com/library/view/spark-the-definitive/9781491912201/">Spark: The Definitive Guide</a> and <a href="https://databricks.com/p/ebook/learning-spark-from-oreilly">Learning Spark 2.0</a>.</p>
+
+<p>It was my very first time taking an online proctored exam at home, and there were two things I wish I could have known before the exam:</p>
+<ol>
+  <li>The spark documentation (PDF file) provided by Sentinel (i.e., the exam software) is not searchable. One has to scroll through the page to find what s/he needs.</li>
+  <li>The proctor would check your workspace configuration during the exam (i.e., not at the beginning). The exam would pause during the check, so you don’t have to worry about losing time.</li>
+</ol>
+
+<p>I believe there will be more tests conducted with an online proctor given the evolution of the pandemic. Perhaps we will get used to the online test workspace setup at home very soon.</p>
+
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/2020/10/29/odsc-west-talk-on-mlops/">
         Notes on ModelOps and MLOps talks
       </a>
@@ -217,14 +267,14 @@ Welcome to my personal homepage! Please use the <b>left-side menu</b> to navigat
     <span class="post-date">07 Oct 2020</span>
 
     
-        <p>If your unit tests are written using the <code class="highlighter-rouge">unittest</code> package, to run a <em>single</em> test case in the TestSuite, the command line syntax is</p>
+        <p>If your unit tests are written using the <code class="language-plaintext highlighter-rouge">unittest</code> package, to run a <em>single</em> test case in the TestSuite, the command line syntax is</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python setup.py <span class="nb">test</span> <span class="nt">-m</span> tests.test_module.TestClass.test_case
 </code></pre></div></div>
 
 <p>Stack Overflow reference: <a href="https://stackoverflow.com/questions/21167516/does-unittest-allow-single-case-suite-testing-through-setup-py-test">Does unittest allow single case/suite testing through “setup.py test”?</a></p>
 
-<p>If your unit tests are written using <code class="highlighter-rouge">pytest</code>, the command used would be</p>
+<p>If your unit tests are written using <code class="language-plaintext highlighter-rouge">pytest</code>, the command used would be</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pytest tests/test_module.py::test_case
 </code></pre></div></div>
@@ -244,7 +294,7 @@ Welcome to my personal homepage! Please use the <b>left-side menu</b> to navigat
     
         <p>When I was trying to set up a conda environment to run a package…</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ERROR: After October 2020 you may experience errors when installing or updating packages. This is because pip will change the way that it resolves dependency conflicts.
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ERROR: After October 2020 you may experience errors when installing or updating packages. This is because pip will change the way that it resolves dependency conflicts.
 
 We recommend you use --use-feature=2020-resolver to test your packages with the new resolver before it becomes the default.
 
@@ -278,7 +328,7 @@ numpydoc 1.1.0 requires sphinx&gt;=1.6.5, but you'll have sphinx 1.5.3 which is 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
 </code></pre></div></div>
 
-<p>You can then check the upstream locations via the command <code class="highlighter-rouge">git remote -v</code>.</p>
+<p>You can then check the upstream locations via the command <code class="language-plaintext highlighter-rouge">git remote -v</code>.</p>
 
 <p>Before submitting a pull request, you have to make sure your branch contains all the commits from upstream. You can do so by:</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git fetch upstream
@@ -303,7 +353,7 @@ git merge upstream/master
     
         <h2 id="split-an-array-column">Split an array column</h2>
 <p>To split a column with arrays of strings, e.g. a DataFrame that looks like,</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+---------+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+---------+
 |   strCol|
 +---------+
 |[A, B, C]|
@@ -316,7 +366,7 @@ git merge upstream/master
 <span class="n">df2</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 <p>Output:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+---------+---------+---------+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+---------+---------+---------+
 |strCol[0]|strCol[1]|strCol[2]|
 +---------+---------+---------+
 |        A|        B|        C|
@@ -325,7 +375,7 @@ git merge upstream/master
 
 <h2 id="split-a-vector-column">Split a vector column</h2>
 <p>To split a column with doubles stored in DenseVector format, e.g. a DataFrame that looks like,</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-------------+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-------------+
 |       intCol|
 +-------------+
 |[2.0,3.0,4.0]|
@@ -345,7 +395,7 @@ git merge upstream/master
 <span class="n">df3</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 <p>Output:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------------+------------+------------+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------------+------------+------------+
 |split_int[0]|split_int[1]|split_int[2]|
 +------------+------------+------------+
 |         2.0|         3.0|         4.0|
@@ -365,10 +415,10 @@ git merge upstream/master
     <span class="post-date">14 Sep 2020</span>
 
     
-        <p>To give indices to hierarchical labels, I can use <code class="highlighter-rouge">DENSE_RANK()</code> or <code class="highlighter-rouge">RANK()</code> depending on the situation. 
+        <p>To give indices to hierarchical labels, I can use <code class="language-plaintext highlighter-rouge">DENSE_RANK()</code> or <code class="language-plaintext highlighter-rouge">RANK()</code> depending on the situation. 
 For example, if I have a DataFrame that looks like this:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------+----------+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------+----------+
 |Fridge|    Fruits|
 +------+----------+
 |     A|     apple|
@@ -394,7 +444,7 @@ For example, if I have a DataFrame that looks like this:</p>
 
 <p>would yield the following table</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------+----------+------+---------------+---------+--------------+--------+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------+----------+------+---------------+---------+--------------+--------+
 |Fridge|    Fruits|Loc_id|Fridge_id_dense|Fridge_id|Fruit_id_dense|Fruit_id|
 +------+----------+------+---------------+---------+--------------+--------+
 |     A|     apple|     1|              1|        1|             2|       2|
@@ -468,7 +518,7 @@ For example, if I have a DataFrame that looks like this:</p>
 </code></pre></div></div>
 
 <p>Let’s test it with a dataframe</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df = spark.createDataFrame([(Vectors.dense([2.0, 1.0, 3.0]),), (Vectors.dense([0.4, 0.9, 7.0]),)], ["numbers"])
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df = spark.createDataFrame([(Vectors.dense([2.0, 1.0, 3.0]),), (Vectors.dense([0.4, 0.9, 7.0]),)], ["numbers"])
 </code></pre></div></div>
 <p>and a Pipeline like this:</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">ElementwiseProduct</span>
@@ -484,7 +534,7 @@ For example, if I have a DataFrame that looks like this:</p>
 </code></pre></div></div>
 
 <p>I manage to get the expected results:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-------------+--------------+-------+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-------------+--------------+-------+
 |      numbers|       product|results|
 +-------------+--------------+-------+
 |[2.0,1.0,3.0]|[4.0,3.0,15.0]| 4/3/15|
@@ -507,19 +557,19 @@ For example, if I have a DataFrame that looks like this:</p>
     <span class="post-date">14 Jul 2020</span>
 
     
-        <p>[<a href="https://github.com/csyhuang/hn2016_falwa/releases/tag/0.4.1">hn2016_falwa Release 0.4.1</a>] A minor release of my python package <a href="https://github.com/csyhuang/hn2016_falwa">hn2016_falwa</a> is published. Thanks <a href="https://github.com/chpolste">Christopher Polster</a> for submitting a pull request that fixes the interface of <code class="highlighter-rouge">BarotropicField</code>. Moreover, I added procedures to process masked array in <code class="highlighter-rouge">QGField</code> such that it can be conveniently used to process ERA5 data which is stored as masked array in netCDF files.</p>
+        <p>[<a href="https://github.com/csyhuang/hn2016_falwa/releases/tag/0.4.1">hn2016_falwa Release 0.4.1</a>] A minor release of my python package <a href="https://github.com/csyhuang/hn2016_falwa">hn2016_falwa</a> is published. Thanks <a href="https://github.com/chpolste">Christopher Polster</a> for submitting a pull request that fixes the interface of <code class="language-plaintext highlighter-rouge">BarotropicField</code>. Moreover, I added procedures to process masked array in <code class="language-plaintext highlighter-rouge">QGField</code> such that it can be conveniently used to process ERA5 data which is stored as masked array in netCDF files.</p>
 
 <p>As a memo to myself - procedures for a release (which I often forget and have to google 😅):</p>
 <ul>
-  <li>Update version number in <code class="highlighter-rouge">setup.py</code>, <code class="highlighter-rouge">readme.md</code> and documentation pages.</li>
-  <li>Add a (light-weighted) tag to the commit: <code class="highlighter-rouge">git tag &lt;tagname&gt;</code>.</li>
-  <li>Not only push the commits but also the tag by <code class="highlighter-rouge">git push origin &lt;tagname&gt;</code>.</li>
+  <li>Update version number in <code class="language-plaintext highlighter-rouge">setup.py</code>, <code class="language-plaintext highlighter-rouge">readme.md</code> and documentation pages.</li>
+  <li>Add a (light-weighted) tag to the commit: <code class="language-plaintext highlighter-rouge">git tag &lt;tagname&gt;</code>.</li>
+  <li>Not only push the commits but also the tag by <code class="language-plaintext highlighter-rouge">git push origin &lt;tagname&gt;</code>.</li>
 </ul>
 
 <p>If I have time, I would update the version on PYPI too:</p>
 <ul>
-  <li>Create the <code class="highlighter-rouge">dist/</code> directory and the installation files: <code class="highlighter-rouge">python3 setup.py sdist bdist_wheel</code></li>
-  <li>Upload the package: <code class="highlighter-rouge">python3 -m twine upload --repository testpypi dist/*</code></li>
+  <li>Create the <code class="language-plaintext highlighter-rouge">dist/</code> directory and the installation files: <code class="language-plaintext highlighter-rouge">python3 setup.py sdist bdist_wheel</code></li>
+  <li>Upload the package: <code class="language-plaintext highlighter-rouge">python3 -m twine upload --repository testpypi dist/*</code></li>
 </ul>
 
     
@@ -571,6 +621,18 @@ For example, if I have a DataFrame that looks like this:</p>
   <li>
     <p><a href="/spark_the_def_guide/ch4">Ch.4 - Structured API Overview</a></p>
   </li>
+  <li>
+    <p><a href="/spark_the_def_guide/ch5">Ch.5 - Basic Structured Operations</a></p>
+  </li>
+  <li>
+    <p><a href="/spark_the_def_guide/ch6">Ch.6 - Working with different types of Data</a></p>
+  </li>
+  <li>
+    <p><a href="/spark_the_def_guide/ch6-udf">Ch.6 - Working with different types of Data (UDFs)</a></p>
+  </li>
+  <li>
+    <p><a href="/spark_the_def_guide/ch7">Ch.7 - Aggregations</a></p>
+  </li>
 </ul>
 
 
@@ -613,7 +675,7 @@ Here we go. 😉</p>
     <span class="post-date">16 Apr 2020</span>
 
     
-        <p>Today I learned from a colleague the way of doing <code class="highlighter-rouge">outer join</code> of large dataframes more efficiently: instead of doing the <code class="highlighter-rouge">outer join</code>, you can first <code class="highlighter-rouge">union</code> the key column, and then implement <code class="highlighter-rouge">left join</code> twice. I have done an experiment myself on the cluster with two dataframes (<code class="highlighter-rouge">df1</code> and <code class="highlighter-rouge">df2</code>) - each dataframe has ~10k rows, and there is only ~10% of overlap(i.e. an inner-join would result in ~1k rows).</p>
+        <p>Today I learned from a colleague the way of doing <code class="language-plaintext highlighter-rouge">outer join</code> of large dataframes more efficiently: instead of doing the <code class="language-plaintext highlighter-rouge">outer join</code>, you can first <code class="language-plaintext highlighter-rouge">union</code> the key column, and then implement <code class="language-plaintext highlighter-rouge">left join</code> twice. I have done an experiment myself on the cluster with two dataframes (<code class="language-plaintext highlighter-rouge">df1</code> and <code class="language-plaintext highlighter-rouge">df2</code>) - each dataframe has ~10k rows, and there is only ~10% of overlap(i.e. an inner-join would result in ~1k rows).</p>
 
 <p>The usual way of doing outer join would be like:</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df3</span> <span class="o">=</span> <span class="n">df1</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s">'outer'</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s">'id'</span><span class="p">).</span><span class="n">drop_duplicates</span><span class="p">()</span>
@@ -646,11 +708,11 @@ Here we go. 😉</p>
   </tbody>
 </table>
 
-<p>Here is the distribution of computing times for <code class="highlighter-rouge">inner</code>, <code class="highlighter-rouge">left</code>, <code class="highlighter-rouge">outer</code>, <code class="highlighter-rouge">right</code> and <code class="highlighter-rouge">union-left</code>(that gives same results as <code class="highlighter-rouge">outer</code>) joins(I repeated each join 20 times):</p>
+<p>Here is the distribution of computing times for <code class="language-plaintext highlighter-rouge">inner</code>, <code class="language-plaintext highlighter-rouge">left</code>, <code class="language-plaintext highlighter-rouge">outer</code>, <code class="language-plaintext highlighter-rouge">right</code> and <code class="language-plaintext highlighter-rouge">union-left</code>(that gives same results as <code class="language-plaintext highlighter-rouge">outer</code>) joins(I repeated each join 20 times):</p>
 
 <p><img style="float: center;" src="/assets/img/types_of_join_computing_time.png" /></p>
 
-<p>For these sizes of dataframes, the <code class="highlighter-rouge">union-left</code> join is on average ~20% faster than the equivalent <code class="highlighter-rouge">outer</code> join.</p>
+<p>For these sizes of dataframes, the <code class="language-plaintext highlighter-rouge">union-left</code> join is on average ~20% faster than the equivalent <code class="language-plaintext highlighter-rouge">outer</code> join.</p>
 
     
   </div>
@@ -695,7 +757,7 @@ Here we go. 😉</p>
 
 <h1 id="partitioned-tables">Partitioned tables</h1>
 
-<p><strong>Always</strong> specify the partition in the <code class="highlighter-rouge">where</code> clause. If you have to retrieve data from several partitions, loop through it one-by-one.</p>
+<p><strong>Always</strong> specify the partition in the <code class="language-plaintext highlighter-rouge">where</code> clause. If you have to retrieve data from several partitions, loop through it one-by-one.</p>
 
 <h1 id="distinct-elements">Distinct elements</h1>
 
@@ -710,11 +772,11 @@ Here we go. 😉</p>
 <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">item</span>
 </code></pre></div></div>
 
-<p>give the same result. However, the second SQL query will be executed faster. There is no difference calling <code class="highlighter-rouge">distinct</code> and <code class="highlighter-rouge">group by</code> via (py)spark though.</p>
+<p>give the same result. However, the second SQL query will be executed faster. There is no difference calling <code class="language-plaintext highlighter-rouge">distinct</code> and <code class="language-plaintext highlighter-rouge">group by</code> via (py)spark though.</p>
 
 <h1 id="join-vs-where">JOIN v.s. WHERE</h1>
 
-<p>Always use <code class="highlighter-rouge">where</code> to filter the table to be joined to the smallest, e.g.</p>
+<p>Always use <code class="language-plaintext highlighter-rouge">where</code> to filter the table to be joined to the smallest, e.g.</p>
 
 <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="k">c</span><span class="p">.</span><span class="o">*</span> <span class="k">FROM</span> <span class="n">credit</span> <span class="k">c</span>
 <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span>
@@ -725,7 +787,7 @@ Here we go. 😉</p>
 <span class="k">WHERE</span> <span class="k">c</span><span class="p">.</span><span class="n">eligibility</span> <span class="o">=</span> <span class="k">True</span>
 </code></pre></div></div>
 
-<p>Note that the line <code class="highlighter-rouge">WHERE c.eligibility = True</code> is executed to filter the table <code class="highlighter-rouge">credit</code> before the <code class="highlighter-rouge">JOIN</code>. This shrinks the table <code class="highlighter-rouge">credit</code> to the smallest before joining.</p>
+<p>Note that the line <code class="language-plaintext highlighter-rouge">WHERE c.eligibility = True</code> is executed to filter the table <code class="language-plaintext highlighter-rouge">credit</code> before the <code class="language-plaintext highlighter-rouge">JOIN</code>. This shrinks the table <code class="language-plaintext highlighter-rouge">credit</code> to the smallest before joining.</p>
 
     
   </div>
@@ -764,7 +826,7 @@ Here we go. 😉</p>
 
     
         <div>
-            <p>Pandas dataframe can be converted to pyspark dataframe easily in the newest version of <code class="highlighter-rouge">pandas</code> after <code class="highlighter-rouge">v0.19.2</code>. If you are using an older version of pandas, you have to do a bit more work for such conversion as follows.</p>
+            <p>Pandas dataframe can be converted to pyspark dataframe easily in the newest version of <code class="language-plaintext highlighter-rouge">pandas</code> after <code class="language-plaintext highlighter-rouge">v0.19.2</code>. If you are using an older version of pandas, you have to do a bit more work for such conversion as follows.</p>
 
 <p>First, load the packages and initiate a spark session.</p>
 
@@ -852,7 +914,7 @@ Here we go. 😉</p>
 </table>
 </div>
 
-<p>To convert it to a <code class="highlighter-rouge">pyspark</code> dataframe, one has to create a list of <code class="highlighter-rouge">Row</code> objects and pass it into <code class="highlighter-rouge">createDataFrame</code>:</p>
+<p>To convert it to a <code class="language-plaintext highlighter-rouge">pyspark</code> dataframe, one has to create a list of <code class="language-plaintext highlighter-rouge">Row</code> objects and pass it into <code class="language-plaintext highlighter-rouge">createDataFrame</code>:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df_pyspark</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span>
     <span class="n">Row</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s">'index'</span><span class="p">],</span> <span class="n">alphabet</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s">'alphabet'</span><span class="p">])</span>
@@ -861,7 +923,7 @@ Here we go. 😉</p>
 <span class="n">df_pyspark</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+--------+-----+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+--------+-----+
 |alphabet|index|
 +--------+-----+
 |       p|    0|
@@ -924,7 +986,7 @@ Here we go. 😉</p>
     
         <p>Suppose I have a Hive table that has a column of sequences,</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------------------+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------------------+
 |          sequence|
 +------------------+
 |      [3, 23, 564]|
@@ -933,7 +995,7 @@ Here we go. 😉</p>
 
 <p>how to generate a column that contains permutations of each sequence in multiple rows? The desired output shall look like:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------------------+------------------+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------------------+------------------+
 |          sequence|       permutation|
 +------------------+------------------+
 |      [3, 23, 564]|      [3, 23, 564]|
@@ -945,7 +1007,7 @@ Here we go. 😉</p>
 +------------------+------------------+
 </code></pre></div></div>
 
-<p>In order to get multiple rows out of each row, we need to use the function <code class="highlighter-rouge">explode</code>. First, we write a user-defined function (UDF) to return the list of permutations given a array (sequence):</p>
+<p>In order to get multiple rows out of each row, we need to use the function <code class="language-plaintext highlighter-rouge">explode</code>. First, we write a user-defined function (UDF) to return the list of permutations given a array (sequence):</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">itertools</span>
 <span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span><span class="p">,</span> <span class="n">Row</span>
@@ -956,147 +1018,15 @@ Here we go. 😉</p>
     <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="p">.</span><span class="n">permutations</span><span class="p">(</span><span class="n">a_list</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">a_list</span><span class="p">)))</span>
 </code></pre></div></div>
 
-<p>The <code class="highlighter-rouge">udf_type</code> function is adapted from the <a href="https://johnpaton.net/posts/clean-spark-udfs/">blog post by John Paton</a>. The output type is specified to be an array of “array of integers”.</p>
+<p>The <code class="language-plaintext highlighter-rouge">udf_type</code> function is adapted from the <a href="https://johnpaton.net/posts/clean-spark-udfs/">blog post by John Paton</a>. The output type is specified to be an array of “array of integers”.</p>
 
-<p>The application of this function with <code class="highlighter-rouge">explode</code> will yield the result above:</p>
+<p>The application of this function with <code class="language-plaintext highlighter-rouge">explode</code> will yield the result above:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">spark_session</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span><span class="n">Row</span><span class="p">(</span><span class="n">sequence</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">564</span><span class="p">])])</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">'permutation'</span><span class="p">,</span> <span class="n">F</span><span class="p">.</span><span class="n">explode</span><span class="p">(</span><span class="n">permutation</span><span class="p">(</span><span class="n">F</span><span class="p">.</span><span class="n">col</span><span class="p">(</span><span class="s">'sequence'</span><span class="p">))))</span>
 </code></pre></div></div>
 
-
-    
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2019/09/24/pyspark-could-not-serialize-object/">
-        Pyspark error "Could not serialize object"
-      </a>
-    </h1>
-
-    <span class="post-date">24 Sep 2019</span>
-
-    
-        <div>
-            <p>This post is related to the idea discuss in the post <a href="https://www.placeiq.com/2017/11/how-to-solve-non-serializable-errors-when-instantiating-objects-in-spark-udfs/">“How to Solve Non-Serializable Errors When Instantiating Objects In Spark UDFs”</a>. Here I discuss the solution in a hypothetical scenario in pyspark.
-
-        </div>
-        <input type="checkbox" class="read-more-state" id="/2019/09/24/pyspark-could-not-serialize-object/"/>
-        <div class="read-more">
-            
-Suppose I have a class to transform string to sum of numbers like this:</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pyspark.sql.functions</span> <span class="k">as</span> <span class="n">F</span>
-<span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">udf</span>
-<span class="kn">from</span> <span class="nn">pyspark.sql.types</span> <span class="kn">import</span> <span class="n">IntegerType</span>
-
-<span class="k">class</span> <span class="nc">AnimalsToNumbers</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spark</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">_mapping</span> <span class="o">=</span> <span class="p">{</span><span class="s">'elephant'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'bear'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">'cat'</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">_spark</span> <span class="o">=</span> <span class="n">spark</span>
-        
-    <span class="k">def</span> <span class="nf">addition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">animal_str</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">sum</span><span class="p">([</span><span class="bp">self</span><span class="p">.</span><span class="n">_mapping</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-                    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">animal_str</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">'+'</span><span class="p">)])</span>
-    
-    <span class="k">def</span> <span class="nf">add_up_animals</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
-        <span class="n">addition_udf</span> <span class="o">=</span> <span class="n">F</span><span class="p">.</span><span class="n">udf</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">addition</span><span class="p">,</span> <span class="n">IntegerType</span><span class="p">())</span>
-        <span class="k">return</span> <span class="n">df</span><span class="p">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">'sum'</span><span class="p">,</span> <span class="n">addition_udf</span><span class="p">(</span><span class="s">'animal'</span><span class="p">))</span>
-</code></pre></div></div>
-
-<p>(In practical cases, <code class="highlighter-rouge">self._mapping</code> is a huge object containing the dictionary and other attributes that are derived from methods in the <code class="highlighter-rouge">AnimalsToNumbers</code> class.) If I want to transform a dataframe <code class="highlighter-rouge">df</code> that looks like this:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-------------+
-|       animal|
-+-------------+
-|elephant+bear|
-|     cat+bear|
-+-------------+
-</code></pre></div></div>
-
-<p>The operation</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">AnimalsToNumbers</span><span class="p">(</span><span class="n">spark</span><span class="p">).</span><span class="n">add_up_animals</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>will lead to an error like this:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
-Py4JError                                 Traceback (most recent call last)
-~/anaconda3/envs/pyspark_demo/lib/python3.5/site-packages/pyspark/serializers.py in dumps(self, obj)
-    589         try:
---&gt; 590             return cloudpickle.dumps(obj, 2)
-    591         except pickle.PickleError:
-...
-PicklingError: Could not serialize object: Py4JError: An error occurred while calling o25.__getstate__. Trace:
-py4j.Py4JException: Method __getstate__([]) does not exist
-	at py4j.reflection.ReflectionEngine.getMethod(ReflectionEngine.java:318)
-	at py4j.reflection.ReflectionEngine.getMethod(ReflectionEngine.java:326)
-	at py4j.Gateway.invoke(Gateway.java:274)
-	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
-	at py4j.commands.CallCommand.execute(CallCommand.java:79)
-	at py4j.GatewayConnection.run(GatewayConnection.java:238)
-	at java.lang.Thread.run(Thread.java:748)
-</code></pre></div></div>
-
-<p>The issue is that, as <code class="highlighter-rouge">self._mapping</code> appears in the function <code class="highlighter-rouge">addition</code>, when applying <code class="highlighter-rouge">addition_udf</code> to the pyspark dataframe, the object <code class="highlighter-rouge">self</code> (i.e. the <code class="highlighter-rouge">AnimalsToNumbers</code> class) has to be serialized but it can’t be.</p>
-
-<p>A (surprisingly simple) way is to create a reference to the dictionary (<code class="highlighter-rouge">self._mapping</code>) but not the object:</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">AnimalsToNumbers</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spark</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">_mapping</span> <span class="o">=</span> <span class="p">{</span><span class="s">'elephant'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'bear'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">'cat'</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">_spark</span> <span class="o">=</span> <span class="n">spark</span>
-        
-    
-    <span class="k">def</span> <span class="nf">add_up_animals</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
-        <span class="n">mapping</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">_mapping</span>
-        <span class="k">def</span> <span class="nf">addition</span><span class="p">(</span><span class="n">animal_str</span><span class="p">):</span>
-            <span class="k">return</span> <span class="nb">sum</span><span class="p">([</span><span class="n">mapping</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">animal_str</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">'+'</span><span class="p">)])</span>
-
-        <span class="n">addition_udf</span> <span class="o">=</span> <span class="n">F</span><span class="p">.</span><span class="n">udf</span><span class="p">(</span><span class="n">addition</span><span class="p">,</span> <span class="n">IntegerType</span><span class="p">())</span>
-        <span class="k">return</span> <span class="n">df</span><span class="p">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">'sum'</span><span class="p">,</span> <span class="n">addition_udf</span><span class="p">(</span><span class="s">'animal'</span><span class="p">))</span>
-
-</code></pre></div></div>
-
-<p><code class="highlighter-rouge">AnimalsToNumbers(spark).add_up_animals(df).show()</code> would yield:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-------------+---+
-|       animal|sum|
-+-------------+---+
-|elephant+bear|  5|
-|     cat+bear| 13|
-+-------------+---+
-
-</code></pre></div></div>
-
-<p>Yay :)</p>
-
-
-        </div>
-        <label for="/2019/09/24/pyspark-could-not-serialize-object/" class="read-more-trigger"></label>
-    
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2019/09/16/json-in-postgresql/">
-        Handling JSON in PostgreSQL
-      </a>
-    </h1>
-
-    <span class="post-date">16 Sep 2019</span>
-
-    
-        <p>Found a useful <a href="https://devhints.io/postgresql-json">cheatsheet</a> that listed out operations on JSON in PostgreSQL.</p>
-
-<p>If I want to list the rows where column <code class="highlighter-rouge">col1</code> in table <code class="highlighter-rouge">table1</code> contains a JSON object with the key <code class="highlighter-rouge">key1</code>, I can use:</p>
-
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">table1</span>
-<span class="k">where</span> <span class="n">col1</span><span class="o">-&gt;</span><span class="s1">'key1'</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span>
-</code></pre></div></div>
 
     
   </div>

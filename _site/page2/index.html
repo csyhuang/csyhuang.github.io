@@ -86,6 +86,12 @@
     
       
         
+          <a class="sidebar-nav-item" href="/musicarrangement/">Music Arrangements</a>
+        
+      
+    
+      
+        
       
     
       
@@ -193,6 +199,138 @@ Welcome to my personal homepage! Please use the <b>left-side menu</b> to navigat
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/2019/09/24/pyspark-could-not-serialize-object/">
+        Pyspark error "Could not serialize object"
+      </a>
+    </h1>
+
+    <span class="post-date">24 Sep 2019</span>
+
+    
+        <div>
+            <p>This post is related to the idea discuss in the post <a href="https://www.placeiq.com/2017/11/how-to-solve-non-serializable-errors-when-instantiating-objects-in-spark-udfs/">“How to Solve Non-Serializable Errors When Instantiating Objects In Spark UDFs”</a>. Here I discuss the solution in a hypothetical scenario in pyspark.
+
+        </div>
+        <input type="checkbox" class="read-more-state" id="/2019/09/24/pyspark-could-not-serialize-object/"/>
+        <div class="read-more">
+            
+Suppose I have a class to transform string to sum of numbers like this:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pyspark.sql.functions</span> <span class="k">as</span> <span class="n">F</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">udf</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql.types</span> <span class="kn">import</span> <span class="n">IntegerType</span>
+
+<span class="k">class</span> <span class="nc">AnimalsToNumbers</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spark</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_mapping</span> <span class="o">=</span> <span class="p">{</span><span class="s">'elephant'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'bear'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">'cat'</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_spark</span> <span class="o">=</span> <span class="n">spark</span>
+        
+    <span class="k">def</span> <span class="nf">addition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">animal_str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">([</span><span class="bp">self</span><span class="p">.</span><span class="n">_mapping</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">animal_str</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">'+'</span><span class="p">)])</span>
+    
+    <span class="k">def</span> <span class="nf">add_up_animals</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
+        <span class="n">addition_udf</span> <span class="o">=</span> <span class="n">F</span><span class="p">.</span><span class="n">udf</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">addition</span><span class="p">,</span> <span class="n">IntegerType</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">df</span><span class="p">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">'sum'</span><span class="p">,</span> <span class="n">addition_udf</span><span class="p">(</span><span class="s">'animal'</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>(In practical cases, <code class="language-plaintext highlighter-rouge">self._mapping</code> is a huge object containing the dictionary and other attributes that are derived from methods in the <code class="language-plaintext highlighter-rouge">AnimalsToNumbers</code> class.) If I want to transform a dataframe <code class="language-plaintext highlighter-rouge">df</code> that looks like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-------------+
+|       animal|
++-------------+
+|elephant+bear|
+|     cat+bear|
++-------------+
+</code></pre></div></div>
+
+<p>The operation</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">AnimalsToNumbers</span><span class="p">(</span><span class="n">spark</span><span class="p">).</span><span class="n">add_up_animals</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>will lead to an error like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
+Py4JError                                 Traceback (most recent call last)
+~/anaconda3/envs/pyspark_demo/lib/python3.5/site-packages/pyspark/serializers.py in dumps(self, obj)
+    589         try:
+--&gt; 590             return cloudpickle.dumps(obj, 2)
+    591         except pickle.PickleError:
+...
+PicklingError: Could not serialize object: Py4JError: An error occurred while calling o25.__getstate__. Trace:
+py4j.Py4JException: Method __getstate__([]) does not exist
+	at py4j.reflection.ReflectionEngine.getMethod(ReflectionEngine.java:318)
+	at py4j.reflection.ReflectionEngine.getMethod(ReflectionEngine.java:326)
+	at py4j.Gateway.invoke(Gateway.java:274)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.GatewayConnection.run(GatewayConnection.java:238)
+	at java.lang.Thread.run(Thread.java:748)
+</code></pre></div></div>
+
+<p>The issue is that, as <code class="language-plaintext highlighter-rouge">self._mapping</code> appears in the function <code class="language-plaintext highlighter-rouge">addition</code>, when applying <code class="language-plaintext highlighter-rouge">addition_udf</code> to the pyspark dataframe, the object <code class="language-plaintext highlighter-rouge">self</code> (i.e. the <code class="language-plaintext highlighter-rouge">AnimalsToNumbers</code> class) has to be serialized but it can’t be.</p>
+
+<p>A (surprisingly simple) way is to create a reference to the dictionary (<code class="language-plaintext highlighter-rouge">self._mapping</code>) but not the object:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">AnimalsToNumbers</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spark</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_mapping</span> <span class="o">=</span> <span class="p">{</span><span class="s">'elephant'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'bear'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">'cat'</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_spark</span> <span class="o">=</span> <span class="n">spark</span>
+        
+    
+    <span class="k">def</span> <span class="nf">add_up_animals</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
+        <span class="n">mapping</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">_mapping</span>
+        <span class="k">def</span> <span class="nf">addition</span><span class="p">(</span><span class="n">animal_str</span><span class="p">):</span>
+            <span class="k">return</span> <span class="nb">sum</span><span class="p">([</span><span class="n">mapping</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">animal_str</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">'+'</span><span class="p">)])</span>
+
+        <span class="n">addition_udf</span> <span class="o">=</span> <span class="n">F</span><span class="p">.</span><span class="n">udf</span><span class="p">(</span><span class="n">addition</span><span class="p">,</span> <span class="n">IntegerType</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">df</span><span class="p">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">'sum'</span><span class="p">,</span> <span class="n">addition_udf</span><span class="p">(</span><span class="s">'animal'</span><span class="p">))</span>
+
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">AnimalsToNumbers(spark).add_up_animals(df).show()</code> would yield:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-------------+---+
+|       animal|sum|
++-------------+---+
+|elephant+bear|  5|
+|     cat+bear| 13|
++-------------+---+
+
+</code></pre></div></div>
+
+<p>Yay :)</p>
+
+
+        </div>
+        <label for="/2019/09/24/pyspark-could-not-serialize-object/" class="read-more-trigger"></label>
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2019/09/16/json-in-postgresql/">
+        Handling JSON in PostgreSQL
+      </a>
+    </h1>
+
+    <span class="post-date">16 Sep 2019</span>
+
+    
+        <p>Found a useful <a href="https://devhints.io/postgresql-json">cheatsheet</a> that listed out operations on JSON in PostgreSQL.</p>
+
+<p>If I want to list the rows where column <code class="language-plaintext highlighter-rouge">col1</code> in table <code class="language-plaintext highlighter-rouge">table1</code> contains a JSON object with the key <code class="language-plaintext highlighter-rouge">key1</code>, I can use:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">table1</span>
+<span class="k">where</span> <span class="n">col1</span><span class="o">-&gt;</span><span class="s1">'key1'</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span>
+</code></pre></div></div>
+
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/2019/09/15/lwa-package-updated-to-new-version/">
         Local wave activity package updated to version 0.3.7
       </a>
@@ -201,16 +339,16 @@ Welcome to my personal homepage! Please use the <b>left-side menu</b> to navigat
     <span class="post-date">15 Sep 2019</span>
 
     
-        <p>The <a href="https://github.com/csyhuang/hn2016_falwa">python package</a> <code class="highlighter-rouge">hn2016_falwa</code> has just been updated with the following changes:</p>
+        <p>The <a href="https://github.com/csyhuang/hn2016_falwa">python package</a> <code class="language-plaintext highlighter-rouge">hn2016_falwa</code> has just been updated with the following changes:</p>
 <ul>
-  <li>Switched the unittest framework from <code class="highlighter-rouge">unittest</code> to <code class="highlighter-rouge">pytest</code></li>
+  <li>Switched the unittest framework from <code class="language-plaintext highlighter-rouge">unittest</code> to <code class="language-plaintext highlighter-rouge">pytest</code></li>
   <li>Improved interface of the QGField object</li>
-  <li>Added a new function <code class="highlighter-rouge">hn2016_falwa.download_data.retrieve_erai</code> to download ERA-Interim data (but not connected to the main program yet)</li>
+  <li>Added a new function <code class="language-plaintext highlighter-rouge">hn2016_falwa.download_data.retrieve_erai</code> to download ERA-Interim data (but not connected to the main program yet)</li>
 </ul>
 
-<p>My package uses <code class="highlighter-rouge">f2py</code>. When switching from <code class="highlighter-rouge">unittest</code> to <code class="highlighter-rouge">pytest</code>, there are several changes to make in <code class="highlighter-rouge">setup.py</code> and <code class="highlighter-rouge">.travis</code> to accommodate such usage:</p>
+<p>My package uses <code class="language-plaintext highlighter-rouge">f2py</code>. When switching from <code class="language-plaintext highlighter-rouge">unittest</code> to <code class="language-plaintext highlighter-rouge">pytest</code>, there are several changes to make in <code class="language-plaintext highlighter-rouge">setup.py</code> and <code class="language-plaintext highlighter-rouge">.travis</code> to accommodate such usage:</p>
 
-<p>In <code class="highlighter-rouge">setup</code> (<code class="highlighter-rouge">numpy.distutils.core.setup</code>), remove the argument</p>
+<p>In <code class="language-plaintext highlighter-rouge">setup</code> (<code class="language-plaintext highlighter-rouge">numpy.distutils.core.setup</code>), remove the argument</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">test_suite</span><span class="o">=</span><span class="s">'tests.my_module_suite'</span>
 </code></pre></div></div>
 <p>and add:</p>
@@ -219,7 +357,7 @@ Welcome to my personal homepage! Please use the <b>left-side menu</b> to navigat
     <span class="n">tests_require</span><span class="o">=</span><span class="p">[</span><span class="s">'pytest'</span><span class="p">],</span>
 </code></pre></div></div>
 
-<p>In <code class="highlighter-rouge">.travis</code>, the <code class="highlighter-rouge">script</code> section looks like:</p>
+<p>In <code class="language-plaintext highlighter-rouge">.travis</code>, the <code class="language-plaintext highlighter-rouge">script</code> section looks like:</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>script:
   - python setup.py pytest
 </code></pre></div></div>
@@ -301,33 +439,33 @@ Welcome to my personal homepage! Please use the <b>left-side menu</b> to navigat
             </p>
 <h3 id="copy-a-file-from-one-branch-to-another">Copy a file from one branch to another</h3>
 <p>To copy a file to the current branch from another branch (<a href="https://stackoverflow.com/questions/307579/how-do-i-copy-a-version-of-a-single-file-from-one-git-branch-to-another/7099164">ref</a>)</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout another_branch the_file_you_want.txt
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout another_branch the_file_you_want.txt
 </code></pre></div></div>
 
 <h3 id="merge-changes-from-master-branch-to-yours">Merge changes from master branch to yours</h3>
-<p>To merge changes from another branch to yours, you can use <code class="highlighter-rouge">merge</code> or <code class="highlighter-rouge">rebase</code> depending on the preferred commit order. BitBucket has a <a href="https://www.atlassian.com/git/tutorials/merging-vs-rebasing">nice tutorial</a> discussing the difference btween the two. Usually I’d love to have the changes pulled from another branch as a single commit with <code class="highlighter-rouge">git merge</code>.</p>
+<p>To merge changes from another branch to yours, you can use <code class="language-plaintext highlighter-rouge">merge</code> or <code class="language-plaintext highlighter-rouge">rebase</code> depending on the preferred commit order. BitBucket has a <a href="https://www.atlassian.com/git/tutorials/merging-vs-rebasing">nice tutorial</a> discussing the difference btween the two. Usually I’d love to have the changes pulled from another branch as a single commit with <code class="language-plaintext highlighter-rouge">git merge</code>.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout master      # the branch with changes
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout master      # the branch with changes
 git pull                 # pull the remote changes to local master branch
 git checkout mybranch    # go back to mybranch
 git merge master         # incorporate the changes into mybranch
 </code></pre></div></div>
 
-<h3 id="how-to-use-git-revert">How to use <code class="highlighter-rouge">git revert</code></h3>
-<p><a href="https://www.atlassian.com/git/tutorials/undoing-changes/git-revert">Useful tutorial</a> from BitBucket on <code class="highlighter-rouge">git revert</code>.</p>
+<h3 id="how-to-use-git-revert">How to use <code class="language-plaintext highlighter-rouge">git revert</code></h3>
+<p><a href="https://www.atlassian.com/git/tutorials/undoing-changes/git-revert">Useful tutorial</a> from BitBucket on <code class="language-plaintext highlighter-rouge">git revert</code>.</p>
 
 <h3 id="compare-differences-between-branches-and-output-the-results">Compare differences between branches and output the results</h3>
 <p>If you want to compare the difference between your (more updated) branch and the master branch, use the command</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff master..your_branch
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff master..your_branch
 </code></pre></div></div>
 <p>You can save the comparison results into a text file with colors by</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff master..your_branch &gt; your_branch_to_master.diff
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff master..your_branch &gt; your_branch_to_master.diff
 </code></pre></div></div>
-<p>The color can be viewed when you open the <code class="highlighter-rouge">.diff</code> file with <a href="https://www.sublimetext.com/">Sublime</a>.</p>
+<p>The color can be viewed when you open the <code class="language-plaintext highlighter-rouge">.diff</code> file with <a href="https://www.sublimetext.com/">Sublime</a>.</p>
 
 <h3 id="update-password-for-git-on-mac-os-x">Update password for Git on Mac OS X</h3>
 <p>use the following command</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config --global credential.helper osxkeychain
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config --global credential.helper osxkeychain
 </code></pre></div></div>
 
 <p>[to be continued]</p>
@@ -479,7 +617,7 @@ First of all, load the pyspark utilities required.</p>
 <span class="n">train_df</span><span class="p">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+--------------------+-----+---+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+--------------------+-----+---+
 |         feat_vector|label|qid|
 +--------------------+-----+---+
 |(137,[5,13,17,42,...|    0|  1|
@@ -494,7 +632,7 @@ only showing top 5 rows
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">test_df</span><span class="p">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+--------------------+-----+---+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+--------------------+-----+---+
 |         feat_vector|label|qid|
 +--------------------+-----+---+
 |(137,[2,7,37,40,4...|    1|  1|
@@ -609,10 +747,10 @@ go to the <strong>Web</strong> tab and select <strong>Add a new web app</strong>
 
 <p>Enter a path for a Python file I wish to hold my Dash app. I entered:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/home/username/mysite/dashing_demo_app.py
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/home/username/mysite/dashing_demo_app.py
 </code></pre></div></div>
 
-<p>Put the script of your Dash app in <code class="highlighter-rouge">dashing_demo_app.py</code>. You can use the script in the sample file 
+<p>Put the script of your Dash app in <code class="language-plaintext highlighter-rouge">dashing_demo_app.py</code>. You can use the script in the sample file 
 <a href="https://github.com/conradho/dashingdemo/blob/master/dashing_demo_app.py">dashing_demo_app.py</a> 
 provided on the GitHub repo of pythonanywhere’s staff.</p>
 
@@ -620,23 +758,23 @@ provided on the GitHub repo of pythonanywhere’s staff.</p>
 <a href="https://github.com/conradho/dashingdemo/blob/master/requirements3.6.txt">requirements3.6.txt</a> 
 provided in the above GitHub repo.</p>
 
-<p>Go to the <strong>Files</strong> tab to create <code class="highlighter-rouge">requirements3.6.txt</code> in your home directory. Then, 
+<p>Go to the <strong>Files</strong> tab to create <code class="language-plaintext highlighter-rouge">requirements3.6.txt</code> in your home directory. Then, 
 go to the <strong>Consoles</strong> tab to start a new <em>bash</em> session. 
 Create a virtual environment <em>dashappenv</em> with the following command in the home directory:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkvirtualenv dashappenv --python=/usr/bin/python3.6
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkvirtualenv dashappenv --python=/usr/bin/python3.6
 pip install -r requirements3.6.txt
 </code></pre></div></div>
 
 <p>Then, go to the <strong>Web</strong> tab and enter under <strong>Virtualenv</strong> the path of your virtual environment:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/home/username/.virtualenvs/dashappenv
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/home/username/.virtualenvs/dashappenv
 </code></pre></div></div>
 
 <p>Lastly, modify your WSGI file. Instead of</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from dashing_demo_app import app as application
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from dashing_demo_app import app as application
 </code></pre></div></div>
 <p>provided, enter</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from dashing_demo_app import app
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from dashing_demo_app import app
 application = app.server
 </code></pre></div></div>
 <p>to import your app.</p>
@@ -671,7 +809,7 @@ from UChicago about the publication.</p>
 <p>For interested researchers, the sample script to reproduce the results can be found in the directory 
 <a href="https://github.com/csyhuang/hn2016_falwa/tree/master/examples/nh2018_science">nh2018_science</a> 
 of the my python package’s GitHub repo <a href="https://github.com/csyhuang/hn2016_falwa">hn2016_falwa</a>. 
-You can download ERA-Interim reanalysis data with <code class="highlighter-rouge">download_example.py</code> to run the local wave 
+You can download ERA-Interim reanalysis data with <code class="language-plaintext highlighter-rouge">download_example.py</code> to run the local wave 
 activity and flux analysis in the jupyter notebook demo <a href="https://github.com/csyhuang/hn2016_falwa/blob/master/examples/nh2018_science/demo_script_for_nh2018.ipynb">demo_script_for_nh2018.ipynb</a>.</p>
 
 <p>Have fun and feel free to email me (csyhuang at uchicago.edu) if you are interested 
@@ -692,24 +830,24 @@ in using the code and/or have questions about it.</p>
     
         <div>
             <p>I am following instructions on the <a href="https://github.com/stanfordnlp/CoreNLP">GitHub page of Stanford Core NLP</a> 
-under <strong>Build with Ant</strong>. To install <code class="highlighter-rouge">ant</code>, you can use homebrew:
+under <strong>Build with Ant</strong>. To install <code class="language-plaintext highlighter-rouge">ant</code>, you can use homebrew:
 
         </div>
         <input type="checkbox" class="read-more-state" id="/2018/04/12/installing-stanfordCoreNLP/"/>
         <div class="read-more">
             </p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ brew install ant
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ brew install ant
 </code></pre></div></div>
 
-<p>In Step 5, you have to include the .jar files in the directory <code class="highlighter-rouge">CoreNLP/lib</code> and 
-<code class="highlighter-rouge">CoreNLP/liblocal</code> in your <code class="highlighter-rouge">CLASSPATH</code>. To do this, first, I install <em>coreutils</em>:</p>
+<p>In Step 5, you have to include the .jar files in the directory <code class="language-plaintext highlighter-rouge">CoreNLP/lib</code> and 
+<code class="language-plaintext highlighter-rouge">CoreNLP/liblocal</code> in your <code class="language-plaintext highlighter-rouge">CLASSPATH</code>. To do this, first, I install <em>coreutils</em>:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew install coreutils
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew install coreutils
 </code></pre></div></div>
 
-<p>such that I can use the utility <code class="highlighter-rouge">realpath</code> there. Then, I include the following in my <code class="highlighter-rouge">~/.bashrc</code>:</p>
+<p>such that I can use the utility <code class="language-plaintext highlighter-rouge">realpath</code> there. Then, I include the following in my <code class="language-plaintext highlighter-rouge">~/.bashrc</code>:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for file in `find /Users/clare.huang/CoreNLP/lib/ -name "*.jar"`;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for file in `find /Users/clare.huang/CoreNLP/lib/ -name "*.jar"`;
   do export CLASSPATH="$CLASSPATH:`realpath $file`";
 done
 
@@ -721,9 +859,9 @@ done
 <p>(I guess there are better ways to combine the commands above. Let me know if there are.)</p>
 
 <p>To run CoreNLP, I have to download the latest version of it, and place it in the directory 
-<code class="highlighter-rouge">CoreNLP/</code>:</p>
+<code class="language-plaintext highlighter-rouge">CoreNLP/</code>:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget http://nlp.stanford.edu/software/stanford-corenlp-full-2018-01-31.zip
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget http://nlp.stanford.edu/software/stanford-corenlp-full-2018-01-31.zip
 </code></pre></div></div>
 
 <p>The latest version is available on 
@@ -735,7 +873,7 @@ in <a href="https://www.khalidalnajjar.com/setup-use-stanford-corenlp-server-pyt
 (under <strong>Running Stanford CoreNLP Server</strong>). If you have no problem starting the server, 
 you shall be able to see the interface on your browser at http://localhost:9000/:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java -mx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -annotators "tokenize,ssplit,pos,lemma,parse,sentiment" -port 9000 -timeout 30000
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java -mx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -annotators "tokenize,ssplit,pos,lemma,parse,sentiment" -port 9000 -timeout 30000
 </code></pre></div></div>
 
 <p>Yay. Next, I will try setting up the python interface.</p>
@@ -765,24 +903,24 @@ how to install multiple Java version on Mac OS High Sierra.
         <div class="read-more">
             </p>
 
-<p>With <code class="highlighter-rouge">brew cask</code> installed on Mac (see <a href="https://github.com/caskroom/homebrew-cask/blob/master/USAGE.md">homebrew-cask instructions</a>), 
+<p>With <code class="language-plaintext highlighter-rouge">brew cask</code> installed on Mac (see <a href="https://github.com/caskroom/homebrew-cask/blob/master/USAGE.md">homebrew-cask instructions</a>), 
 different versions of java can be installed via the command (I want to install java9 here, for example):</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew tap caskroom/versions
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew tap caskroom/versions
 brew cask install java9
 </code></pre></div></div>
 
-<p>After installing, the symlink <code class="highlighter-rouge">/usr/bin/java</code> is still pointing to the old native Java. You can check 
-where it points to with the command <code class="highlighter-rouge">ls -la /usr/bin/java</code>. It is probably pointing to the old native 
+<p>After installing, the symlink <code class="language-plaintext highlighter-rouge">/usr/bin/java</code> is still pointing to the old native Java. You can check 
+where it points to with the command <code class="language-plaintext highlighter-rouge">ls -la /usr/bin/java</code>. It is probably pointing to the old native 
 java path:
-<code class="highlighter-rouge">
+<code class="language-plaintext highlighter-rouge">
 /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/java
 </code>.</p>
 
 <p>However, homebrew installed java into the directory
-<code class="highlighter-rouge">/Library/Java/JavaVirtualMachines/jdkx.x.x_xxx.jdk/Contents/Home</code>.</p>
+<code class="language-plaintext highlighter-rouge">/Library/Java/JavaVirtualMachines/jdkx.x.x_xxx.jdk/Contents/Home</code>.</p>
 
-<p>To easily switch between different java environments, you can use <code class="highlighter-rouge">jEnv</code>. The installing 
+<p>To easily switch between different java environments, you can use <code class="language-plaintext highlighter-rouge">jEnv</code>. The installing 
 instructions can be found on <a href="http://www.jenv.be/">jEnv’s official page</a>.</p>
 
         </div>
@@ -866,7 +1004,7 @@ You shall see four items extracted:
 <p>To use the sample script, you need an API key ( .ecmwfapirc ) placed in your home directory. You can retrieve that by logging in: https://api.ecmwf.int/v1/key/
 Create a file named “.ecmwfapirc” in your home directory and put in the content shown on the page:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
     "url"   : "https://api.ecmwf.int/v1",
     "key"   : "(...)",
     "email" : "(...)"
@@ -966,7 +1104,7 @@ has been updated with 3 submitted manuscripts.</p>
 Processes in Downward Migration of Extratropical Flow Anomalies” has been accepted by <em>Journal of Atmospheric Sciences</em>.</p>
 
 <p>The subroutine 
-<code class="highlighter-rouge">wrapper.qgpv_eqlat_lwa_ncforce</code> for computing effective diffusivity, which quantifies the 
+<code class="language-plaintext highlighter-rouge">wrapper.qgpv_eqlat_lwa_ncforce</code> for computing effective diffusivity, which quantifies the 
 damping on wave transiences by irreversible mixing in the stratosphere during a 
 stratospheric sudden warming event, can be found in <a href="http://hn2016-falwa.readthedocs.io/en/latest/Wrapper%20Functions.html">my python package</a>.</p>
 
@@ -988,53 +1126,6 @@ stratospheric sudden warming event, can be found in <a href="http://hn2016-falwa
 wrote a handy bash script to set up the environment on Mac OS/Linux:</p>
 
 <p><a href="https://gist.github.com/JIghtuse/021604bee56bddab6173c919da7dd2ad">https://gist.github.com/JIghtuse/021604bee56bddab6173c919da7dd2ad</a></p>
-
-
-    
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2017/11/20/significant-update-to-v0-2-0/">
-        My python library updated to v0.2.0!
-      </a>
-    </h1>
-
-    <span class="post-date">20 Nov 2017</span>
-
-    
-        <p>I have updated my python library <a href="http://github.com/csyhuang/hn2016_falwa">hn2016_falwa</a> to 
-v0.2.0 (see <a href="https://github.com/csyhuang/hn2016_falwa/releases/tag/v0.2.0">release note</a>! Now 
-it includes functions to compute the contribution of non-conservative forces to wave activity.</p>
-
-<p>Moreover, the <a href="http://hn2016-falwa.readthedocs.io/en/latest/">documentation page</a> generated 
-with Sphinx is now hosted on readthedocs.org! Check it out!</p>
-
-<p>A side note: somehow I made multiple commits to remedy mistake. The git commands to squash 
-the (3, for example) commits are:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git rebase -i origin/master~3 master
-git push origin +master
-</code></pre></div></div>
-
-
-    
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2017/11/07/f2py-on-mac/">
-        Wrapping Fortrain Codes in Python
-      </a>
-    </h1>
-
-    <span class="post-date">07 Nov 2017</span>
-
-    
-        <p>To start with, the <a href="https://docs.scipy.org/doc/numpy-dev/f2py/getting-started.html">documentation in Numpy</a> explains how we can wrap fortran code in python using f2py.</p>
-
-<p>You need a fortran compiler to run f2py. I’ve found a <a href="http://hpc.sourceforge.net/">pre-compiled version of GCC</a> readily installed on Mac OS X.</p>
-
-<p>(To be continued)</p>
 
 
     

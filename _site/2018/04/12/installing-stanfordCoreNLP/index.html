@@ -86,6 +86,12 @@
     
       
         
+          <a class="sidebar-nav-item" href="/musicarrangement/">Music Arrangements</a>
+        
+      
+    
+      
+        
       
     
       
@@ -148,20 +154,20 @@
   <h1 class="post-title">Installing Stanford Core NLP package on Mac OS X</h1>
   <span class="post-date">12 Apr 2018</span>
   <p>I am following instructions on the <a href="https://github.com/stanfordnlp/CoreNLP">GitHub page of Stanford Core NLP</a> 
-under <strong>Build with Ant</strong>. To install <code class="highlighter-rouge">ant</code>, you can use homebrew:
+under <strong>Build with Ant</strong>. To install <code class="language-plaintext highlighter-rouge">ant</code>, you can use homebrew:
 <!--more--></p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ brew install ant
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ brew install ant
 </code></pre></div></div>
 
-<p>In Step 5, you have to include the .jar files in the directory <code class="highlighter-rouge">CoreNLP/lib</code> and 
-<code class="highlighter-rouge">CoreNLP/liblocal</code> in your <code class="highlighter-rouge">CLASSPATH</code>. To do this, first, I install <em>coreutils</em>:</p>
+<p>In Step 5, you have to include the .jar files in the directory <code class="language-plaintext highlighter-rouge">CoreNLP/lib</code> and 
+<code class="language-plaintext highlighter-rouge">CoreNLP/liblocal</code> in your <code class="language-plaintext highlighter-rouge">CLASSPATH</code>. To do this, first, I install <em>coreutils</em>:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew install coreutils
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew install coreutils
 </code></pre></div></div>
 
-<p>such that I can use the utility <code class="highlighter-rouge">realpath</code> there. Then, I include the following in my <code class="highlighter-rouge">~/.bashrc</code>:</p>
+<p>such that I can use the utility <code class="language-plaintext highlighter-rouge">realpath</code> there. Then, I include the following in my <code class="language-plaintext highlighter-rouge">~/.bashrc</code>:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for file in `find /Users/clare.huang/CoreNLP/lib/ -name "*.jar"`;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for file in `find /Users/clare.huang/CoreNLP/lib/ -name "*.jar"`;
   do export CLASSPATH="$CLASSPATH:`realpath $file`";
 done
 
@@ -173,9 +179,9 @@ done
 <p>(I guess there are better ways to combine the commands above. Let me know if there are.)</p>
 
 <p>To run CoreNLP, I have to download the latest version of it, and place it in the directory 
-<code class="highlighter-rouge">CoreNLP/</code>:</p>
+<code class="language-plaintext highlighter-rouge">CoreNLP/</code>:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget http://nlp.stanford.edu/software/stanford-corenlp-full-2018-01-31.zip
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget http://nlp.stanford.edu/software/stanford-corenlp-full-2018-01-31.zip
 </code></pre></div></div>
 
 <p>The latest version is available on 
@@ -187,7 +193,7 @@ in <a href="https://www.khalidalnajjar.com/setup-use-stanford-corenlp-server-pyt
 (under <strong>Running Stanford CoreNLP Server</strong>). If you have no problem starting the server, 
 you shall be able to see the interface on your browser at http://localhost:9000/:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java -mx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -annotators "tokenize,ssplit,pos,lemma,parse,sentiment" -port 9000 -timeout 30000
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java -mx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -annotators "tokenize,ssplit,pos,lemma,parse,sentiment" -port 9000 -timeout 30000
 </code></pre></div></div>
 
 <p>Yay. Next, I will try setting up the python interface.</p>
@@ -204,27 +210,27 @@ you shall be able to see the interface on your browser at http://localhost:9000/
     
       <li>
         <h3>
+          <a href="/2020/12/26/added-page-music-arrangement/">
+            Added a directory for some of my music arrangements
+            <small>26 Dec 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2020/12/10/databricks-certified-associate-developer-exam-spark-3/">
+            Databricks Certified Associate Developer exam for Apache Spark 3.0
+            <small>10 Dec 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
           <a href="/2020/10/29/odsc-west-talk-on-mlops/">
             Notes on ModelOps and MLOps talks
             <small>29 Oct 2020</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/2020/10/07/unittest-notes/">
-            Running a single test case in the unittest suite
-            <small>07 Oct 2020</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/2020/10/03/update-in-pip-in-october/">
-            New pip release and changes in its way to resolve dependency conflicts
-            <small>03 Oct 2020</small>
           </a>
         </h3>
       </li>
@@ -233,25 +239,22 @@ you shall be able to see the interface on your browser at http://localhost:9000/
 </div>
 
 
-<div id="disqus_thread"></div>
-<script>
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://csyhuang.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = 'http://csyhuang.github.io/2018/04/12/installing-stanfordCoreNLP/';
+      this.page.identifier = 'http://csyhuang.github.io/2018/04/12/installing-stanfordCoreNLP/';
+    };
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://csyhuang.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
 
       </div>
     </div>

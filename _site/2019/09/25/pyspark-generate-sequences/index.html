@@ -86,6 +86,12 @@
     
       
         
+          <a class="sidebar-nav-item" href="/musicarrangement/">Music Arrangements</a>
+        
+      
+    
+      
+        
       
     
       
@@ -149,7 +155,7 @@
   <span class="post-date">25 Sep 2019</span>
   <p>Suppose I have a Hive table that has a column of sequences,</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------------------+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------------------+
 |          sequence|
 +------------------+
 |      [3, 23, 564]|
@@ -158,7 +164,7 @@
 
 <p>how to generate a column that contains permutations of each sequence in multiple rows? The desired output shall look like:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------------------+------------------+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------------------+------------------+
 |          sequence|       permutation|
 +------------------+------------------+
 |      [3, 23, 564]|      [3, 23, 564]|
@@ -170,7 +176,7 @@
 +------------------+------------------+
 </code></pre></div></div>
 
-<p>In order to get multiple rows out of each row, we need to use the function <code class="highlighter-rouge">explode</code>. First, we write a user-defined function (UDF) to return the list of permutations given a array (sequence):</p>
+<p>In order to get multiple rows out of each row, we need to use the function <code class="language-plaintext highlighter-rouge">explode</code>. First, we write a user-defined function (UDF) to return the list of permutations given a array (sequence):</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">itertools</span>
 <span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span><span class="p">,</span> <span class="n">Row</span>
@@ -181,9 +187,9 @@
     <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="p">.</span><span class="n">permutations</span><span class="p">(</span><span class="n">a_list</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">a_list</span><span class="p">)))</span>
 </code></pre></div></div>
 
-<p>The <code class="highlighter-rouge">udf_type</code> function is adapted from the <a href="https://johnpaton.net/posts/clean-spark-udfs/">blog post by John Paton</a>. The output type is specified to be an array of “array of integers”.</p>
+<p>The <code class="language-plaintext highlighter-rouge">udf_type</code> function is adapted from the <a href="https://johnpaton.net/posts/clean-spark-udfs/">blog post by John Paton</a>. The output type is specified to be an array of “array of integers”.</p>
 
-<p>The application of this function with <code class="highlighter-rouge">explode</code> will yield the result above:</p>
+<p>The application of this function with <code class="language-plaintext highlighter-rouge">explode</code> will yield the result above:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">spark_session</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span><span class="n">Row</span><span class="p">(</span><span class="n">sequence</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">564</span><span class="p">])])</span>
 
@@ -203,27 +209,27 @@
     
       <li>
         <h3>
+          <a href="/2020/12/26/added-page-music-arrangement/">
+            Added a directory for some of my music arrangements
+            <small>26 Dec 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2020/12/10/databricks-certified-associate-developer-exam-spark-3/">
+            Databricks Certified Associate Developer exam for Apache Spark 3.0
+            <small>10 Dec 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
           <a href="/2020/10/29/odsc-west-talk-on-mlops/">
             Notes on ModelOps and MLOps talks
             <small>29 Oct 2020</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/2020/10/07/unittest-notes/">
-            Running a single test case in the unittest suite
-            <small>07 Oct 2020</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/2020/10/03/update-in-pip-in-october/">
-            New pip release and changes in its way to resolve dependency conflicts
-            <small>03 Oct 2020</small>
           </a>
         </h3>
       </li>
@@ -232,25 +238,22 @@
 </div>
 
 
-<div id="disqus_thread"></div>
-<script>
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://csyhuang.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = 'http://csyhuang.github.io/2019/09/25/pyspark-generate-sequences/';
+      this.page.identifier = 'http://csyhuang.github.io/2019/09/25/pyspark-generate-sequences/';
+    };
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://csyhuang.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
 
       </div>
     </div>

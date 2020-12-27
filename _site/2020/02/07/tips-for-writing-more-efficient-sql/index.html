@@ -86,6 +86,12 @@
     
       
         
+          <a class="sidebar-nav-item" href="/musicarrangement/">Music Arrangements</a>
+        
+      
+    
+      
+        
       
     
       
@@ -151,7 +157,7 @@
 
 <h1 id="partitioned-tables">Partitioned tables</h1>
 
-<p><strong>Always</strong> specify the partition in the <code class="highlighter-rouge">where</code> clause. If you have to retrieve data from several partitions, loop through it one-by-one.</p>
+<p><strong>Always</strong> specify the partition in the <code class="language-plaintext highlighter-rouge">where</code> clause. If you have to retrieve data from several partitions, loop through it one-by-one.</p>
 
 <h1 id="distinct-elements">Distinct elements</h1>
 
@@ -166,11 +172,11 @@
 <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">item</span>
 </code></pre></div></div>
 
-<p>give the same result. However, the second SQL query will be executed faster. There is no difference calling <code class="highlighter-rouge">distinct</code> and <code class="highlighter-rouge">group by</code> via (py)spark though.</p>
+<p>give the same result. However, the second SQL query will be executed faster. There is no difference calling <code class="language-plaintext highlighter-rouge">distinct</code> and <code class="language-plaintext highlighter-rouge">group by</code> via (py)spark though.</p>
 
 <h1 id="join-vs-where">JOIN v.s. WHERE</h1>
 
-<p>Always use <code class="highlighter-rouge">where</code> to filter the table to be joined to the smallest, e.g.</p>
+<p>Always use <code class="language-plaintext highlighter-rouge">where</code> to filter the table to be joined to the smallest, e.g.</p>
 
 <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="k">c</span><span class="p">.</span><span class="o">*</span> <span class="k">FROM</span> <span class="n">credit</span> <span class="k">c</span>
 <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span>
@@ -181,7 +187,7 @@
 <span class="k">WHERE</span> <span class="k">c</span><span class="p">.</span><span class="n">eligibility</span> <span class="o">=</span> <span class="k">True</span>
 </code></pre></div></div>
 
-<p>Note that the line <code class="highlighter-rouge">WHERE c.eligibility = True</code> is executed to filter the table <code class="highlighter-rouge">credit</code> before the <code class="highlighter-rouge">JOIN</code>. This shrinks the table <code class="highlighter-rouge">credit</code> to the smallest before joining.</p>
+<p>Note that the line <code class="language-plaintext highlighter-rouge">WHERE c.eligibility = True</code> is executed to filter the table <code class="language-plaintext highlighter-rouge">credit</code> before the <code class="language-plaintext highlighter-rouge">JOIN</code>. This shrinks the table <code class="language-plaintext highlighter-rouge">credit</code> to the smallest before joining.</p>
 
 </div>
 
@@ -195,27 +201,27 @@
     
       <li>
         <h3>
+          <a href="/2020/12/26/added-page-music-arrangement/">
+            Added a directory for some of my music arrangements
+            <small>26 Dec 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2020/12/10/databricks-certified-associate-developer-exam-spark-3/">
+            Databricks Certified Associate Developer exam for Apache Spark 3.0
+            <small>10 Dec 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
           <a href="/2020/10/29/odsc-west-talk-on-mlops/">
             Notes on ModelOps and MLOps talks
             <small>29 Oct 2020</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/2020/10/07/unittest-notes/">
-            Running a single test case in the unittest suite
-            <small>07 Oct 2020</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/2020/10/03/update-in-pip-in-october/">
-            New pip release and changes in its way to resolve dependency conflicts
-            <small>03 Oct 2020</small>
           </a>
         </h3>
       </li>
@@ -224,25 +230,22 @@
 </div>
 
 
-<div id="disqus_thread"></div>
-<script>
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://csyhuang.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = 'http://csyhuang.github.io/2020/02/07/tips-for-writing-more-efficient-sql/';
+      this.page.identifier = 'http://csyhuang.github.io/2020/02/07/tips-for-writing-more-efficient-sql/';
+    };
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://csyhuang.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
 
       </div>
     </div>
