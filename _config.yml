@@ -33,6 +33,9 @@ defaults:
 # Exclude directories
 exclude: ["Raw_not_uploaded", "deleted_posts"]
 
+# Include directories
+include: [".well-known"]
+
 # Disqus Comments
 disqus:
   # Leave shortname blank to disable comments site-wide.
