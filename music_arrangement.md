@@ -9,6 +9,12 @@ Here are some of the piano covers I made on YouTube **with music sheet** of my a
 
 For the rest of my recordings, check out my YouTube channel [Clare's Studio](http://youtube.com/phyclare).
 
+## 三代目 J Soul Brothers - 花火/Hanabi (3-minute piano solo version)
+
+This is the theme song of short movie "Destination" in the [Cimena Fighters series](https://www.shortshorts.org/2017/en/program/fighters.html). 🥺 It was a sad story.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_FA8jmBLJMU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Omoinotake - 産声/Ubugoe (4-minute piano solo version)
 
 Opening theme song of the Japanese drama *Cherry Magic! 🍒 Thirty Years of Virginity Can Make You a Wizard?!* (2020).
