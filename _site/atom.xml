@@ -4,13 +4,24 @@
  <title>Clare S. Y. Huang</title>
  <link href="http://csyhuang.github.io/atom.xml" rel="self"/>
  <link href="http://csyhuang.github.io/"/>
- <updated>2021-04-01T09:23:20-05:00</updated>
+ <updated>2021-04-08T15:47:27-05:00</updated>
  <id>http://csyhuang.github.io</id>
  <author>
    <name>Clare S. Y. Huang</name>
    <email>csyhuang@uchicago.edu</email>
  </author>
 
+ 
+ <entry>
+   <title>I finished the GANs Specialization on Coursera!</title>
+   <link href="http://csyhuang.github.io/2021/01/13/finished-gans-specialization/"/>
+   <updated>2021-01-13T00:00:00-06:00</updated>
+   <id>http://csyhuang.github.io/2021/01/13/finished-gans-specialization</id>
+   <content type="html">&lt;p&gt;I finished the &lt;a href=&quot;https://www.coursera.org/specializations/generative-adversarial-networks-gans&quot;&gt;3-course Generative Adversarial Networks (GANs) Specialization&lt;/a&gt; on Coursera! It was super fun! Here are &lt;a href=&quot;https://docs.google.com/presentation/d/1_oI408zCyrn8jNsR3-gUBiKhD73rqFnKtRI6h5eFs9A/edit?usp=sharing&quot;&gt;some slides&lt;/a&gt; I presented in a deep learning journal club with my peers, which is a survey of GANs covered in this Specialization.&lt;/p&gt;
+
+&lt;p&gt;Click &lt;a href=&quot;https://coursera.org/share/08ef512d600b5edf936febb0f24ed034&quot;&gt;here&lt;/a&gt; to view my certificate. 😬&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Added a directory for some of my music arrangements</title>

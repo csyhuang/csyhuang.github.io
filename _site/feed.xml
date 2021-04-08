@@ -7,6 +7,20 @@
     <atom:link href="http://csyhuang.github.io/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>I finished the GANs Specialization on Coursera!</title>
+        <description>
+          
+          I finished the 3-course Generative Adversarial Networks (GANs) Specialization on Coursera! It was super fun! Here are some slides I presented in a deep learning journal club with my peers, which is a survey of GANs covered in this Specialization.
+
+Click here to view my certificate. 😬
+
+        </description>
+        <pubDate>Wed, 13 Jan 2021 00:00:00 -0600</pubDate>
+        <link>http://csyhuang.github.io/2021/01/13/finished-gans-specialization/</link>
+        <guid isPermaLink="true">http://csyhuang.github.io/2021/01/13/finished-gans-specialization/</guid>
+      </item>
+    
+      <item>
         <title>Added a directory for some of my music arrangements</title>
         <description>
           
@@ -219,17 +233,6 @@ Here we go. 😉
         <pubDate>Mon, 14 Oct 2019 00:00:00 -0500</pubDate>
         <link>http://csyhuang.github.io/2019/10/14/notes-on-handling-rnn-training-problem/</link>
         <guid isPermaLink="true">http://csyhuang.github.io/2019/10/14/notes-on-handling-rnn-training-problem/</guid>
-      </item>
-    
-      <item>
-        <title>Generate sequence from an array column of pyspark dataframe</title>
-        <description>
-          
-          Suppose I have a Hive table that has a column of sequences, +------------------+ | sequence| +------------------+ | [3, 23, 564]| +------------------+ how to generate a column that contains permutations of each sequence in multiple rows? The desired output shall look like: +------------------+------------------+ | sequence| permutation| +------------------+------------------+ | [3, 23, 564]|...
-        </description>
-        <pubDate>Wed, 25 Sep 2019 00:00:00 -0500</pubDate>
-        <link>http://csyhuang.github.io/2019/09/25/pyspark-generate-sequences/</link>
-        <guid isPermaLink="true">http://csyhuang.github.io/2019/09/25/pyspark-generate-sequences/</guid>
       </item>
     
   </channel>
