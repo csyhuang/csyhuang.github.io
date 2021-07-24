@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Local wave activity package updated to version 0.3.7
-tags: ['research', 'se']
+tags: ['se']
 comments: true
 ---
 

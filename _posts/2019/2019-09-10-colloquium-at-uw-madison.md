@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Visit to AOS at UW-Madison
+title: Visit to AOS at UW-Madison to give a Colloquium
 tags: ['research']
 comments: true
 ---

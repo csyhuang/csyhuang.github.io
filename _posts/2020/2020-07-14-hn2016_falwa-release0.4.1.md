@@ -2,7 +2,7 @@
 layout: post
 title: Minor release of my python package + release procedures
 comments: true
-tags: ['research', 'se']
+tags: ['se']
 ---
 
 [[hn2016_falwa Release 0.4.1](https://github.com/csyhuang/hn2016_falwa/releases/tag/0.4.1)] A minor release of my python package [hn2016_falwa](https://github.com/csyhuang/hn2016_falwa) is published. Thanks [Christopher Polster](https://github.com/chpolste) for submitting a pull request that fixes the interface of `BarotropicField`. Moreover, I added procedures to process masked array in `QGField` such that it can be conveniently used to process ERA5 data which is stored as masked array in netCDF files.
