@@ -1,14 +1,14 @@
 ---
 layout: page
-title: Climate Tools
+title: Climate Analysis Tools
 permalink: /climate_tools/
 comments: true
 ---
 
-Here are scripts I have written for processing climate data, together with tools I have found 
+Here are packages I have written for processing climate data, together with tools I have found 
 online for climate data analysis/visualization.
 
-## My scripts on GitHub
+## My projects on GitHub
 
 - **Python package hn2016_falwa**: 
 [hn2016_falwa](https://github.com/csyhuang/hn2016_falwa) is a python package for 

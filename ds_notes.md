@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Data Science Notes
+title: Study Notes
 permalink: /ds_notes/
 comments: true
 ---
@@ -8,33 +8,42 @@ comments: true
 It's fun to write about what I have learnt and share solutions to problems related to 
 data science/machine learning I have solved.
 
-## Data Science
 
-{% for post in site.tags.ds %}
- - [{{ post.title }}]({{ post.url }})
+## Presentation Slides
+
+Summary slides I made for discussion in the *Machine Learning Journal Club* with peers.
+
+{% for post in site.tags.mljc_slides %}
+ - {{ post.date | date: "%Y-%m-%d" }} - [{{ post.title }}]({{ post.url }})
+{% endfor %}
+
+## Reading Notes
+
+{% for post in site.tags.notesfromreading %}
+ - {{ post.date | date: "%Y-%m-%d" }} - [{{ post.title }}]({{ post.url }})
 {% endfor %}
 
 ## Software Engineering
 
 {% for post in site.tags.se %}
- - [{{ post.title }}]({{ post.url }})
+ - {{ post.date | date: "%Y-%m-%d" }} - [{{ post.title }}]({{ post.url }})
+{% endfor %}
+
+## Data Science
+
+{% for post in site.tags.ds %}
+ - {{ post.date | date: "%Y-%m-%d" }} - [{{ post.title }}]({{ post.url }})
 {% endfor %}
 
 ## System / Package set-up
 
 {% for post in site.tags.setup %}
- - [{{ post.title }}]({{ post.url }})
-{% endfor %}
-
-## Reading Notes/Summary
-
-{% for post in site.tags.notesfromreading %}
- - [{{ post.title }}]({{ post.url }})
+ - {{ post.date | date: "%Y-%m-%d" }} - [{{ post.title }}]({{ post.url }})
 {% endfor %}
 
 ## Notes taken from lectures / online courses:
 
 {% for post in site.coursenotes %}
- - [{{ post.title }}]({{ post.url }})
+ - {{ post.date | date: "%Y-%m-%d" }} - [{{ post.title }}]({{ post.url }})
 {% endfor %}
 

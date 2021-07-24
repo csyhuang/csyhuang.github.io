@@ -5,6 +5,8 @@ comments: true
 tags: ['pyspark']
 ---
 
+<!--more-->
+
 ## Split an array column
 To split a column with arrays of strings, e.g. a DataFrame that looks like,
 ```

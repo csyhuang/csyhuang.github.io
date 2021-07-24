@@ -72,13 +72,13 @@
     
       
         
-          <a class="sidebar-nav-item" href="/climate_tools/">Climate Tools</a>
+          <a class="sidebar-nav-item" href="/climate_tools/">Climate Analysis Tools</a>
         
       
     
       
         
-          <a class="sidebar-nav-item" href="/ds_notes/">Data Science Notes</a>
+          <a class="sidebar-nav-item" href="/ds_notes/">Study Notes</a>
         
       
     
@@ -199,6 +199,43 @@ Welcome to my personal homepage! Please use the <b>left-side menu</b> to navigat
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/2021/05/22/contrastive-learning/">
+        Discussion on Contrastive Learning
+      </a>
+    </h1>
+
+    <span class="post-date">22 May 2021</span>
+
+    
+        <div>
+            <p>I am leading the Machine Learning Journal Club discussion on the two papers:</p>
+<ul>
+  <li>Wang, G., Wang, K., Wang, G., Torr, P. H., &amp; Lin, L. (2021). <a href="https://arxiv.org/abs/2104.08760">Towards Solving Inefficiency of Self-supervised Representation Learning.</a> arXiv preprint arXiv:2104.08760.</li>
+  <li>Chen, T., Kornblith, S., Norouzi, M., &amp; Hinton, G. (2020, November). <a href="https://arxiv.org/abs/2002.05709">A simple framework for contrastive learning of visual representations.</a> In International conference on machine learning (pp. 1597-1607). PMLR.</li>
+</ul>
+
+
+        </div>
+        <input type="checkbox" class="read-more-state" id="/2021/05/22/contrastive-learning/"/>
+        <div class="read-more">
+            
+
+<p>You can find <a href="https://docs.google.com/presentation/d/1ZS-L-o46h68Q78UR-7nCCRZls4a53M6L_73CHr6xFN4/edit?usp=sharing">here</a> the slides I made which provides an introduction to Contrastive Learning. Below are the main points from the slides:</p>
+<ul>
+  <li>Contrastive learning is a self-supervised method to learn a representation of objects by maximizing/minimizing distance between the same/different class(es)</li>
+  <li>Contrastive learning benefits from data augmentation and increase in model parameters</li>
+  <li>Under-clustering occurs when there is not enough negative samples to learn from; over-clustering occurs when the model overfits (memorize the data)</li>
+  <li>To solve inefficiency issue, median(rank-k) triplet loss is used instead of the total loss</li>
+</ul>
+
+
+        </div>
+        <label for="/2021/05/22/contrastive-learning/" class="read-more-trigger"></label>
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/2021/01/13/finished-gans-specialization/">
         I finished the GANs Specialization on Coursera!
       </a>
@@ -242,7 +279,7 @@ Welcome to my personal homepage! Please use the <b>left-side menu</b> to navigat
   <div class="post">
     <h1 class="post-title">
       <a href="/2020/12/10/databricks-certified-associate-developer-exam-spark-3/">
-        Databricks Certified Associate Developer exam for Apache Spark 3.0
+        Databricks Certified Associate Developer for Apache Spark 3.0
       </a>
     </h1>
 
@@ -262,6 +299,23 @@ Welcome to my personal homepage! Please use the <b>left-side menu</b> to navigat
 </ol>
 
 <p>I believe there will be more tests conducted with an online proctor given the evolution of the pandemic. Perhaps we will get used to the online test workspace setup at home very soon.</p>
+
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2020/11/14/deep-compression/">
+        Discussion on Deep Compression
+      </a>
+    </h1>
+
+    <span class="post-date">14 Nov 2020</span>
+
+    
+        <p>I was leading a discussion on the paper Han, S., Mao, H., &amp; Dally, W. J. (2015). <a href="https://arxiv.org/abs/1510.00149">Deep compression: Compressing deep neural networks with pruning, trained quantization and huffman coding</a>. arXiv preprint arXiv:1510.00149. It introduces the methods to reduce the storage requirement of neural networks such that it can be stored on smaller devices.</p>
+
+<p>The slides I made for the discussion can be found <a href="https://docs.google.com/presentation/d/1I-NutRXf15iWKEDOmEHgxht5n9m7k5ZeQHivspHYSAw/edit?usp=sharing">here</a>.</p>
 
     
   </div>
@@ -376,7 +430,14 @@ git merge upstream/master
     <span class="post-date">17 Sep 2020</span>
 
     
-        <h2 id="split-an-array-column">Split an array column</h2>
+        <div>
+            
+        </div>
+        <input type="checkbox" class="read-more-state" id="/2020/09/17/split-vector-to-columns/"/>
+        <div class="read-more">
+            
+
+<h2 id="split-an-array-column">Split an array column</h2>
 <p>To split a column with arrays of strings, e.g. a DataFrame that looks like,</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+---------+
 |   strCol|
@@ -427,6 +488,8 @@ git merge upstream/master
 +------------+------------+------------+
 </code></pre></div></div>
 
+        </div>
+        <label for="/2020/09/17/split-vector-to-columns/" class="read-more-trigger"></label>
     
   </div>
   
@@ -836,165 +899,6 @@ Here we go. 😉</p>
 <p><img src="/assets/img/thumbnails-of-matchman.png" alt="Matchman Bouldering Series" /></p>
 
 <p>If you are fond of bouldering and have practical/physics ideas to share, ping me and see if we can collaborate! :)</p>
-
-    
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2019/10/30/pandas_to_pyspark_before_0.19.2/">
-        Conversion of pandas dataframe to pyspark dataframe with an older version of pandas
-      </a>
-    </h1>
-
-    <span class="post-date">30 Oct 2019</span>
-
-    
-        <div>
-            <p>Pandas dataframe can be converted to pyspark dataframe easily in the newest version of <code class="language-plaintext highlighter-rouge">pandas</code> after <code class="language-plaintext highlighter-rouge">v0.19.2</code>. If you are using an older version of pandas, you have to do a bit more work for such conversion as follows.</p>
-
-<p>First, load the packages and initiate a spark session.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span><span class="p">,</span> <span class="n">DataFrame</span><span class="p">,</span> <span class="n">Row</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
-
-<span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="p">.</span><span class="n">builder</span> \
-        <span class="p">.</span><span class="n">master</span><span class="p">(</span><span class="s">"local"</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">appName</span><span class="p">(</span><span class="s">"Pandas to pyspark DF"</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">getOrCreate</span><span class="p">()</span>
-</code></pre></div></div>
-
-        </div>
-        <input type="checkbox" class="read-more-state" id="/2019/10/30/pandas_to_pyspark_before_0.19.2/"/>
-        <div class="read-more">
-            
-<p>Here is an example of pandas dataframe to be converted.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s">'index'</span><span class="p">:[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)],</span>
-                   <span class="s">'alphabet'</span><span class="p">:[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="s">'pyspark'</span><span class="p">]})</span>
-<span class="n">df</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-
-
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>index</th>
-      <th>alphabet</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0</td>
-      <td>p</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-      <td>y</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2</td>
-      <td>s</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>3</td>
-      <td>p</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>4</td>
-      <td>a</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>5</td>
-      <td>r</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>6</td>
-      <td>k</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-<p>To convert it to a <code class="language-plaintext highlighter-rouge">pyspark</code> dataframe, one has to create a list of <code class="language-plaintext highlighter-rouge">Row</code> objects and pass it into <code class="language-plaintext highlighter-rouge">createDataFrame</code>:</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df_pyspark</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span>
-    <span class="n">Row</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s">'index'</span><span class="p">],</span> <span class="n">alphabet</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s">'alphabet'</span><span class="p">])</span>
-    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="p">.</span><span class="n">iterrows</span><span class="p">()</span>
-<span class="p">])</span>
-<span class="n">df_pyspark</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+--------+-----+
-|alphabet|index|
-+--------+-----+
-|       p|    0|
-|       y|    1|
-|       s|    2|
-|       p|    3|
-|       a|    4|
-|       r|    5|
-|       k|    6|
-+--------+-----+
-</code></pre></div></div>
-
-
-        </div>
-        <label for="/2019/10/30/pandas_to_pyspark_before_0.19.2/" class="read-more-trigger"></label>
-    
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2019/10/14/notes-on-handling-rnn-training-problem/">
-        Common issues in RNN training
-      </a>
-    </h1>
-
-    <span class="post-date">14 Oct 2019</span>
-
-    
-        <p>Exploding gradients and vanishing gradients are two common issues with the training of RNN.</p>
-
-<p>To avoid exploding gradients, one may use:</p>
-
-<ul>
-  <li>Truncated Back-propagation through time (BPTT)</li>
-  <li>Clip gradients at threshold</li>
-  <li>RMSprop to adjust learning rate</li>
-</ul>
-
-<p>Vanishing gradients are harder to detect. To avoid it, one may use:</p>
-
-<ul>
-  <li>Weight initialization</li>
-  <li>ReLu activation functions</li>
-  <li>RMSprop</li>
-  <li>LSTM, GRUs</li>
-</ul>
 
     
   </div>

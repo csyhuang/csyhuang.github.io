@@ -7,6 +7,17 @@
     <atom:link href="http://csyhuang.github.io/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Discussion on Contrastive Learning</title>
+        <description>
+          
+          I am leading the Machine Learning Journal Club discussion on the two papers: Wang, G., Wang, K., Wang, G., Torr, P. H., &amp;amp; Lin, L. (2021). Towards Solving Inefficiency of Self-supervised Representation Learning. arXiv preprint arXiv:2104.08760. Chen, T., Kornblith, S., Norouzi, M., &amp;amp; Hinton, G. (2020, November). A simple framework...
+        </description>
+        <pubDate>Sat, 22 May 2021 00:00:00 -0500</pubDate>
+        <link>http://csyhuang.github.io/2021/05/22/contrastive-learning/</link>
+        <guid isPermaLink="true">http://csyhuang.github.io/2021/05/22/contrastive-learning/</guid>
+      </item>
+    
+      <item>
         <title>I finished the GANs Specialization on Coursera!</title>
         <description>
           
@@ -33,7 +44,7 @@ Click here to view my certificate. 😬
       </item>
     
       <item>
-        <title>Databricks Certified Associate Developer exam for Apache Spark 3.0</title>
+        <title>Databricks Certified Associate Developer for Apache Spark 3.0</title>
         <description>
           
           I passed the Databricks Certified Associate Developer exam for Apache Spark 3.0 (python). Here is my certificate! I registered for the exam when joining the Spark Summit this June, hoping to set a goal to push myself to dive deeper into spark architecture and performance tuning. [Experience sharing] On top...
@@ -41,6 +52,17 @@ Click here to view my certificate. 😬
         <pubDate>Thu, 10 Dec 2020 00:00:00 -0600</pubDate>
         <link>http://csyhuang.github.io/2020/12/10/databricks-certified-associate-developer-exam-spark-3/</link>
         <guid isPermaLink="true">http://csyhuang.github.io/2020/12/10/databricks-certified-associate-developer-exam-spark-3/</guid>
+      </item>
+    
+      <item>
+        <title>Discussion on Deep Compression</title>
+        <description>
+          
+          I was leading a discussion on the paper Han, S., Mao, H., &amp;amp; Dally, W. J. (2015). Deep compression: Compressing deep neural networks with pruning, trained quantization and huffman coding. arXiv preprint arXiv:1510.00149. It introduces the methods to reduce the storage requirement of neural networks such that it can be...
+        </description>
+        <pubDate>Sat, 14 Nov 2020 00:00:00 -0600</pubDate>
+        <link>http://csyhuang.github.io/2020/11/14/deep-compression/</link>
+        <guid isPermaLink="true">http://csyhuang.github.io/2020/11/14/deep-compression/</guid>
       </item>
     
       <item>
@@ -212,28 +234,6 @@ Here we go. 😉
         <pubDate>Fri, 20 Dec 2019 00:00:00 -0600</pubDate>
         <link>http://csyhuang.github.io/2019/12/20/comic-series-on-bouldering/</link>
         <guid isPermaLink="true">http://csyhuang.github.io/2019/12/20/comic-series-on-bouldering/</guid>
-      </item>
-    
-      <item>
-        <title>Conversion of pandas dataframe to pyspark dataframe with an older version of pandas</title>
-        <description>
-          
-          Pandas dataframe can be converted to pyspark dataframe easily in the newest version of pandas after v0.19.2. If you are using an older version of pandas, you have to do a bit more work for such conversion as follows. First, load the packages and initiate a spark session. from pyspark.sql...
-        </description>
-        <pubDate>Wed, 30 Oct 2019 00:00:00 -0500</pubDate>
-        <link>http://csyhuang.github.io/2019/10/30/pandas_to_pyspark_before_0.19.2/</link>
-        <guid isPermaLink="true">http://csyhuang.github.io/2019/10/30/pandas_to_pyspark_before_0.19.2/</guid>
-      </item>
-    
-      <item>
-        <title>Common issues in RNN training</title>
-        <description>
-          
-          Exploding gradients and vanishing gradients are two common issues with the training of RNN. To avoid exploding gradients, one may use: Truncated Back-propagation through time (BPTT) Clip gradients at threshold RMSprop to adjust learning rate Vanishing gradients are harder to detect. To avoid it, one may use: Weight initialization ReLu...
-        </description>
-        <pubDate>Mon, 14 Oct 2019 00:00:00 -0500</pubDate>
-        <link>http://csyhuang.github.io/2019/10/14/notes-on-handling-rnn-training-problem/</link>
-        <guid isPermaLink="true">http://csyhuang.github.io/2019/10/14/notes-on-handling-rnn-training-problem/</guid>
       </item>
     
   </channel>

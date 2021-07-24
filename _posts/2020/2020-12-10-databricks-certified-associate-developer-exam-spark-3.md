@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Databricks Certified Associate Developer exam for Apache Spark 3.0
+title: Databricks Certified Associate Developer for Apache Spark 3.0
 comments: true
 tags: ['pyspark']
 ---

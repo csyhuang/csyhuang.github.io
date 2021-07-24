@@ -72,13 +72,13 @@
     
       
         
-          <a class="sidebar-nav-item" href="/climate_tools/">Climate Tools</a>
+          <a class="sidebar-nav-item" href="/climate_tools/">Climate Analysis Tools</a>
         
       
     
       
         
-          <a class="sidebar-nav-item" href="/ds_notes/">Data Science Notes</a>
+          <a class="sidebar-nav-item" href="/ds_notes/">Study Notes</a>
         
       
     
@@ -196,6 +196,165 @@ Welcome to my personal homepage! Please use the <b>left-side menu</b> to navigat
 <hr>
 
 <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2019/10/30/pandas_to_pyspark_before_0.19.2/">
+        Conversion of pandas dataframe to pyspark dataframe with an older version of pandas
+      </a>
+    </h1>
+
+    <span class="post-date">30 Oct 2019</span>
+
+    
+        <div>
+            <p>Pandas dataframe can be converted to pyspark dataframe easily in the newest version of <code class="language-plaintext highlighter-rouge">pandas</code> after <code class="language-plaintext highlighter-rouge">v0.19.2</code>. If you are using an older version of pandas, you have to do a bit more work for such conversion as follows.</p>
+
+<p>First, load the packages and initiate a spark session.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span><span class="p">,</span> <span class="n">DataFrame</span><span class="p">,</span> <span class="n">Row</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+
+<span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="p">.</span><span class="n">builder</span> \
+        <span class="p">.</span><span class="n">master</span><span class="p">(</span><span class="s">"local"</span><span class="p">)</span> \
+        <span class="p">.</span><span class="n">appName</span><span class="p">(</span><span class="s">"Pandas to pyspark DF"</span><span class="p">)</span> \
+        <span class="p">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+</code></pre></div></div>
+
+        </div>
+        <input type="checkbox" class="read-more-state" id="/2019/10/30/pandas_to_pyspark_before_0.19.2/"/>
+        <div class="read-more">
+            
+<p>Here is an example of pandas dataframe to be converted.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s">'index'</span><span class="p">:[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)],</span>
+                   <span class="s">'alphabet'</span><span class="p">:[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="s">'pyspark'</span><span class="p">]})</span>
+<span class="n">df</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>index</th>
+      <th>alphabet</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>p</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>y</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>s</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>p</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>a</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5</td>
+      <td>r</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>6</td>
+      <td>k</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>To convert it to a <code class="language-plaintext highlighter-rouge">pyspark</code> dataframe, one has to create a list of <code class="language-plaintext highlighter-rouge">Row</code> objects and pass it into <code class="language-plaintext highlighter-rouge">createDataFrame</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df_pyspark</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([</span>
+    <span class="n">Row</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s">'index'</span><span class="p">],</span> <span class="n">alphabet</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s">'alphabet'</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="p">.</span><span class="n">iterrows</span><span class="p">()</span>
+<span class="p">])</span>
+<span class="n">df_pyspark</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+--------+-----+
+|alphabet|index|
++--------+-----+
+|       p|    0|
+|       y|    1|
+|       s|    2|
+|       p|    3|
+|       a|    4|
+|       r|    5|
+|       k|    6|
++--------+-----+
+</code></pre></div></div>
+
+
+        </div>
+        <label for="/2019/10/30/pandas_to_pyspark_before_0.19.2/" class="read-more-trigger"></label>
+    
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2019/10/14/notes-on-handling-rnn-training-problem/">
+        Common issues in RNN training
+      </a>
+    </h1>
+
+    <span class="post-date">14 Oct 2019</span>
+
+    
+        <p>Exploding gradients and vanishing gradients are two common issues with the training of RNN.</p>
+
+<p>To avoid exploding gradients, one may use:</p>
+
+<ul>
+  <li>Truncated Back-propagation through time (BPTT)</li>
+  <li>Clip gradients at threshold</li>
+  <li>RMSprop to adjust learning rate</li>
+</ul>
+
+<p>Vanishing gradients are harder to detect. To avoid it, one may use:</p>
+
+<ul>
+  <li>Weight initialization</li>
+  <li>ReLu activation functions</li>
+  <li>RMSprop</li>
+  <li>LSTM, GRUs</li>
+</ul>
+
+    
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -1115,56 +1274,6 @@ during the time period 2017-07-01 to 2017-07-31 in 6-hour intervals:</p>
 
         </div>
         <label for="/2018/02/23/ECMWF-download/" class="read-more-trigger"></label>
-    
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/01/27/resources-for-deeplearning/">
-        Resources on deep learning
-      </a>
-    </h1>
-
-    <span class="post-date">27 Jan 2018</span>
-
-    
-        <p>I have been searching for solutions how to use Recurrent Neural Networks for text classifications. Here are some useful resources I’ve found:</p>
-<ul>
-  <li><a href="https://www.deepdetect.com/">Open Source Deep Learning Server</a> has a library of <a href="https://www.deepdetect.com/applications/text_model/">pre-trained neural nets</a>.</li>
-  <li>An <a href="https://www.analyticsvidhya.com/blog/2017/06/transfer-learning-the-art-of-fine-tuning-a-pre-trained-model/">article on Analytics Vidhya</a> 
-discuss about transfer learning &amp; The art of using pre-trained models in deep learning. They also have <a href="https://www.analyticsvidhya.com/blog/2017/06/word-embeddings-count-word2veec/">an article about word embeddings</a>.</li>
-  <li>Keras has a list of <a href="https://keras.io/applications/#usage-examples-for-image-classification-models">deep learning models with pre-trained weights</a>.</li>
-  <li><a href="http://hyperopt.github.io/hyperopt/">Hyperopt</a> is a python library for Distributed Asynchronous Hyperparameter Optimization.</li>
-  <li><a href="http://shop.oreilly.com/product/0636920052289.do">Hands-On Machine Learning with Scikit-Learn and TensorFlow</a> has discussion on deep learning from Ch.10 onward.</li>
-  <li>Kaggle forum has a beginner tutorial of <a href="https://www.kaggle.com/sbongo/for-beginners-tackling-toxic-using-keras/notebook">using RNN to classify toxic comments</a> on wikipedia editing page.<br />
-(To be updated.)</li>
-</ul>
-
-
-    
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2018/01/23/Publications-updated/">
-        Three co-authored papers submitted
-      </a>
-    </h1>
-
-    <span class="post-date">23 Jan 2018</span>
-
-    
-        <p>The <a href="/publications/">publication page</a> 
-has been updated with 3 submitted manuscripts.</p>
-
-<p>Updates on Feb 9, 2018: The manuscript “Role of Finite-Amplitude Rossby Waves and Nonconservative 
-Processes in Downward Migration of Extratropical Flow Anomalies” has been accepted by <em>Journal of Atmospheric Sciences</em>.</p>
-
-<p>The subroutine 
-<code class="language-plaintext highlighter-rouge">wrapper.qgpv_eqlat_lwa_ncforce</code> for computing effective diffusivity, which quantifies the 
-damping on wave transiences by irreversible mixing in the stratosphere during a 
-stratospheric sudden warming event, can be found in <a href="http://hn2016-falwa.readthedocs.io/en/latest/Wrapper%20Functions.html">my python package</a>.</p>
-
     
   </div>
   
