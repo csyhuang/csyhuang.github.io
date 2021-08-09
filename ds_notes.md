@@ -9,11 +9,11 @@ It's fun to write about what I have learnt and share solutions to problems relat
 data science/machine learning I have solved.
 
 
-## Presentation Slides
+## Machine Learning Journal Club
 
 Summary slides I made for discussion in the *Machine Learning Journal Club* with peers.
 
-{% for post in site.tags.mljc_slides %}
+{% for post in site.tags.machine_learning_journal_club %}
  - {{ post.date | date: "%Y-%m-%d" }} - [{{ post.title }}]({{ post.url }})
 {% endfor %}
 

@@ -2,7 +2,7 @@
 layout: post
 title: Discussion on Contrastive Learning
 comments: true
-tags: ['mljc_slides']
+tags: ['machine_learning_journal_club']
 ---
 
 I am leading the Machine Learning Journal Club discussion on the two papers:  
