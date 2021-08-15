@@ -125,12 +125,14 @@ As an example, the image path to the build status of my package is:
 ```
 https://github.com/csyhuang/hn2016_falwa/actions/workflows/workflow.yml/badge.svg
 ```
+![Build Status](https://github.com/csyhuang/hn2016_falwa/actions/workflows/workflow.yml/badge.svg)
 I can check my build status [here](https://github.com/csyhuang/hn2016_falwa/actions).
 
 The image path to my CodeCov results is:
 ```
 https://codecov.io/gh/csyhuang/hn2016_falwa/branch/master/graph/badge.svg
 ```
+![codecov.io](https://codecov.io/gh/csyhuang/hn2016_falwa/branch/master/graph/badge.svg)
 The report is visualized on CodeCov [like this](https://app.codecov.io/gh/csyhuang/hn2016_falwa).
 
 
