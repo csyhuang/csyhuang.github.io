@@ -14,7 +14,7 @@ I found a free solution on GitHub marketplace: [CodeCov](https://github.com/mark
 
 ## Define the workflow
 
-The workflow is defined in the file `.github/workflows/workflow.yml`. [Here](https://github.com/csyhuang/hn2016_falwa/blob/master/.github/workflows/workflow.yml) is what I did for my package:
+The GitHub Workflow is defined in the file `.github/workflows/workflow.yml`. [Here](https://github.com/csyhuang/hn2016_falwa/blob/master/.github/workflows/workflow.yml) is what I did for my package:
 <!--more-->
 
 ```yml
@@ -49,6 +49,31 @@ jobs:
         bash <(curl -s https://codecov.io/bash)
 
 ```
+The procedures under `"Generate Report"` are copied from my Travis job definition `.travis.yml`:
+```yml
+language: python
+python:
+  - "3.7"
+
+before_install:
+  - python --version
+  - pip install -U pip
+  - pip install -U pytest
+  - pip install coverage
+
+install:
+  - pip install --upgrade pip setuptools wheel
+  - sudo apt-get install python-numpy python-scipy gfortran
+  - pip install numpy
+  - pip install scipy
+
+# command to run tests
+script:
+  - coverage run setup.py pytest
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+``` 
 
 In order to upload the coverage report to CodeCov, I used the command `bash <(curl -s https://codecov.io/bash)` after failing to send report using the line `uses: codecov/codecov-action@v2` from CodeCov template.
 
