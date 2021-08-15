@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Study Notes
+title: Technical Notes
 permalink: /ds_notes/
 comments: true
 ---

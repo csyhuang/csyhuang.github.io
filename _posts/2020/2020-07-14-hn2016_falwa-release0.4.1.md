@@ -11,6 +11,10 @@ As a memo to myself - procedures for a release (which I often forget and have to
 - Update version number in `setup.py`, `readme.md` and documentation pages.
 - Add a (light-weighted) tag to the commit: `git tag <tagname>`.
 - Not only push the commits but also the tag by `git push origin <tagname>`.
+- **Update on Aug 15, 2021**: To push the commit and corresponding tag simultaneously, use
+```
+git push --atomic origin <branch name> <tag>
+```
 
 If I have time, I would update the version on PYPI too:
 - Create the `dist/` directory and the installation files: `python3 setup.py sdist bdist_wheel`
