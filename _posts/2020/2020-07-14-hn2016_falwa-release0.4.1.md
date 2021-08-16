@@ -18,4 +18,5 @@ git push --atomic origin <branch name> <tag>
 
 If I have time, I would update the version on PYPI too:
 - Create the `dist/` directory and the installation files: `python3 setup.py sdist bdist_wheel`
-- Upload the package: `python3 -m twine upload --repository testpypi dist/*`
+- Upload the package onto TestPyPI to test deployment: `python3 -m twine upload --repository testpypi dist/*`
+- Deploy the package onto PyPI for real: `python3 -m twine upload dist/*`
