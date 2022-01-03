@@ -5,7 +5,7 @@ comments: true
 tags: ['machine_learning_journal_club']
 ---
 
-I am leading the Machine Learning Journal Club discussion on the two papers:  
+I led the Machine Learning Journal Club discussion on the two papers:  
 - Wang, G., Wang, K., Wang, G., Torr, P. H., & Lin, L. (2021). [Towards Solving Inefficiency of Self-supervised Representation Learning.](https://arxiv.org/abs/2104.08760) arXiv preprint arXiv:2104.08760.
 - Chen, T., Kornblith, S., Norouzi, M., & Hinton, G. (2020, November). [A simple framework for contrastive learning of visual representations.](https://arxiv.org/abs/2002.05709) In International conference on machine learning (pp. 1597-1607). PMLR.
 
