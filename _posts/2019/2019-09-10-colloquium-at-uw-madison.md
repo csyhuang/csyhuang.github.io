@@ -11,4 +11,4 @@ The colloquium I gave on Monday was an overview of the finite-amplitude local Ro
 
 The slides for my colloquium can be found below:
 
-[![Slides for UW-Madison Colloquium](/assets/img/uw-colloquium-thumbnail.png)](https://www.dropbox.com/s/ladgdo6tjkyhvmo/clare-uw-colloquium-20190909.pdf?dl=1)
+[![Slides for UW-Madison Colloquium](/assets/img/uw-colloquium-thumbnail.png)](https://www.dropbox.com/s/xwptpehn4nv4tr9/clare-uw-colloquium-20190909.pdf?dl=0)
