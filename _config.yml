@@ -11,6 +11,7 @@ description:         'PhD in Geophysical Sciences (UChicago). Love coding, music
 url:                 http://csyhuang.github.io
 baseurl:             ''
 paginate:            20
+cv_link:             'https://www.dropbox.com/s/q9heif66wazbe6b/CSYHuang_CV_20220112.pdf?dl=0'
 
 # About/contact
 author:
