@@ -9,6 +9,12 @@ Here are some (just my favorite, not all 😆) of the piano covers I made on You
 
 For the rest of my arrangements and recordings, check out my YouTube channel [Clare's Studio](https://www.youtube.com/c/ClaresStudio).
 
+## FANTASTICS from EXILE TRIBE - TURN TO YOU (3-minute live arr. version)
+
+A song from my favorite dance and vocal group which I think is quite suitable for piano arrangement. 😆
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/WA1J9-b17kU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## ロス - Follow (3-minute piano solo version)
 
 This is the ending theme song of the Japanese Drama "My Beautiful Man"（美しい彼）.
@@ -17,7 +23,7 @@ This is the ending theme song of the Japanese Drama "My Beautiful Man"（美し�
 
 ## 三代目 J Soul Brothers - 花火/Hanabi (3-minute piano solo version)
 
-This is the theme song of short movie "Destination"（終着の場所） in the [Cimena Fighters series](https://www.shortshorts.org/2017/en/program/fighters.html). 🥺 It was a sad story.
+This is the theme song of short movie "Destination"（終着の場所） in the [Cinema Fighters series](https://www.shortshorts.org/2017/en/program/fighters.html). 🥺 It was a sad story.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/_FA8jmBLJMU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
