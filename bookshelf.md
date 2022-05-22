@@ -15,6 +15,7 @@ Here is a collection of free books online that I find useful:
 - [Goodfellow, I., Bengio, Y., & Courville, A. (2016). **Deep learning**. MIT press.](https://www.deeplearningbook.org/)
 - [Lovric, M. (2011). **International Encyclopedia of Statistical Science**. Springer.](https://link.springer.com/referencework/10.1007/978-3-642-04898-2)
 - [Friedman, J., Hastie, T., & Tibshirani, R. (2001). **The elements of statistical learning**. New York: Springer series in statistics.](https://web.stanford.edu/~hastie/Papers/ESLII.pdf)
+- [White, Andrew D (2021). **Deep Learning for Molecules and Materials**.](https://dmol.pub)
 
 ## Reinforcement Learning
 - [Sutton, R. S., & Barto, A. G. (2018). **Reinforcement learning: An introduction.** MIT press.](http://incompleteideas.net/book/the-book.html)
