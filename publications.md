@@ -10,7 +10,7 @@ comments: true
 
 ## Accepted/Published articles
 
-Neal, Emily, **Huang C. S. Y.**, Nakamura N. **The 2021 Pacific Northwest heat wave and associated blocking: meteorology and the role of an upstream diabatic source of wave activity**. Geophysical Research Letters, https://doi.org/10.1029/2021GL097699.
+Neal, Emily, **Huang C. S. Y.**, Nakamura N. (2022). [**The 2021 Pacific Northwest heat wave and associated blocking: meteorology and the role of an upstream diabatic source of wave activity**](https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2021GL097699). *Geophysical Research Letters*, 49, e2021GL097699.
 
 Lubis, Sandro, **Huang C. S. Y.**, Nakamura N. (2018). [**Role of finite-amplitude eddies and mixing in the life cycle of stratospheric sudden warmings.**](https://journals.ametsoc.org/doi/10.1175/JAS-D-18-0138.1) *Journal of the Atmospheric Sciences*, 75, 3987-4003.
 
