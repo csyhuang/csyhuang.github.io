@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Remarks on GitHub CLI and repo managemenet
+title: hn2016_falwa release 0.6.1 + remarks on GitHub CLI and repo managemenet
 comments: true
 image_url: ''
 tags: ['setup', 'se']
