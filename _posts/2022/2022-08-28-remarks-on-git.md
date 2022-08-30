@@ -30,7 +30,7 @@ except ImportError:
 
 Given that xarray is an optional package, even if it is not installed, unit test for this package shall still run through.
 
-## 3. Move fortran modules into the directory `hn2016_falwa/`
+## 3. Move fortran modules into the package directory
 
 The `.f90` files that contain the f2py modules were located in `hn2016_falwa/` before. Now it is moved to `hn2016_falwa/f90_modules/`. The modifications done are:
 
@@ -62,4 +62,9 @@ The fix I have done are:
 	- Add modules/packages that causes the compilation to fail/raise warning to `autodoc_mock_imports` in 
 - Add `docs/requirements.txt` and specify all external packages imported (i.e. numpy, scipy, xarray) in the package
 
+## 5. Compare commits using GitHub's interface
+
+To display the difference between two commits using GitHub's web interface, put in the following URL:
+
+> https://github.com/csyhuang/hn2016_falwa/compare/OLD-COMMIT-HASH..NEW-COMMIT-HASH
 
