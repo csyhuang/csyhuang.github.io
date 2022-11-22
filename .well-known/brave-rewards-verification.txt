@@ -1,4 +1,4 @@
 This is a Brave Rewards publisher verification file.
 
 Domain: csyhuang.github.io
-Token: 59eab9789f6b62a086c09f457ff9ac26b9def651932e9bbb230e45d5d38709a6
+Token: 05222d34d40d35b0c2ea096c13b9895a3c369bc3426eee3e01af344b57b3055f
