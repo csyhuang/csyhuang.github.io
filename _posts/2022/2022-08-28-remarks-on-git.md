@@ -1,6 +1,6 @@
 ---
 layout: post
-title: hn2016_falwa release 0.6.1 + remarks on GitHub CLI and repo managemenet
+title: hn2016_falwa release 0.6.1 + remarks on GitHub CLI and repo management
 comments: true
 image_url: ''
 tags: ['setup', 'se']
@@ -67,4 +67,8 @@ The fix I have done are:
 To display the difference between two commits using GitHub's web interface, put in the following URL:
 
 > https://github.com/csyhuang/hn2016_falwa/compare/OLD-COMMIT-HASH..NEW-COMMIT-HASH
+
+## 6. To pull a branch which other forked your repo to local
+
+
 
