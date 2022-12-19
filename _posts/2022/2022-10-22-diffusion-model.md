@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Discussion on Difference-based Contrastive Learning for Sentence Embedding (DiffCSE)
+title: Discussion on Diffusion models beat gans on image synthesis
 comments: true
 tags: ['machine_learning_journal_club']
 ---
