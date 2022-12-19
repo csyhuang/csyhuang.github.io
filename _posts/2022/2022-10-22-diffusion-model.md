@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Discussion on Diffusion models beat gans on image synthesis
+title: 'Discussion on Diffusion models beat GANs on image synthesis'
 comments: true
 tags: ['machine_learning_journal_club']
 ---
