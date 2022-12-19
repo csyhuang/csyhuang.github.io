@@ -6,7 +6,7 @@ image_url: 'https://github.com/csyhuang/csyhuang.github.io/raw/master/assets/img
 tags: ['setup', 'se']
 ---
 
-Here comes the [package release hn2016_falwa v0.5.0](https://github.com/csyhuang/hn2016_falwa/releases/tag/v0.5.0). Please refer to the [release notes](https://github.com/csyhuang/hn2016_falwa/releases/tag/v0.5.0) for details. Great thanks to [Christopher Polster](https://github.com/chpolste) who submitted a pull request to optimize the fortran modules, which makes the flux calculations a lot faster. 😄🙏🏻
+Here comes the [package release hn2016_falwa v0.5.0](https://github.com/csyhuang/hn2016_falwa/releases/tag/v0.5.0). Please refer to the [release notes](https://github.com/csyhuang/hn2016_falwa/releases/tag/v0.5.0) for details. Great thanks to [Christopher Polster](https://github.com/chpolste) who submitted a pull request to optimize the fortran modules, which makes the flux calculations a lot faster. 😄
 
 The package is available on [PyPI](https://pypi.org/project/hn2016-falwa/0.5.0/) as well.
 

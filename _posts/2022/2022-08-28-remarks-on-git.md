@@ -6,7 +6,7 @@ image_url: ''
 tags: ['setup', 'se']
 ---
 
-Great thanks to [Christopher Polster](https://github.com/chpolste) who submitted a pull request to include [Xarray interface](https://hn2016-falwa.readthedocs.io/en/latest/Xarray%20Interface.html) to the [QGField class](https://hn2016-falwa.readthedocs.io/en/latest/Object%20Oriented%20Interface.html) of the [local wave activity package](https://github.com/csyhuang/hn2016_falwa). 😄🙏🏻 Please find [here](https://github.com/csyhuang/hn2016_falwa/releases/tag/v0.6.1) the release note for version 0.6.1.
+Great thanks to [Christopher Polster](https://github.com/chpolste) who submitted a pull request to include [Xarray interface](https://hn2016-falwa.readthedocs.io/en/latest/Xarray%20Interface.html) to the [QGField class](https://hn2016-falwa.readthedocs.io/en/latest/Object%20Oriented%20Interface.html) of the [local wave activity package](https://github.com/csyhuang/hn2016_falwa). 😄 Please find [here](https://github.com/csyhuang/hn2016_falwa/releases/tag/v0.6.1) the release note for version 0.6.1.
 
 I learned something new cleaning up the GitHub repo and I'm gonna write about it.
 
