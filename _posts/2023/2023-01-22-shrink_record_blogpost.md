@@ -66,11 +66,11 @@ USING PARQUET
 PARTITIONED BY (some_part_id, timestamp)
 ```
 
-Then, I retrieved the original table and repartitioned it, such that all data in each partition is combined to a single file (`numPartitions=1`):
+Then, I retrieved the original table and repartitioned it, such that all data in each partition is combined to a single file (`numPartitions=1`) since my cluster can handle files of size up to 100 M. You shall adjust `numPartitions` based on the resources you have.
 
 ```python
 df = spark.table('myschema.original_table_w_many_small_files')
-df.repartition(1).write.insertInto('myschema.new_table_with_fewer_files')
+df.repartition(numPartitions=1).write.insertInto('myschema.new_table_with_fewer_files')
 ```
 
 Here is a comparison between the storage of the old and new table:
