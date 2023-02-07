@@ -10,7 +10,7 @@ Sometimes, hive tables are saved not in an optimal way that creates lots of smal
 To check the number of files and their size, I used this HDFS command:
 
 ```bash
-$ hadoop stanley fs -count /hive/warehouse/myschema.db/
+$ hadoop cluster_name fs -count /hive/warehouse/myschema.db/
 ```
 
 There will be 4 columns printed out. I'm showing one of the examples among the table I shrank today:
@@ -20,7 +20,7 @@ There will be 4 columns printed out. I'm showing one of the examples among the t
 |3|854|104950877|original_table_w_many_small_files|
 
 
-When I check the file sizes of the 854 files using `hadoop stanley fs -du -h /hive/warehouse/myschema.db/original_table_w_many_small_files/*/*/*`, I find that all of them are indeed of small size:
+When I check the file sizes of the 854 files using `hadoop cluster_name fs -du -h /hive/warehouse/myschema.db/original_table_w_many_small_files/*/*/*`, I find that all of them are indeed of small size:
 
 ```
 99.9 K  /hive/warehouse/myschema.db/original_table_w_many_small_files/some_part_id=30545/timestamp=1595397053/part-00845-29c4c506-e991-4d1d-be67-43e0a9976179.c000
