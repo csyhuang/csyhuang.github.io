@@ -8,6 +8,13 @@ comments: true
 It's fun to write about what I have learnt and share solutions to problems related to 
 data science/machine learning I have solved.
 
+## PySpark/SQL
+
+These posts are about tools I use most frequently at work.
+
+{% for post in site.tags.pyspark %}
+ - {{ post.date | date: "%Y-%m-%d" }} - [{{ post.title }}]({{ post.url }})
+{% endfor %}
 
 ## Machine Learning Journal Club
 
@@ -29,7 +36,7 @@ Summary slides I made for discussion in the *Machine Learning Journal Club* with
  - {{ post.date | date: "%Y-%m-%d" }} - [{{ post.title }}]({{ post.url }})
 {% endfor %}
 
-## Data Science
+## Data Science (Miscellaneous)
 
 {% for post in site.tags.ds %}
  - {{ post.date | date: "%Y-%m-%d" }} - [{{ post.title }}]({{ post.url }})
