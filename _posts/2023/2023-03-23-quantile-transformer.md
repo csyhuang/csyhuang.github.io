@@ -2,7 +2,7 @@
 layout: post
 title: Implementing QuantileTransformer in Spark - mapping any kinds of distribution to normal distribution
 comments: true
-tags: ['sql', 'pyspark']
+tags: ['sql', 'pyspark', 'ds']
 ---
 
 This blog post is motivated by the [Scikit-learn documentation of QuantileTransformer](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.QuantileTransformer.html#sklearn.preprocessing.QuantileTransformer) and [a StackExchange discussion thread](https://stats.stackexchange.com/questions/325570/quantile-transformation-with-gaussian-distribution-sklearn-implementation) about it.
@@ -46,7 +46,7 @@ Here is a visualization of their distributions:
 
 ![Initial distribution](/assets/img/2023-03-23/three_diff_distribution.png)
 
-To transform all the columns to normal distribution, first, get the rank (normalized, ranging from 0 to 1) for each `id` in each column:
+To transform all the columns to normal distribution, first, get the rank (or quantile, if rank is too expensive) for each `id` in each column:
 
 ```python
 df_rank = df.rank(
