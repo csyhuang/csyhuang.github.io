@@ -16,4 +16,4 @@ In the meantime, if you want to correct your diagnostic by yourself, the remedy 
 Our contact method:
 
 - Noboru Nakamura: nnn@uchicago.edu
-- Clare Huang: csyhuang@protonmail.com
+- Clare Huang: csyhuang@uchicago.edu
