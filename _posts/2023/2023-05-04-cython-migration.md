@@ -25,12 +25,6 @@ def x_sq_minus_x(x):
     return x**2 - x
 ```
 
-In `__init__.py` I have:
-
-```python
-import dirinv_cython
-```
-
 In `setup_cython.py` I have:
 
 ```python
@@ -46,6 +40,14 @@ First, I compile the cython modules by executing in the directory `cython_module
 
 ```bash
 python setup_cython.py build_ext --inplace
+```
+
+This produces `dirinv_cython.c` in the directory `pyx_modules/`.
+
+Put this in `__init__.py`:
+
+```python
+import dirinv_cython
 ```
 
 Then I run the script to test the imports `check_import.py`:
