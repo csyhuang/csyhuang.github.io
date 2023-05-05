@@ -42,7 +42,13 @@ setup(name='dirinv_cython',
       ext_modules=cythonize("pyx_modules/dirinv_cython.pyx"))
 ```
 
-The script to test the import is `check_import.py`:
+First, I compile the cython modules by executing in the directory `cython_modules`:
+
+```bash
+python setup_cython.py build_ext --inplace
+```
+
+Then I run the script to test the imports `check_import.py`:
 
 ```python
 from pyx_modules import dirinv_cython
