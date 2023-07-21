@@ -9,6 +9,8 @@ This blog post is motivated by the [Scikit-learn documentation of QuantileTransf
 
 There are 2 parts in this post. Part I reviews the idea of Quantile Transformer. Part II shows the implementation of Quantile Transformer in Spark using Pandas UDF.
 
+<!--more-->
+
 # Part I: Quantile Transformer transforms data of arbitrary distribution to normal (or uniform) distribution
 
 **Problem Statement:** I have some individuals (`id`) with 3 attributes of different distributions. I want to combine them linearly and also want to make sure the outcome follows a normal distribution.
