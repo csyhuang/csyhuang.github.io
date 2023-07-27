@@ -12,7 +12,7 @@ Here are course notes I am taking from the DeepLearning.ai course on Coursera: [
 # Instructors
 
 - Antje Barth
-    - Principal Developer Advocate, Generative AI, Amazon Web Services (AWS)
+  - Principal Developer Advocate, Generative AI, Amazon Web Services (AWS)
 - Chris Fregly
 	- Principal Solutions Architect, Generative AI, Amazon Web Services (AWS)
 - Shelbee Eigenbrode
