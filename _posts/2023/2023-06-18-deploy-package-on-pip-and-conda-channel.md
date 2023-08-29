@@ -27,6 +27,8 @@ I googled and found this StackOverflow thread: [Binary wheel can't be uploaded o
 
 ManyLinux repo: https://github.com/pypa/manylinux
 
+<!-- 
+
 # Try pulling docker to build
 
 ```bash
@@ -38,6 +40,7 @@ After git clone the repository, navigate into it and run:
 PLATFORM=$(uname -m) POLICY=manylinux2014 COMMIT_SHA=latest ./build.sh
 ```
 (Not using steps above)
+ -->
 
 Good tutorial:
 
