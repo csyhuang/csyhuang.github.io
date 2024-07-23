@@ -5,7 +5,7 @@ comments: true
 tags: ['pyspark', 'ds', 'se']
 ---
 
-To train deep learning model written in [PyTorch](https://pytorch.org) with Big Data in a distributed manner, we use [BigDL-Orca](https://bigdl.readthedocs.io/en/latest/doc/Orca/) at work. 
+To train deep learning model written in [PyTorch](https://pytorch.org) with Big Data in a distributed manner, we use [BigDL-Orca](https://bigdl.readthedocs.io/en/latest/doc/Orca/) at work. 🛠️
 
 Compared to the Keras interface of BigDL, PyTorch (Orca) supports customization of various components for Deep Learning. For example, using `bigdl-dllib` keras API, you are constrained to use only available operations in [Autograd module](https://bigdl.readthedocs.io/en/latest/doc/DLlib/Overview/dllib.html#autograd-examples-using-bigdl-dllb-keras-python-api) to customize loss functions, while you can do whatever you like in PyTorch (Orca) by creating customized subclass of `torch.nn.modules.loss._Loss` . 😁
 
@@ -19,4 +19,4 @@ To get around this, I dropped some rows to make sure the total size of `train_da
 train_data = train_data.limit(train_data.count() - train_data.count() % batch_size)
 ```
 
-The training process is working afterwards. 😁
+The training process worked afterwards. 😁
