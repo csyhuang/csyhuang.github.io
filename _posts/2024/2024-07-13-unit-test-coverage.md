@@ -6,7 +6,7 @@ image_url: ''
 tags: ['se']
 ---
 
-I wrote a [blog post in 2021]({% post_url 2021-08-14-ci-migration-to-github-workflow %}) about how to integrate pytest coverage check to GitHub Workflow.
+I wrote a [blog post in 2021]({% post_url 2021/2021-08-14-ci-migration-to-github-workflow %}) about how to integrate pytest coverage check to GitHub Workflow.
 
 To run `coverage` locally, execute `coverage run --source=falwa -m pytest tests/ && coverage report -m` would yield the report (this is from the PR for `falwa` release 1.3):
 
