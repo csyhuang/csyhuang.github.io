@@ -32,3 +32,4 @@ falwa/xarrayinterface.py         266     37    86%   107-109, 317, 322-323, 478,
 TOTAL                           1535    670    56%
 ```
 
+I guess it's time to work on increasing coverage again. 🙂 (Too much work recently, through.)
