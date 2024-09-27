@@ -2,7 +2,7 @@
 layout: post
 title: IMPORTANT Bug fix release hn2016_falwa v0.7.2
 comments: true
-image_url: 'https://github.com/csyhuang/csyhuang.github.io/raw/master/assets/img/hn2016_falwa_diagram.png'
+image_url: 'https://github.com/csyhuang/csyhuang.github.io/raw/master/assets/img/falwa_diagram.png'
 tags: ['research', 'se']
 ---
 

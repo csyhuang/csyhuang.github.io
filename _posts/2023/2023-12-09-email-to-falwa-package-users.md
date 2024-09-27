@@ -2,7 +2,7 @@
 layout: post
 title: Important announcement about the GitHub repo hn2016_falwa
 comments: true
-image_url: 'https://github.com/csyhuang/csyhuang.github.io/raw/master/assets/img/hn2016_falwa_diagram.png'
+image_url: 'https://github.com/csyhuang/csyhuang.github.io/raw/master/assets/img/falwa_diagram.png'
 tags: ['research', 'se']
 ---
 
