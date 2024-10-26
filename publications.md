@@ -7,9 +7,9 @@ comments: true
 
 ## Submitted articles
 
-Lubis, S. W., Harrop, B., Lu J., Leung, L. R., Chen, Z., **Huang, C. S. Y.**, Omrani, N. (2024). **Cloud-Radiative Effects Significantly Increase Wintertime Atmospheric Blocking in the Euro-Atlantic Sector**, *submitted*.
+Lubis, S. W., Harrop, B., Lu J., Leung, L. R., Chen, Z., **Huang, C. S. Y.**, Omrani, N. (2024). **Cloud-Radiative Effects Significantly Increase Wintertime Atmospheric Blocking in the Euro-Atlantic Sector**, *under review*.
 
-**Huang, C. S. Y.**, Polster, C., and Nakamura, N.(2024). **falwa: Python package to implement Finite-amplitude Local Wave Activity diagnostics on climate data**, *submitted to Geoscience Data Journal*. 
+**Huang, C. S. Y.**, Polster, C., and Nakamura, N.(2024). **falwa: Python package to implement Finite-amplitude Local Wave Activity diagnostics on climate data**, *under review*. 
 
 ## Accepted/Published articles
 
