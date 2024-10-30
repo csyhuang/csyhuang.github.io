@@ -5,52 +5,41 @@ permalink: /ds_notes/
 comments: true
 ---
 
-It's fun to write about what I have learnt and share solutions to problems related to 
-data science/machine learning I have solved.
+It's fun to write about what I have learnt and share solutions to problems related to data science/machine learning I have solved.
 
-## PySpark/SQL
+Click onto each topic to expand the list of posts.
 
-These posts are about tools I use most frequently at work.
+{% include collapsible.html 
+	topic="PySpark/SQL" 
+	intro="These posts are about tools I use most frequently at work." topic_tag=site.tags.pyspark %}
 
-{% for post in site.tags.pyspark %}
- - {{ post.date | date: "%Y-%m-%d" }} - [{{ post.title }}]({{ post.url }})
-{% endfor %}
+{% include collapsible.html 
+	topic="Machine Learning Journal Club" 
+	intro="Summary slides I made for discussion in the <i>Machine Learning Journal Club</i> with peers." 
+	topic_tag=site.tags.pyspark %}
 
-## Machine Learning Journal Club
+{% include collapsible.html 
+	topic="Reading Notes" 
+	intro="" topic_tag=site.tags.notesfromreading %}
 
-Summary slides I made for discussion in the *Machine Learning Journal Club* with peers.
+{% include collapsible.html 
+	topic="Software Engineering" 
+	intro="" 
+	topic_tag=site.tags.se %}
 
-{% for post in site.tags.machine_learning_journal_club %}
- - {{ post.date | date: "%Y-%m-%d" }} - [{{ post.title }}]({{ post.url }})
-{% endfor %}
+{% include collapsible.html 
+	topic="Data Science (Miscellaneous)" 
+	intro="" 
+	topic_tag=site.tags.ds %}
 
-## Reading Notes
+{% include collapsible.html 
+	topic="System / Package set-up" 
+	intro="" 
+	topic_tag=site.tags.setup %}
 
-{% for post in site.tags.notesfromreading %}
- - {{ post.date | date: "%Y-%m-%d" }} - [{{ post.title }}]({{ post.url }})
-{% endfor %}
+{% include collapsible.html 
+	topic="Notes taken from lectures / online courses" 
+	intro="" 
+	topic_tag=site.coursenotes %}
 
-## Software Engineering
-
-{% for post in site.tags.se %}
- - {{ post.date | date: "%Y-%m-%d" }} - [{{ post.title }}]({{ post.url }})
-{% endfor %}
-
-## Data Science (Miscellaneous)
-
-{% for post in site.tags.ds %}
- - {{ post.date | date: "%Y-%m-%d" }} - [{{ post.title }}]({{ post.url }})
-{% endfor %}
-
-## System / Package set-up
-
-{% for post in site.tags.setup %}
- - {{ post.date | date: "%Y-%m-%d" }} - [{{ post.title }}]({{ post.url }})
-{% endfor %}
-
-## Notes taken from lectures / online courses:
-
-{% for post in site.coursenotes %}
- - {{ post.date | date: "%Y-%m-%d" }} - [{{ post.title }}]({{ post.url }})
-{% endfor %}
 

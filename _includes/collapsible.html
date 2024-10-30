@@ -1,0 +1,21 @@
+<details>
+  <summary>
+    <h2>{{ include.topic }}</h2>
+  </summary>
+  {% if include.intro.size > 0 %}
+    <p>{{ include.intro }}</p>
+  {% endif %}
+  <p>
+    <ul>
+    {% for post in include.topic_tag %}
+    <li>
+      <p>
+        {{ post.date | date: "%Y-%m-%d" }} - <a href="{{ post.url }}">{{ post.title }}</a>
+      </p>
+    </li>
+    {% endfor %}
+    </ul>
+  </p>
+</details>
+
+
