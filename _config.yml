@@ -32,7 +32,7 @@ defaults:
       image: true
 
 # Exclude directories
-exclude: ["Raw_not_uploaded", "deleted_posts"]
+exclude: ["Raw_not_uploaded", "deleted_posts", "unused"]
 
 # Include directories
 include: [".well-known"]
