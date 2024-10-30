@@ -19,10 +19,6 @@ Click onto each topic to expand the list of posts.
 	topic_tag=site.tags.pyspark %}
 
 {% include collapsible.html 
-	topic="Reading Notes" 
-	intro="" topic_tag=site.tags.notesfromreading %}
-
-{% include collapsible.html 
 	topic="Software Engineering" 
 	intro="" 
 	topic_tag=site.tags.se %}
@@ -41,5 +37,9 @@ Click onto each topic to expand the list of posts.
 	topic="Notes taken from lectures / online courses" 
 	intro="" 
 	topic_tag=site.coursenotes %}
+
+{% include collapsible.html 
+	topic="Reading Notes" 
+	intro="" topic_tag=site.tags.notesfromreading %}
 
 
