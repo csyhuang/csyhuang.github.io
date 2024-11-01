@@ -8,7 +8,11 @@ tags: ['research']
 
 This is just a post to locate resources I need. 🤔
 
-As I am participating in the MDTF project, I need some sample climate data to test my POD. NOAA has a [Google Cloud repository](https://console.cloud.google.com/storage/browser/cmip6/) that stores CMIP6 data. To download the data, I need the [gsutil](https://cloud.google.com/storage/docs/gsutil_install#linux) installed on my linux machine. I created the minimal conda evironment by
+As I am participating in the MDTF project, I need some sample climate data to test my POD. NOAA has a [Google Cloud repository](https://console.cloud.google.com/storage/browser/cmip6/) that stores CMIP6 data. To download the data, I need the [gsutil](https://cloud.google.com/storage/docs/gsutil_install#linux) installed on my linux machine. 
+
+<!--more-->
+
+I created the minimally necessary conda evironment by
 
 ```
 conda create -n gcloud_cli python=3.11
@@ -33,3 +37,10 @@ $ gsutil -m cp -r   "gs://cmip6/CMIP6/C4MIP/E3SM-Project/E3SM-1-1/hist-bgc/r1i1p
 ```
 
 Will give a try and report my findings here.
+
+---
+
+Additional information:
+
+- [CMIP6 data request](https://clipc-services.ceda.ac.uk/dreq/mipVars.html)
+- [IPCC Standard Output from Coupled Ocean-Atmosphere GCMs](https://pcmdi.llnl.gov/mips/cmip3/variableList.html#Table_A1a)
