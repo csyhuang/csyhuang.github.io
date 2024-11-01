@@ -15,7 +15,9 @@ I found a [slide deck about NOAA's public datasets](https://rammb.cira.colostate
 ```python
 datasets = []
 for file in lets_get:
-	data_path = 'gs://' + bucket_name + '/' + file
-	ds3 = xr.open_dataset(fs.open(data_path), engine='h5netcdf')
-	# Reduce data set to Skin tempera
+    data_path = 'gs://' + bucket_name + '/' + file
+    ds3 = xr.open_dataset(fs.open(data_path), engine='h5netcdf')
+    datasets.append(ds3['TSkin'])
 ```
+
+Will give a try and report my findings here.
