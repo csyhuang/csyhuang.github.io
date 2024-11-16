@@ -8,8 +8,13 @@ comments: true
 ## Submitted articles
 
 - Lubis, S. W., Harrop, B., Lu J., Leung, L. R., Chen, Z., **Huang, C. S. Y.**, Omrani, N. (2024). **Cloud-Radiative Effects Significantly Increase Wintertime Atmospheric Blocking in the Euro-Atlantic Sector**, *under review*.
-- **Huang, C. S. Y.**, Polster, C., and Nakamura, N.(2024). **falwa: Python package to implement Finite-amplitude Local Wave Activity diagnostics on climate data**, *under review*. \[[Preprint](https://www.dropbox.com/scl/fi/e4mtosm57fcl61jeyovss/falwa_package_paper_20240930.pdf?rlkey=x1vbl9zecwpr6vvfgt14qbgcs&dl=0)\]
+- **Huang, C. S. Y.**, Polster, C., and Nakamura, N.(2024). **falwa: Python package to implement Finite-amplitude Local Wave Activity diagnostics on climate data**, *under review*. \[[Preprint](https://essopenarchive.org/users/534043/articles/1241531-falwa-python-package-to-implement-finite-amplitude-local-wave-activity-diagnostics-on-climate-data)\]
 
+<!-- 
+Memo: Preprint policy of Geoscience Data Journal
+https://rmets.onlinelibrary.wiley.com/hub/journal/20496060/about/author-guidelines
+ -->
+ 
 ## Accepted/Published articles
 
 - Neal, E., **Huang C. S. Y.**, Nakamura N. (2022). [**The 2021 Pacific Northwest heat wave and associated blocking: meteorology and the role of an upstream diabatic source of wave activity**](https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2021GL097699). *Geophysical Research Letters*, 49, e2021GL097699.
