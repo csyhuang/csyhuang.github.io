@@ -49,6 +49,11 @@ Welcome to my personal homepage! Please use the <b>left-side menu</b> to navigat
 
 <div class="posts">
   {% for post in paginator.posts %}
+
+    {% if post.tags contains "backlog" %}
+      {% continue %}
+    {% endif %}
+
   <div class="post">
     <h1 class="post-title">
       <a href="{{ post.url }}">
