@@ -7,7 +7,7 @@ comments: true
 
 ## Submitted articles
 
-- Lubis, S. W., Harrop, B., Lu J., Leung, L. R., Chen, Z., **Huang, C. S. Y.**, Omrani, N. (2024). **Cloud-Radiative Effects Significantly Increase Wintertime Atmospheric Blocking in the Euro-Atlantic Sector**, *under review*.
+- Lubis, S. W., Harrop, B., Lu J., Leung, L. R., Chen, Z., **Huang, C. S. Y.**, Omrani, N. **Cloud-Radiative Effects Significantly Increase Wintertime Atmospheric Blocking in the Euro-Atlantic Sector**, *under review*.
 
 <!-- 
 Memo: Preprint policy of Geoscience Data Journal
