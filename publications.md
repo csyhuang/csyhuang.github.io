@@ -16,7 +16,7 @@ https://rmets.onlinelibrary.wiley.com/hub/journal/20496060/about/author-guidelin
  
 ## Accepted/Published articles
 
-- **Huang, C. S. Y.**, Polster, C., and Nakamura, N.(2025). **falwa: Python package to implement Finite-amplitude Local Wave Activity diagnostics on climate data**, *Geoscience Data Journal* (in press). \[[Preprint](https://doi.org/10.22541/essoar.173179959.91611195/v2)\]
+- **Huang, C. S. Y.**, Polster, C., and Nakamura, N.(2025). **[falwa: Python package to implement Finite-amplitude Local Wave Activity diagnostics on climate data](https://rmets.onlinelibrary.wiley.com/doi/full/10.1002/gdj3.70006)**, *Geoscience Data Journal*.
 - Neal, E., **Huang C. S. Y.**, Nakamura N. (2022). [**The 2021 Pacific Northwest heat wave and associated blocking: meteorology and the role of an upstream diabatic source of wave activity**](https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2021GL097699). *Geophysical Research Letters*, 49, e2021GL097699.
 - Lubis, S., **Huang C. S. Y.**, Nakamura N. (2018). [**Role of finite-amplitude eddies and mixing in the life cycle of stratospheric sudden warmings.**](https://journals.ametsoc.org/doi/10.1175/JAS-D-18-0138.1) *Journal of the Atmospheric Sciences*, 75, 3987-4003.
 - Nakamura, N., **Huang C. S. Y.** (2018). [**Atmospheric blocking as a traffic jam in the jet stream**](https://doi.org/10.1126/science.aat0721). *Science*.
