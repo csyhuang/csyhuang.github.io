@@ -1,14 +1,17 @@
 ---
 layout: post
-title: Paper published on the Geoscience Data Journal
+title: Software Paper published on the Geoscience Data Journal
 comments: true
 image_url: 'https://github.com/csyhuang/csyhuang.github.io/raw/master/assets/img/falwa_diagram.png'
 tags: ['research']
 ---
 
-Excited to announce that our submission to Geoscience Data Journal's Special Edition "Open-Source Software in the Geosciences" has been [published](https://rmets.onlinelibrary.wiley.com/doi/full/10.1002/gdj3.70006)! 😄
+Glad to announce the publication of our open-source software paper, "falwa: Python Package to Implement Finite-Amplitude Local Wave Activity Diagnostics on Climate Data", to celebrate our collaborative effort (after work, since 2018!) to make this physics-based diagnostic for extreme weather events easily accessible to the scientific community. 😊
 
-From now on, you can cite our publication as follows:
+- 🔗 Link to the paper: [https://rmets.onlinelibrary.wiley.com/doi/full/10.1002/gdj3.70006](https://rmets.onlinelibrary.wiley.com/doi/full/10.1002/gdj3.70006)
+- 📦 Package Repo: [https://github.com/csyhuang/hn2016_falwa/](https://github.com/csyhuang/hn2016_falwa/)
+
+From now on, users can cite our publication as follows:
 
 > Huang, C.S.Y., Polster, C., & Nakamura, N. (2025). falwa: Python package to implement Finite-amplitude Local Wave Activity diagnostics on climate data. *Geoscience Data Journal, 12*(2), e70006.
 
